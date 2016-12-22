@@ -151,6 +151,7 @@ class ClasForm:
         for i in self.driver.find_elements_by_class_name("x-btn-mc"):
             if i.text == "今天":
                 i.click()
+            time.sleep(1)
 
     # 弹出时间控件任意选择N月以后的某一天
     def form_today_next(self, number, uid, nextmonth, today):
