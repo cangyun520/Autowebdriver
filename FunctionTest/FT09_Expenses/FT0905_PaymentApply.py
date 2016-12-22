@@ -173,8 +173,8 @@ class PaymentApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
+        v_tim = time.strftime("%Y%m%d%H%M")
         driver.switch_to_frame("winSendInspection_IFrame")        # 切换到新增页面
-        v_tim = time.strftime("%y%m%d%H%M")
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span/img[2]").click()        # 收款单位
         time.sleep(3)
         driver.switch_to_frame("winAdd_IFrame")         # 切换到收款单位选择窗体
@@ -192,36 +192,22 @@ class PaymentApply(unittest.TestCase):
         driver.find_element_by_id("txtBankNumber").send_keys(fun_idcard())
         # 开户姓名
         driver.find_element_by_id("txtBankName").send_keys(fun_data_name())
-        # 申请事由
+        # 款项用途
         driver.find_element_by_id("Remark").send_keys(
-            "这是一张付款申请单Auto，这是测试说的Auto。申请日期：" + v_tim)
-        # 用款类型选择
-        driver.find_element_by_id("cbxDocType_Container").click()
-        for i in driver.find_elements_by_class_name("x-combo-list-item"):
-            if i.text == "采购业务款项申请":
-                i.click()
-                break
-        time.sleep(2)
-        # 行数据选择
+            "这是一张付款申请单，普通款项申请Auto，这是测试说的。申请日期：" + v_tim)
+        # 行数据-申请金额
         v_object = driver.find_element_by_xpath(
-            "//*[@id='GridPanel1']/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[3]").click()
+            "//*[@id='gpBorrow']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[2]")
         ActionChains(driver).double_click(v_object).perform()
         time.sleep(1)
-        driver.find_element_by_xpath(
-            "//*[@id='GridPanel1']/div/div/div/div/div[2]/div[2]/div/span").click()
-        time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
-        v_wlcode = driver.find_elements_by_class_name("x-grid3-row")
-        if len(v_wlcode) > 5:
-            v_total = 0
-            while v_total <= 4:
-                v_wlcode[v_total].click()
-                v_total += 1
-        else:
-            v_wlcode[0].click()
-        driver.find_element_by_id("Button1").click()
-        time.sleep(2)
-        driver.switch_to.parent_frame()
+        driver.switch_to.active_element.send_keys(random.randint(100, 999999))
+        # 行数据-付款说明
+        v_object = driver.find_element_by_xpath(
+            "//*[@id='gpBorrow']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[3]")
+        ActionChains(driver).double_click(v_object).perform()
+        time.sleep(1)
+        driver.switch_to.active_element.send_keys("付款时间" + v_tim)
+        time.sleep(1)
         # 提交单据
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)

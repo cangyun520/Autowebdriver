@@ -10,6 +10,7 @@ class MeetArchives(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_full_text(self, "行政办公", "会议室管理", "会议室档案")
+        time.sleep(2)
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000799")

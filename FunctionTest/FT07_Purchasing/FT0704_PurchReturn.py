@@ -137,9 +137,9 @@ class PurchReturn(unittest.TestCase):
         except ImportError:
             print("采购退货-单据已清，无复制到选项")
 
-    # 销售管理-采购退货-单据复制功能
+    # 采购管理-采购退货-单据复制功能
     def test_0704_06_copy(self):
-        """销售管理-采购退货-单据复制功能"""
+        """采购管理-采购退货-单据复制功能"""
         driver = self.driver
         driver.find_element_by_id("btnPrevious").click()
         time.sleep(3)
@@ -161,15 +161,12 @@ class PurchReturn(unittest.TestCase):
         time.sleep(2)
         driver.switch_to.parent_frame()
         # 是否依据新的业务伙伴数据更新凭证行
-        for i in driver.find_elements_by_tag_name("button"):
-            if i.text == "是":
-                i.click()
-                break
+        ClasForm.form_button_yes(self, "是")
         # 备注
         driver.find_element_by_id("txtComments").send_keys("单据复制添加Auto" + v_tim)
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
-        time.sleep(4)
+        time.sleep(5)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
