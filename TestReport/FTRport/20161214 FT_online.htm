@@ -1,0 +1,6129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>online功能集成自动化测试</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>online功能集成自动化测试</h1>
+<p class='attribute'><strong>Start Time:</strong> 2016-12-14 17:43:42</p>
+<p class='attribute'><strong>Duration:</strong> 2:45:46.757468</p>
+<p class='attribute'><strong>Status:</strong> Pass 210 Error 2</p>
+
+<p class='description'>online自动化测试——主流程功能测试执行结果统计</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT01_Index.FT01_HomePage.HomePage: 登录后首页</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',3)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_Task: 首页-我的任务-新增功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_work: 首页-工作汇报页面检查</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_03_file: 首页-查看我的文件</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0201_WebSMS.WebSMS</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',2)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0201_01: 个人事务-站内短信,【发消息】按钮功能测试</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0201_02: 个人事务-站内短信,【发消息】按钮功能测试</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0202_LogWrite.LogWrite</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',4)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0202_01: 个人事务-工作日志-日报功能测试</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0202_02: 个人事务-工作日志-周报功能测试</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0202_03: 个人事务-工作日志-月报功能测试</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+        pass</a>
+
+    <div id='div_pt3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0202_04: 个人事务-工作日志-我发出的日志查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.4')" >
+        pass</a>
+
+    <div id='div_pt3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0205_ContactsPersonal.ContactsPersonal</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0205_01_add: 个人事务-个人通讯录-新增数据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        pass</a>
+
+    <div id='div_pt4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0206_ContactsEnterprise.ContactsEnterprise</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',1)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0206_01_add: 个人事务-企业通讯录-站内信发送功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0207_LibraryFile.LibraryFile</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',1)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0207_01_add: 知识文库-公用文件柜-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0208_LibraryHarddisk.LibraryHarddisk</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',1)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0208_01_add: 知识文库-网络硬盘-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt7.1')" >
+        pass</a>
+
+    <div id='div_pt7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt7.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0209_LibraryPicture.LibraryPicture</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0209_01_add: 知识文库-图片浏览-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT02_Personal.FT0210_WorkTask.WorkTask</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c9',1)">Detail</a></td>
+</tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0210: 个人事务-任务管理-工作任务查看流程进度跟踪</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        pass</a>
+
+    <div id='div_pt9.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt9.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt9.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0301_Worktodo.Worktodo</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c10',1)">Detail</a></td>
+</tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0301: 流程处理-待办工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        pass</a>
+
+    <div id='div_pt10.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt10.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt10.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0302_Workdone.Workdone</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c11',1)">Detail</a></td>
+</tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0302: 流程处理-已办工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt11.1')" >
+        pass</a>
+
+    <div id='div_pt11.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt11.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt11.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0303_Workhande.Workhande</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c12',1)">Detail</a></td>
+</tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0303: 流程处理-办结工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt12.1')" >
+        pass</a>
+
+    <div id='div_pt12.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt12.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt12.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0304_Workentrusted.Workentrusted</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c13',1)">Detail</a></td>
+</tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0304: 流程处理-已委托工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt13.1')" >
+        pass</a>
+
+    <div id='div_pt13.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt13.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt13.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0305_Workentrusting.Workentrusting</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c14',1)">Detail</a></td>
+</tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0305: 流程处理-被委托工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt14.1')" >
+        pass</a>
+
+    <div id='div_pt14.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt14.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt14.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0306_Workoverdue.Workoverdue</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c15',1)">Detail</a></td>
+</tr>
+
+<tr id='pt15.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0306: 流程处理-超时工作-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt15.1')" >
+        pass</a>
+
+    <div id='div_pt15.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt15.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt15.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0307_Workcontact.Workcontact</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c16',1)">Detail</a></td>
+</tr>
+
+<tr id='pt16.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0307_01: 流程处理-流程进度跟踪-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt16.1')" >
+        pass</a>
+
+    <div id='div_pt16.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt16.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt16.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT03_Process.FT0309_Processmonitoring.Processmonitoring</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c17',2)">Detail</a></td>
+</tr>
+
+<tr id='pt17.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0309_01: 流程处理-流程监控-【查询】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt17.1')" >
+        pass</a>
+
+    <div id='div_pt17.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt17.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt17.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt17.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0309_02: 流程处理-流程监控-查看流程进度跟踪</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0401_CarsArchives.CarsArchives</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c18',1)">Detail</a></td>
+</tr>
+
+<tr id='pt18.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0401_01_add: 行政办公-车辆管理-车辆档案添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt18.1')" >
+        pass</a>
+
+    <div id='div_pt18.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt18.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt18.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0402_CarsApply.CarsApply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c19',1)">Detail</a></td>
+</tr>
+
+<tr id='pt19.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0402_02_add: 行政办公-车辆管理-车辆申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt19.1')" >
+        pass</a>
+
+    <div id='div_pt19.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt19.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt19.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0403_Bookes.Bookes</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c20',1)">Detail</a></td>
+</tr>
+
+<tr id='pt20.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0903_01_add: 行政办公-图书管理-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt20.1')" >
+        pass</a>
+
+    <div id='div_pt20.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt20.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt20.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0404_MeetArchives.MeetArchives</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c21',1)">Detail</a></td>
+</tr>
+
+<tr id='pt21.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0404_01_add: 行政办公-会议室管理-会议室档案添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt21.1')" >
+        pass</a>
+
+    <div id='div_pt21.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt21.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt21.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0405_MeetApply.MeetApply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c22',1)">Detail</a></td>
+</tr>
+
+<tr id='pt22.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0405_01_add: 行政办公-会议室管理-会议室申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt22.1')" >
+        pass</a>
+
+    <div id='div_pt22.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt22.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt22.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0406_VoteAdd.VoteAdd</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c23',1)">Detail</a></td>
+</tr>
+
+<tr id='pt23.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0406_01_add: 行政办公-创建投票-单选投票添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt23.1')" >
+        pass</a>
+
+    <div id='div_pt23.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt23.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt23.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>FT04_Oa.FT0407_NewsManage.NewsManage</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c24',2)">Detail</a></td>
+</tr>
+
+<tr id='ft24.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_0407_01_Add: 行政办公-通知公告-新闻公告管理-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft24.1')" >
+        error</a>
+
+    <div id='div_ft24.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft24.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft24.1: Traceback (most recent call last):
+  File "E:\ProjectTest\Autowebdriver\FunctionTest\FT04_Oa\FT0407_NewsManage.py", line 29, in test_0407_01_Add
+    driver.find_element_by_id("txt_Content").send_keys(fun_data_character(100, 1000))
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 347, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 494, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotVisibleException: Message: element not visible
+  (Session info: chrome=51.0.2704.103)
+  (Driver info: chromedriver=2.14.313457 (3d645c400edf2e2c500566c9aa096063e707c9cf),platform=Windows NT 10.0 x86_64)
+
+Traceback (most recent call last):
+  File "E:\ProjectTest\Autowebdriver\FunctionTest\FT04_Oa\FT0407_NewsManage.py", line 29, in test_0407_01_Add
+    driver.find_element_by_id("txt_Content").send_keys(fun_data_character(100, 1000))
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 347, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 494, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotVisibleException: Message: element not visible
+  (Session info: chrome=51.0.2704.103)
+  (Driver info: chromedriver=2.14.313457 (3d645c400edf2e2c500566c9aa096063e707c9cf),platform=Windows NT 10.0 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt24.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0407_02: 行政办公-通知公告-新闻公告添加界面必填项校验</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt24.2')" >
+        pass</a>
+
+    <div id='div_pt24.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt24.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt24.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT04_Oa.FT0409_OfficeSupplies.OfficeSupplies</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c25',1)">Detail</a></td>
+</tr>
+
+<tr id='pt25.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0409_01_add: 行政办公-办公用品管理-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt25.1')" >
+        pass</a>
+
+    <div id='div_pt25.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt25.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt25.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0501_MaterialMaster.MaterialMaster</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c26',2)">Detail</a></td>
+</tr>
+
+<tr id='pt26.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0501_01_add: 物料主数据管理-物料主数据管理-新增物料功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.1')" >
+        pass</a>
+
+    <div id='div_pt26.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt26.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt26.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt26.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0501_02_Update: 物料主数据管理-物料主数据管理-更新物料功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.2')" >
+        pass</a>
+
+    <div id='div_pt26.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt26.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt26.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0502_DumpApply.DumpApply</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c27',2)">Detail</a></td>
+</tr>
+
+<tr id='pt27.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0502_01: 库存管理-库存转储申请-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt27.1')" >
+        pass</a>
+
+    <div id='div_pt27.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt27.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt27.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt27.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0502_02_goto: 库存管理-库存转储申请-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt27.2')" >
+        pass</a>
+
+    <div id='div_pt27.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt27.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt27.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0503_Dump.Dump</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c28',1)">Detail</a></td>
+</tr>
+
+<tr id='pt28.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0503_01_Add: 库存管理-库存转储-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt28.1')" >
+        pass</a>
+
+    <div id='div_pt28.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt28.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt28.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>FT05_Stock.FT0504_CirculateApply.CirculateApply</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c29',2)">Detail</a></td>
+</tr>
+
+<tr id='ft29.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_0504_01_Add: 库存管理-借料申请单-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft29.1')" >
+        error</a>
+
+    <div id='div_ft29.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft29.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft29.1: Traceback (most recent call last):
+  File "E:\ProjectTest\Autowebdriver\FunctionTest\FT05_Stock\FT0504_CirculateApply.py", line 79, in test_0504_01_Add
+    driver.find_element_by_id("Remark").send_keys(fun_data_character(100, 1000))
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 347, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 494, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: timeout: Timed out receiving message from renderer: 600.000
+  (Session info: chrome=51.0.2704.103)
+  (Driver info: chromedriver=2.14.313457 (3d645c400edf2e2c500566c9aa096063e707c9cf),platform=Windows NT 10.0 x86_64)
+
+Traceback (most recent call last):
+  File "E:\ProjectTest\Autowebdriver\FunctionTest\FT05_Stock\FT0504_CirculateApply.py", line 79, in test_0504_01_Add
+    driver.find_element_by_id("Remark").send_keys(fun_data_character(100, 1000))
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 347, in send_keys
+    self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': keys_to_typing(value)})
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webelement.py", line 494, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 236, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files\Python35\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 192, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: timeout: Timed out receiving message from renderer: 600.000
+  (Session info: chrome=51.0.2704.103)
+  (Driver info: chromedriver=2.14.313457 (3d645c400edf2e2c500566c9aa096063e707c9cf),platform=Windows NT 10.0 x86_64)
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt29.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0504_02_goto: 库存管理-借料申请单-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt29.2')" >
+        pass</a>
+
+    <div id='div_pt29.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt29.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt29.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0505_Circulate.Circulate</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c30',1)">Detail</a></td>
+</tr>
+
+<tr id='pt30.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0505_01_Add: 库存管理-借料申请-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt30.1')" >
+        pass</a>
+
+    <div id='div_pt30.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt30.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt30.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0506_OtherOut.OtherOut</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c31',1)">Detail</a></td>
+</tr>
+
+<tr id='pt31.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0506_01_Add: 库存管理-其他出库-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt31.1')" >
+        pass</a>
+
+    <div id='div_pt31.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt31.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt31.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT05_Stock.FT0507_OtherEnter.OtherEnter</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c32',1)">Detail</a></td>
+</tr>
+
+<tr id='pt32.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0507_01_Add: 库存管理-其他入库-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt32.1')" >
+        pass</a>
+
+    <div id='div_pt32.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt32.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt32.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0602_SalesQuotation.SalesQuotation</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c33',6)">Detail</a></td>
+</tr>
+
+<tr id='pt33.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_01_Add: 销售管理-销售报价单-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.1')" >
+        pass</a>
+
+    <div id='div_pt33.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_02_Client: 销售管理-销售报价单-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.2')" >
+        pass</a>
+
+    <div id='div_pt33.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_03_btnFirst: 销售管理-销售报价单-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.3')" >
+        pass</a>
+
+    <div id='div_pt33.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_04_goto: 销售管理-销售报价单-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.4')" >
+        pass</a>
+
+    <div id='div_pt33.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_05_target: 销售管理-销售报价单-目标凭证查看功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.5')" >
+        pass</a>
+
+    <div id='div_pt33.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt33.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0602_06_copy: 销售管理-销售报价单-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt33.6')" >
+        pass</a>
+
+    <div id='div_pt33.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt33.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt33.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0603_SalesOrder.SalesOrder</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c34',5)">Detail</a></td>
+</tr>
+
+<tr id='pt34.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0603_01_Add: 销售管理-销售订单-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt34.1')" >
+        pass</a>
+
+    <div id='div_pt34.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt34.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt34.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt34.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0603_02_Client: 销售管理-销售订单-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt34.2')" >
+        pass</a>
+
+    <div id='div_pt34.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt34.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt34.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt34.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0603_03_First: 销售管理-销售订单-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt34.3')" >
+        pass</a>
+
+    <div id='div_pt34.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt34.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt34.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt34.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0603_04_goto: 销售管理-销售订单-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt34.4')" >
+        pass</a>
+
+    <div id='div_pt34.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt34.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt34.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt34.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0603_05_target: 销售管理-销售订单-目标凭证查看</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0604_SalesReceive.SalesReceive</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c35',3)">Detail</a></td>
+</tr>
+
+<tr id='pt35.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0604_01_Add: 销售管理-预收款申请-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt35.1')" >
+        pass</a>
+
+    <div id='div_pt35.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt35.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt35.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt35.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0604_02_Client: 销售管理-预收款申请-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt35.2')" >
+        pass</a>
+
+    <div id='div_pt35.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt35.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt35.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt35.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0604_03_last: 销售管理-预收款申请-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt35.3')" >
+        pass</a>
+
+    <div id='div_pt35.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt35.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt35.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0605_SalesARI_Pay.SalesARI_Pay</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c36',2)">Detail</a></td>
+</tr>
+
+<tr id='pt36.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0605_01_Add: 销售管理-应收发票+付款-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt36.1')" >
+        pass</a>
+
+    <div id='div_pt36.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt36.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt36.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt36.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0605_03_last: 销售管理-应收发票+付款-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt36.2')" >
+        pass</a>
+
+    <div id='div_pt36.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt36.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt36.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0606_SalesCredit.SalesCredit</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c37',5)">Detail</a></td>
+</tr>
+
+<tr id='pt37.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0606_01_Add: 销售管理-应收贷项凭证-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.1')" >
+        pass</a>
+
+    <div id='div_pt37.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt37.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0606_02_Client: 销售管理-应收贷项凭证-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.2')" >
+        pass</a>
+
+    <div id='div_pt37.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt37.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0606_03_First: 销售管理-应收贷项凭证-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.3')" >
+        pass</a>
+
+    <div id='div_pt37.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt37.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0606_05_target: 销售管理-应收发票-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.4')" >
+        pass</a>
+
+    <div id='div_pt37.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt37.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0606_06_copy: 销售管理-应收贷项凭证-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt37.5')" >
+        pass</a>
+
+    <div id='div_pt37.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt37.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt37.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0607_SalesReserved.SalesReserved</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c38',5)">Detail</a></td>
+</tr>
+
+<tr id='pt38.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0607_01_Add: 销售管理-应收预留发票-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.1')" >
+        pass</a>
+
+    <div id='div_pt38.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0607_02_Client: 销售管理-应收预留发票-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.2')" >
+        pass</a>
+
+    <div id='div_pt38.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0607_03_First: 销售管理-应收预留发票-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.3')" >
+        pass</a>
+
+    <div id='div_pt38.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0607_04_goto: 销售管理-应收预留发票-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.4')" >
+        pass</a>
+
+    <div id='div_pt38.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt38.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0607_05_target: 销售管理-应收预留发票-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt38.5')" >
+        pass</a>
+
+    <div id='div_pt38.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt38.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt38.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0608_SalesARI.SalesARI</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c39',6)">Detail</a></td>
+</tr>
+
+<tr id='pt39.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_01_Add: 销售管理-应收发票-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.1')" >
+        pass</a>
+
+    <div id='div_pt39.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_02_Client: 销售管理-应收发票-客户编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.2')" >
+        pass</a>
+
+    <div id='div_pt39.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_03_First: 销售管理-应收发票-客户主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.3')" >
+        pass</a>
+
+    <div id='div_pt39.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_04_goto: 销售管理-应收发票-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.4')" >
+        pass</a>
+
+    <div id='div_pt39.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_05_target: 销售管理-应收发票-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.5')" >
+        pass</a>
+
+    <div id='div_pt39.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt39.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0608_06_copy: 销售管理-应收发票-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt39.6')" >
+        pass</a>
+
+    <div id='div_pt39.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt39.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt39.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0609_SaleDelivery.SaleDelivery</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c40',6)">Detail</a></td>
+</tr>
+
+<tr id='pt40.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_01_Add: 销售管理-销售交货-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.1')" >
+        pass</a>
+
+    <div id='div_pt40.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_02_Client: 销售管理-销售交货-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.2')" >
+        pass</a>
+
+    <div id='div_pt40.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_03_First: 销售管理-销售交货-业务伙伴主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.3')" >
+        pass</a>
+
+    <div id='div_pt40.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_04_goto: 销售管理-销售交货-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.4')" >
+        pass</a>
+
+    <div id='div_pt40.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_05_target: 销售管理-销售交货-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.5')" >
+        pass</a>
+
+    <div id='div_pt40.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt40.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0609_06_copy: 销售管理-销售交货-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt40.6')" >
+        pass</a>
+
+    <div id='div_pt40.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt40.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt40.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT06_Sales.FT0610_SaleReturn.SaleReturn</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c41',6)">Detail</a></td>
+</tr>
+
+<tr id='pt41.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_01_add: 销售退货-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.1')" >
+        pass</a>
+
+    <div id='div_pt41.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_02_client: 销售退货-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.2')" >
+        pass</a>
+
+    <div id='div_pt41.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_03_First: 销售退货-业务伙伴主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.3')" >
+        pass</a>
+
+    <div id='div_pt41.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_04_goto: 销售退货-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.4')" >
+        pass</a>
+
+    <div id='div_pt41.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_05_target: 销售管理-销售退货-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.5')" >
+        pass</a>
+
+    <div id='div_pt41.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt41.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0610_06_copy: 销售管理-销售退货-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt41.6')" >
+        pass</a>
+
+    <div id='div_pt41.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt41.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt41.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0701_PurchApplication.PurchApplication</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c42',4)">Detail</a></td>
+</tr>
+
+<tr id='pt42.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0701_01_Add: 采购管理-采购申请-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.1')" >
+        pass</a>
+
+    <div id='div_pt42.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt42.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0701_02_last: 采购管理-采购申请-单据最后一条</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.2')" >
+        pass</a>
+
+    <div id='div_pt42.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt42.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0701_03_goto: 采购管理-采购申请-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.3')" >
+        pass</a>
+
+    <div id='div_pt42.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt42.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0701_04_copy: 采购管理-采购申请-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt42.4')" >
+        pass</a>
+
+    <div id='div_pt42.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt42.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt42.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0702_PurchQuotation.PurchQuotation</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c43',6)">Detail</a></td>
+</tr>
+
+<tr id='pt43.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_01_Add: 采购管理-采购报价单-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.1')" >
+        pass</a>
+
+    <div id='div_pt43.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_02_Client: 采购管理-采购报价单-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.2')" >
+        pass</a>
+
+    <div id='div_pt43.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_03_last: 采购管理-采购报价单-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.3')" >
+        pass</a>
+
+    <div id='div_pt43.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_04_goto: 采购管理-采购报价单-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.4')" >
+        pass</a>
+
+    <div id='div_pt43.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_05_target: 采购管理-采购报价单-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.5')" >
+        pass</a>
+
+    <div id='div_pt43.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt43.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0702_06_copy: 采购管理-采购报价单-复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt43.6')" >
+        pass</a>
+
+    <div id='div_pt43.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt43.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt43.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0703_PurchOrder.PurchQuotation</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c44',5)">Detail</a></td>
+</tr>
+
+<tr id='pt44.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0703_01_Add: 采购管理-采购订单-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.1')" >
+        pass</a>
+
+    <div id='div_pt44.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt44.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0703_02_Client: 采购管理-采购订单-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.2')" >
+        pass</a>
+
+    <div id='div_pt44.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt44.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0703_03_First: 采购管理-采购订单-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.3')" >
+        pass</a>
+
+    <div id='div_pt44.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt44.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0703_04_goto: 采购管理-采购订单-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.4')" >
+        pass</a>
+
+    <div id='div_pt44.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt44.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0703_05_target: 采购管理-采购订单-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt44.5')" >
+        pass</a>
+
+    <div id='div_pt44.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt44.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt44.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0704_PurchReturn.PurchReturn</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c45',5)">Detail</a></td>
+</tr>
+
+<tr id='pt45.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0704_01_add: 库存管理-采购退货-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.1')" >
+        pass</a>
+
+    <div id='div_pt45.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0704_02_Client: 库存管理-采购退货-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.2')" >
+        pass</a>
+
+    <div id='div_pt45.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0704_03_last: 库存管理-采购退货-业务伙伴主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.3')" >
+        pass</a>
+
+    <div id='div_pt45.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0704_04_goto: 库存管理-采购退货-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.4')" >
+        pass</a>
+
+    <div id='div_pt45.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt45.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0704_06_copy: 销售管理-采购退货-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt45.5')" >
+        pass</a>
+
+    <div id='div_pt45.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt45.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt45.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0705_PurchAdvance.PurchAdvance</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c46',3)">Detail</a></td>
+</tr>
+
+<tr id='pt46.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0705_01_Add: 采购管理-采购预付款申请-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt46.1')" >
+        pass</a>
+
+    <div id='div_pt46.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt46.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt46.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt46.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0705_02_Client: 采购管理-采购预付款申请-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt46.2')" >
+        pass</a>
+
+    <div id='div_pt46.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt46.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt46.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt46.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0705_03_First: 采购管理-采购预付款申请-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt46.3')" >
+        pass</a>
+
+    <div id='div_pt46.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt46.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt46.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0706_PurchReceive.PurchReceive</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c47',6)">Detail</a></td>
+</tr>
+
+<tr id='pt47.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_01_add: 库存管理-采购收货-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.1')" >
+        pass</a>
+
+    <div id='div_pt47.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_02_client: 库存管理-采购收货-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.2')" >
+        pass</a>
+
+    <div id='div_pt47.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_03_First: 库存管理-采购收货-业务伙伴主数据穿透功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.3')" >
+        pass</a>
+
+    <div id='div_pt47.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_04_goto: 库存管理-采购收货-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.4')" >
+        pass</a>
+
+    <div id='div_pt47.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_05_target: 采购管理-采购收货-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.5')" >
+        pass</a>
+
+    <div id='div_pt47.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt47.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0706_06_copy: 销售管理-采购收货-单据复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt47.6')" >
+        pass</a>
+
+    <div id='div_pt47.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt47.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt47.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0707_PurchAPI.PurchAPI</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c48',6)">Detail</a></td>
+</tr>
+
+<tr id='pt48.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_01: 采购管理-应付发票-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.1')" >
+        pass</a>
+
+    <div id='div_pt48.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_02: 采购管理-应付发票-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.2')" >
+        pass</a>
+
+    <div id='div_pt48.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_03_First: 采购管理-应付发票-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.3')" >
+        pass</a>
+
+    <div id='div_pt48.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_04_goto: 采购管理-应付发票-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.4')" >
+        pass</a>
+
+    <div id='div_pt48.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_05_target: 采购管理-应付发票-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.5')" >
+        pass</a>
+
+    <div id='div_pt48.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt48.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_06_copy: 采购管理-应付发票-复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt48.6')" >
+        pass</a>
+
+    <div id='div_pt48.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt48.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt48.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0708_PurchCredit.PurchCredit</td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c49',5)">Detail</a></td>
+</tr>
+
+<tr id='pt49.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0707_05_target: 采购管理-应付贷项凭证-目标凭证查看</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt49.1')" >
+        pass</a>
+
+    <div id='div_pt49.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt49.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt49.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt49.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0708_01: 采购管理-应付贷项凭证-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt49.2')" >
+        pass</a>
+
+    <div id='div_pt49.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt49.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt49.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt49.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0708_02_Client: 采购管理-应付贷项凭证-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt49.3')" >
+        pass</a>
+
+    <div id='div_pt49.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt49.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt49.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt49.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0708_03_First: 采购管理-应付贷项凭证-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt49.4')" >
+        pass</a>
+
+    <div id='div_pt49.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt49.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt49.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt49.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0708_04_copy: 采购管理-应付贷项凭证-复制功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt49.5')" >
+        pass</a>
+
+    <div id='div_pt49.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt49.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt49.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0709_PurchReserved.PurchReserved</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c50',4)">Detail</a></td>
+</tr>
+
+<tr id='pt50.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0709_01_Add: 采购管理-应付预留发票-新增单据功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.1')" >
+        pass</a>
+
+    <div id='div_pt50.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt50.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0709_02_Client: 采购管理-应付预留发票-业务伙伴编号为空穿透提示检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.2')" >
+        pass</a>
+
+    <div id='div_pt50.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt50.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0709_03_last: 采购管理-应付预留发票-业务伙伴主数据穿透功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.3')" >
+        pass</a>
+
+    <div id='div_pt50.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt50.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0709_04_goto: 采购管理-应付预留发票-单据复制到功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt50.4')" >
+        pass</a>
+
+    <div id='div_pt50.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt50.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt50.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT07_Purchasing.FT0710_SuppliersMaster.SuppliersMaster</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c51',2)">Detail</a></td>
+</tr>
+
+<tr id='pt51.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0710_01_Add: 客商管理-供应商主数据-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.1')" >
+        pass</a>
+
+    <div id='div_pt51.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt51.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0710_02: 客商管理-供应商主数据-更新功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt51.2')" >
+        pass</a>
+
+    <div id='div_pt51.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt51.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt51.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT08_Hr.0806_Documents.FT080601_LeaveApply.LeaveApply</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c52',2)">Detail</a></td>
+</tr>
+
+<tr id='pt52.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_080601_01: 人事管理-考勤管理-请假申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt52.1')" >
+        pass</a>
+
+    <div id='div_pt52.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt52.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt52.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt52.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_080601_02: 人事管理-考勤管理-请假申请草稿功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt52.2')" >
+        pass</a>
+
+    <div id='div_pt52.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt52.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt52.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT08_Hr.0806_Documents.FT080602_TripApply.TripApply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c53',1)">Detail</a></td>
+</tr>
+
+<tr id='pt53.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_080602_01: 人事管理-考勤管理-出差申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt53.1')" >
+        pass</a>
+
+    <div id='div_pt53.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt53.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt53.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT08_Hr.0806_Documents.FT080603_OutApply.OutApply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c54',1)">Detail</a></td>
+</tr>
+
+<tr id='pt54.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_080603_01: 人事管理-考勤管理-外出申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt54.1')" >
+        pass</a>
+
+    <div id='div_pt54.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt54.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt54.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT08_Hr.0806_Documents.FT080604_OvertimeApply.OvertimeApply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c55',1)">Detail</a></td>
+</tr>
+
+<tr id='pt55.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_080604_01: 人事管理-考勤管理-加班申请添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt55.1')" >
+        pass</a>
+
+    <div id='div_pt55.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt55.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt55.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT08_Hr.FT0801_Recruitment.Recruitment</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c56',1)">Detail</a></td>
+</tr>
+
+<tr id='pt56.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0801_01: 人事管理-招聘管理-招聘需求申请数据添加</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt56.1')" >
+        pass</a>
+
+    <div id='div_pt56.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt56.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt56.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT10_Financial.FT1001_PurchReserved.PurchReserved</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c57',1)">Detail</a></td>
+</tr>
+
+<tr id='pt57.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1001_01_way: 财务管理-付款-金额为空校验付款方式</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt57.1')" >
+        pass</a>
+
+    <div id='div_pt57.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt57.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt57.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT11_Project.FT050301_ProjectDate.ProjectDate</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c58',1)">Detail</a></td>
+</tr>
+
+<tr id='pt58.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_050301_ProjectDate: 项目管理-项目主数据-同步项目主数据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt58.1')" >
+        pass</a>
+
+    <div id='div_pt58.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt58.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt58.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT11_Project.FT050302_ProjectApproval.ProjectApproval</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c59',1)">Detail</a></td>
+</tr>
+
+<tr id='pt59.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_050302_01_add: 项目管理-项目立项-添加单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt59.1')" >
+        pass</a>
+
+    <div id='div_pt59.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt59.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt59.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT11_Project.FT050303_ProjectChange.ProjectChange</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c60',1)">Detail</a></td>
+</tr>
+
+<tr id='pt60.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_050303_01_Add: 项目管理-项目信息变更-新增变更功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt60.1')" >
+        pass</a>
+
+    <div id='div_pt60.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt60.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt60.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT12_Crm.FT1201_Competitor.Competitor</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c61',2)">Detail</a></td>
+</tr>
+
+<tr id='pt61.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1201_01_Add: 客户关系-竞争对手维护--新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt61.1')" >
+        pass</a>
+
+    <div id='div_pt61.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt61.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt61.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt61.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1201_02_Batchdelete: 客户关系---销售管理---批量删除按钮校验</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt61.2')" >
+        pass</a>
+
+    <div id='div_pt61.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt61.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt61.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT12_Crm.FT1202_SalesLeads.SalesLeads</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c62',1)">Detail</a></td>
+</tr>
+
+<tr id='pt62.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1202_01_Add: 客户关系-售后管理-服务呼叫-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt62.1')" >
+        pass</a>
+
+    <div id='div_pt62.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt62.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt62.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT12_Crm.FT1203_Solution.Solution</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c63',1)">Detail</a></td>
+</tr>
+
+<tr id='pt63.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1203_01_Add: 客户关系-售后管理-解决方案-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt63.1')" >
+        pass</a>
+
+    <div id='div_pt63.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt63.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt63.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT12_Crm.FT1204_SalesAnalysis.SalesAnalysis</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c64',1)">Detail</a></td>
+</tr>
+
+<tr id='pt64.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1204_01_query: 客户关系-竞争对手维护--销售机会分析查询所有</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt64.1')" >
+        pass</a>
+
+    <div id='div_pt64.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt64.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt64.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT13_Orders.FT1301_Order.Order</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c65',1)">Detail</a></td>
+</tr>
+
+<tr id='pt65.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1301_01_Add: 订货管理-订货-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt65.1')" >
+        pass</a>
+
+    <div id='div_pt65.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt65.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt65.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT14_Quality.FT1401_QASubmission.QASubmission</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c66',1)">Detail</a></td>
+</tr>
+
+<tr id='pt66.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1401_01: 质检管理-送检单-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt66.1')" >
+        pass</a>
+
+    <div id='div_pt66.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt66.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt66.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT14_Quality.FT1402_QAWait.QAWait</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c67',1)">Detail</a></td>
+</tr>
+
+<tr id='pt67.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1402_01: 质检管理-待检管理-分配质检员功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt67.1')" >
+        pass</a>
+
+    <div id='div_pt67.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt67.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt67.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT15_Report.FT1202_Html5Design.Html5Design</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c68',3)">Detail</a></td>
+</tr>
+
+<tr id='pt68.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1202_01_sqlNull: 系统管理-报表设置-SQL为空检验</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt68.1')" >
+        pass</a>
+
+    <div id='div_pt68.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt68.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt68.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt68.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1202_02_exportNull: 系统管理-报表设置-数据为空导出</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt68.2')" >
+        pass</a>
+
+    <div id='div_pt68.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt68.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt68.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt68.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1202_03_add</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt68.3')" >
+        pass</a>
+
+    <div id='div_pt68.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt68.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt68.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1601_Menu.Menu</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c69',1)">Detail</a></td>
+</tr>
+
+<tr id='pt69.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1601_Config: 系统初始化-菜单配置</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt69.1')" >
+        pass</a>
+
+    <div id='div_pt69.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt69.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt69.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1602_Conventional.Conventional</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c70',4)">Detail</a></td>
+</tr>
+
+<tr id='pt70.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1602_Conventional: 系统初始化-读取B1小数位数</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt70.1')" >
+        pass</a>
+
+    <div id='div_pt70.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt70.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt70.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt70.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1602_Custom: 系统初始化-常规设置-自定义字段权限</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt70.2')" >
+        pass</a>
+
+    <div id='div_pt70.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt70.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt70.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt70.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1602_Header: 系统初始化-常规设置-表头格式自定义</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt70.3')" >
+        pass</a>
+
+    <div id='div_pt70.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt70.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt70.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt70.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1602_Row: 系统初始化-常规设置-行格式自定义</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt70.4')" >
+        pass</a>
+
+    <div id='div_pt70.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt70.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt70.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1603_Business.Business</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c71',2)">Detail</a></td>
+</tr>
+
+<tr id='pt71.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1603_Billboard: 系统管理-审批流程-流程看板</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt71.1')" >
+        pass</a>
+
+    <div id='div_pt71.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt71.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt71.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt71.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1603_FreeStream: 审批流程-警报设置-自由流设计单据UI检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt71.2')" >
+        pass</a>
+
+    <div id='div_pt71.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt71.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt71.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1604_Stting.Stting</td>
+    <td>11</td>
+    <td>11</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c72',11)">Detail</a></td>
+</tr>
+
+<tr id='pt72.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_01_ApplyAdd: 业务设置-费用设置-类型添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.1')" >
+        pass</a>
+
+    <div id='div_pt72.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_02_FinanceAdd: 费用设置-财务设置-报销金额添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.2')" >
+        pass</a>
+
+    <div id='div_pt72.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_03_SalesContract: 业务设置-销售合同条款-合同条款添加添加检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.3')" >
+        pass</a>
+
+    <div id='div_pt72.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_04_SalesPhase: 业务设置-销售设置-收款阶段设置报警天数添加检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.4')" >
+        pass</a>
+
+    <div id='div_pt72.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_05_Contract: 采购设置-采购合同条款-数据添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.5')" >
+        pass</a>
+
+    <div id='div_pt72.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_06_Phase: 采购设置-付款阶段设置-付款阶段设置添加报警天数功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.6')" >
+        pass</a>
+
+    <div id='div_pt72.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_07_TransceiverStart: 业务设置-库存设置-库存收货添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.7')" >
+        pass</a>
+
+    <div id='div_pt72.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_08_delivery: 业务设置-库存设置-库存发货添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.8')" >
+        pass</a>
+
+    <div id='div_pt72.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_10_TypeAdd: 业务设置-项目设置-项目类型添加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.9')" >
+        pass</a>
+
+    <div id='div_pt72.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_11_PrjGroup: 业务设置-项目设置-项目组加功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.10')" >
+        pass</a>
+
+    <div id='div_pt72.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.10: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt72.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1604_12_WeixinEdd: 移动端配置-微信企业号-自定义事件发布功能检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt72.11')" >
+        pass</a>
+
+    <div id='div_pt72.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt72.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt72.11: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1605_Alarm.Alarm</td>
+    <td>10</td>
+    <td>10</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c73',10)">Detail</a></td>
+</tr>
+
+<tr id='pt73.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Alarm: 系统管理---审批流程---预警报警</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.1')" >
+        pass</a>
+
+    <div id='div_pt73.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Billboard: 系统管理-审批流程-流程看板</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.2')" >
+        pass</a>
+
+    <div id='div_pt73.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Designer: 系统管理---审批流程---流程设计器</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.3')" >
+        pass</a>
+
+    <div id='div_pt73.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Field: 系统管理---审批流程---工作流字段</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.4')" >
+        pass</a>
+
+    <div id='div_pt73.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_FreeStream: 审批流程-警报设置-自由流设计单据UI检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.5')" >
+        pass</a>
+
+    <div id='div_pt73.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_MSet: 系统管理---审批流程---消息配置</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.6')" >
+        pass</a>
+
+    <div id='div_pt73.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Message: 系统管理---审批流程---消息模板</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.7')" >
+        pass</a>
+
+    <div id='div_pt73.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Permission: 系统管理---审批流程---字段权限配置</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.8')" >
+        pass</a>
+
+    <div id='div_pt73.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Post: 系统管理---审批流程---相对岗管理</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.9')" >
+        pass</a>
+
+    <div id='div_pt73.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt73.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1605_Version: 系统管理---审批流程---流程版本管理</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt73.10')" >
+        pass</a>
+
+    <div id='div_pt73.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt73.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt73.10: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1606_Report.Report</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c74',3)">Detail</a></td>
+</tr>
+
+<tr id='pt74.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1606_help: 系统管理-支持中心-帮助中心</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt74.1')" >
+        pass</a>
+
+    <div id='div_pt74.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt74.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt74.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt74.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1606_log: 系统管理-支持中心-系统日志</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt74.2')" >
+        pass</a>
+
+    <div id='div_pt74.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt74.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt74.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt74.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1606_view: 系统管理-支持中心-系统视图</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt74.3')" >
+        pass</a>
+
+    <div id='div_pt74.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt74.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt74.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT16_System.FT1607_Support.Support</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c75',3)">Detail</a></td>
+</tr>
+
+<tr id='pt75.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1607_help: 系统管理-支持中心-帮助中心</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt75.1')" >
+        pass</a>
+
+    <div id='div_pt75.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt75.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt75.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt75.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1607_log: 系统管理-支持中心-系统日志</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt75.2')" >
+        pass</a>
+
+    <div id='div_pt75.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt75.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt75.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt75.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1607_view: 系统管理-支持中心-系统视图</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt75.3')" >
+        pass</a>
+
+    <div id='div_pt75.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt75.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt75.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1701_Enterprise.Enterprise</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c76',1)">Detail</a></td>
+</tr>
+
+<tr id='pt76.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1701_add: 系统管理-微信企业号-企业号设置-【添加】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt76.1')" >
+        pass</a>
+
+    <div id='div_pt76.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt76.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt76.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1702_Resource.Resource</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c77',1)">Detail</a></td>
+</tr>
+
+<tr id='pt77.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1702_01_add: 微信营销-资源管理-文本素材添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt77.1')" >
+        pass</a>
+
+    <div id='div_pt77.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt77.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt77.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1703_Application.Application</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c78',1)">Detail</a></td>
+</tr>
+
+<tr id='pt78.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1703_add: 系统管理-微信企业号-应用中心-【添加】检查</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt78.1')" >
+        pass</a>
+
+    <div id='div_pt78.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt78.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt78.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1704_CustomEvent.CustomEvent</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c79',1)">Detail</a></td>
+</tr>
+
+<tr id='pt79.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1704_add: 移动端配置-微信企业号-自定义事件添加</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt79.1')" >
+        pass</a>
+
+    <div id='div_pt79.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt79.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt79.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1705_WeixinUser.WeixinUser</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c80',2)">Detail</a></td>
+</tr>
+
+<tr id='pt80.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1705_01_edit: 移动端配置-微信企业号-微信用户管理【编辑】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt80.1')" >
+        pass</a>
+
+    <div id='div_pt80.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt80.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt80.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt80.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1705_02_delete: 移动端配置-微信企业号-微信用户管理【删除】</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt80.2')" >
+        pass</a>
+
+    <div id='div_pt80.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt80.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt80.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT17_Weixin.FT1706_EnterpriseReply.EnterpriseReply</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c81',1)">Detail</a></td>
+</tr>
+
+<tr id='pt81.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1704_add: 移动端配置-微信企业号-自定义事件添加</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt81.1')" >
+        pass</a>
+
+    <div id='div_pt81.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt81.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt81.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT18_Merchants.FT1801_CustomerMaster.CustomerMaster</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c82',3)">Detail</a></td>
+</tr>
+
+<tr id='pt82.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1801_01_Add: 客商管理-客户主数据-新增单据功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt82.1')" >
+        pass</a>
+
+    <div id='div_pt82.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt82.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt82.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt82.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1801_02: 客商管理-客户主数据-更新添加联系人</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt82.2')" >
+        pass</a>
+
+    <div id='div_pt82.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt82.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt82.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt82.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1801_03_search: 客商管理-客户主数据-查询功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt82.3')" >
+        pass</a>
+
+    <div id='div_pt82.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt82.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt82.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT18_Merchants.FT1803_HideCustomer.HideCustomer</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c83',2)">Detail</a></td>
+</tr>
+
+<tr id='pt83.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1803_01_Add: 客商管理-潜在客户主数据-单据取消功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt83.1')" >
+        pass</a>
+
+    <div id='div_pt83.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt83.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt83.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt83.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1803_02: 客商管理-潜在客户主数据-单据取消功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt83.2')" >
+        pass</a>
+
+    <div id='div_pt83.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt83.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt83.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT18_Merchants.FT1804_BusinessActivity.BusinessActivity</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c84',1)">Detail</a></td>
+</tr>
+
+<tr id='pt84.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_1804_01_call: 业务活动-业务活动-业务活动功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt84.1')" >
+        pass</a>
+
+    <div id='div_pt84.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt84.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt84.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT19_Expenses.FT0901_ExpensesApply.ExpensesApply</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c85',2)">Detail</a></td>
+</tr>
+
+<tr id='pt85.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0901_01_add: 费用管理-费用申请-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt85.1')" >
+        pass</a>
+
+    <div id='div_pt85.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt85.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt85.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt85.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0901_02: 费用管理-费用申请-添加界面关闭功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt85.2')" >
+        pass</a>
+
+    <div id='div_pt85.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt85.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt85.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT19_Expenses.FT0902_TripBorrowingApply.TripBorrowingApply</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c86',2)">Detail</a></td>
+</tr>
+
+<tr id='pt86.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0902_01_add: 费用管理-出差借支申请-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt86.1')" >
+        pass</a>
+
+    <div id='div_pt86.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt86.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt86.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt86.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0902_02: 费用管理-出差借支申请-添加界面关闭功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt86.2')" >
+        pass</a>
+
+    <div id='div_pt86.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt86.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt86.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT19_Expenses.FT0903_Borrowing.Borrowing</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c87',2)">Detail</a></td>
+</tr>
+
+<tr id='pt87.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0903_01_add: 费用管理-借款-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt87.1')" >
+        pass</a>
+
+    <div id='div_pt87.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt87.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt87.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt87.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0903_02: 费用管理-借还款-借款界面关闭功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt87.2')" >
+        pass</a>
+
+    <div id='div_pt87.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt87.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt87.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT19_Expenses.FT0904_Reimbursement.Reimbursement</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c88',2)">Detail</a></td>
+</tr>
+
+<tr id='pt88.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0904_01_add: 费用管理-费用报销-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt88.1')" >
+        pass</a>
+
+    <div id='div_pt88.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt88.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt88.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt88.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0904_02: 费用管理-报销管理-费用报销界面关闭功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt88.2')" >
+        pass</a>
+
+    <div id='div_pt88.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt88.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt88.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>FT19_Expenses.FT0905_PaymentApply.PaymentApply</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c89',3)">Detail</a></td>
+</tr>
+
+<tr id='pt89.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0905_01_add: 费用管理-付款申请-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt89.1')" >
+        pass</a>
+
+    <div id='div_pt89.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt89.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt89.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt89.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0905_02: 费用管理-付款申请-添加界面关闭功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt89.2')" >
+        pass</a>
+
+    <div id='div_pt89.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt89.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt89.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt89.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_0905_03_draft: 费用管理-付款申请-单据添加功能</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt89.3')" >
+        pass</a>
+
+    <div id='div_pt89.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt89.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt89.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>212</td>
+    <td>210</td>
+    <td>0</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
