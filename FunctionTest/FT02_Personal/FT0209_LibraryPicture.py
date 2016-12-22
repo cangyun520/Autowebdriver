@@ -12,7 +12,7 @@ class LibraryPicture(unittest.TestCase):
         ClasMenu.menu_full_text(self, "个人事务", "知识文库", "图片浏览")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000811")
+        driver.switch_to.frame("frame_tab_PM000811")
 
     # 知识文库-图片浏览-单据添加功能
     def test_0209_01_add(self):

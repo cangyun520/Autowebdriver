@@ -13,7 +13,7 @@ class PurchApplication(unittest.TestCase):
         ClasMenu.menu_full_text(self, "采购管理", "采购申请单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000294")
+        driver.switch_to.frame("frame_tab_PM000294")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -36,7 +36,7 @@ class PurchApplication(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -96,13 +96,13 @@ class PurchApplication(unittest.TestCase):
             driver.switch_to.parent_frame()
             if v_checked == "采购报价单":
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000193")
+                driver.switch_to.frame("frame_tab_PM000193")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 选择供应商
                 driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
                 time.sleep(3)
-                driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+                driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
                 driver.find_element_by_id("gpSelect").click()
                 driver.find_element_by_id("btnSelect").click()
                 time.sleep(3)
@@ -112,13 +112,13 @@ class PurchApplication(unittest.TestCase):
                 ClasForm.form_today(self, "dfReqDate")
             else:
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000191")
+                driver.switch_to.frame("frame_tab_PM000191")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 选择供应商
                 driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
                 time.sleep(3)
-                driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+                driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
                 driver.find_element_by_id("gpSelect").click()
                 driver.find_element_by_id("btnSelect").click()
                 time.sleep(3)

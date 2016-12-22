@@ -12,7 +12,7 @@ class OvertimeApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "人事管理", "考勤管理", "单据管理", "加班申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000949")
+        driver.switch_to.frame("frame_tab_PM000949")
 
     """人事管理-考勤管理-加班申请添加"""
     def test_0811_01(self):
@@ -20,12 +20,12 @@ class OvertimeApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%Y%m%d %H:%M")
         # 申请人员
         driver.find_element_by_xpath("//*[@id='trigfiApplyPerson_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winEmployee_IFrame")
+        driver.switch_to.frame("winEmployee_IFrame")
         v_yhlist = driver.find_elements_by_class_name("x-grid3-row")
         v_yhlist[random.randint(0, len(v_yhlist)-1)].click()
         driver.find_element_by_id("btnSelect").click()

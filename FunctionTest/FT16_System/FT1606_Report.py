@@ -16,7 +16,7 @@ class Report(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000385")
+        driver.switch_to.frame("frame_tab_PM000385")
         v_add = driver.find_element_by_id("btnAdd")
         try:
             v_add.is_displayed()
@@ -31,7 +31,7 @@ class Report(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000008")
+        driver.switch_to.frame("frame_tab_PM000008")
         v_search = driver.find_element_by_id("btnOpSearch")
         try:
             v_search.is_displayed()
@@ -46,7 +46,7 @@ class Report(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000599")
+        driver.switch_to.frame("frame_tab_PM000599")
         v_help = driver.find_element_by_id("Button2")
         try:
             v_help.is_displayed()

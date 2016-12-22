@@ -13,7 +13,7 @@ class Circulate(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "借料还料", "借料")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000883")
+        driver.switch_to.frame("frame_tab_PM000883")
 
     # 库存管理---借料单
     def test_0505_01_Add(self):
@@ -21,7 +21,7 @@ class Circulate(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         v_list_wl = driver.find_element_by_xpath(
             "//*[@id='gpBorrow']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]"
         )
@@ -30,7 +30,7 @@ class Circulate(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -45,7 +45,7 @@ class Circulate(unittest.TestCase):
         # 借出仓库
         driver.find_element_by_xpath("//*[@id='OutWarehouse_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(2)

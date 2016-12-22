@@ -10,7 +10,7 @@ class BusinessActivity(unittest.TestCase):
         ClasMenu.menu_full_text(self, "销售管理", "客商管理", "业务活动")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000740")
+        driver.switch_to.frame("frame_tab_PM000740")
 
     # 业务活动---业务活动
     def test_1804_01_call(self):
@@ -20,7 +20,7 @@ class BusinessActivity(unittest.TestCase):
         # 业务伙伴代码
         driver.find_element_by_xpath("//*[@id='bodyContent_ctl37_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtCodeWhere").send_keys("C")
         driver.find_element_by_id("Button2").click()
         time.sleep(2)
@@ -50,7 +50,7 @@ class BusinessActivity(unittest.TestCase):
         # 链接凭证页签-单据编号
         driver.find_element_by_xpath("//*[@id='txtDocNum_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到单据选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到单据选择窗体
         v_djlist = driver.find_elements_by_class_name("x-grid3-row")
         v_djlist[random.randint(1, len(v_djlist) -1)].click()
         driver.find_element_by_id("btnSelect").click()

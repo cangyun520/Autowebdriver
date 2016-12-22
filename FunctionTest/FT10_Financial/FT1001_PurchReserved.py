@@ -14,7 +14,7 @@ class PurchReserved(unittest.TestCase):
         ClasMenu.menu_full_text(self, "财务管理", "财务付款")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001079")
+        driver.switch_to.frame("frame_tab_PM001079")
 
     # 财务管理---财务付款
     def test_1001_01_way(self):

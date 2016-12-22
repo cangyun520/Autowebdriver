@@ -18,10 +18,10 @@ class HomePage(unittest.TestCase):
         v_time = time.strftime("%Y%m%d")
         driver.find_element_by_link_text(u"查看我的任务").click()
         time.sleep(3)
-        driver.switch_to_frame("frame_tab_PM000789")
+        driver.switch_to.frame("frame_tab_PM000789")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
-        driver.switch_to_frame("winEdit_IFrame")     # 切换到新建页面
+        driver.switch_to.frame("winEdit_IFrame")     # 切换到新建页面
         # 任务内容
         driver.find_element_by_id("fieldTitle").send_keys("任务内容Auto" + v_time)
         driver.find_element_by_id("fieldTitle").send_keys(Keys.ENTER)
@@ -29,7 +29,7 @@ class HomePage(unittest.TestCase):
         driver.find_element_by_id("txtContent").send_keys(fun_data_character(500, 1000))
         driver.find_element_by_xpath("//*[@id='Container3']/div[3]/div[1]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winSelectUser_IFrame")      # 切换到用户选择窗体
+        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择窗体
         driver.find_element_by_id("gpReciver").click()
         v_user_list = driver.find_elements_by_class_name("x-grid3-row")
         v_user_list[random.randint(0, len(v_user_list) - 1)].click()
@@ -55,7 +55,7 @@ class HomePage(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_link_text(u"查看汇报给我的工作").click()
         time.sleep(3)
-        driver.switch_to_frame("frame_tab_PM000483")
+        driver.switch_to.frame("frame_tab_PM000483")
         # 清空
         driver.find_element_by_xpath(
             "//*[@id='tab3']/div[1]/div/div/div/div/form/div[2]/div/div[1]/div/div/button[1]"
@@ -73,7 +73,7 @@ class HomePage(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_link_text(u"查看我的文件").click()
         time.sleep(3)
-        driver.switch_to_frame("frame_tab_PM000815")
+        driver.switch_to.frame("frame_tab_PM000815")
         driver.find_element_by_id("btnAddCategory").click()
         time.sleep(1)
         v_time = time.strftime("%Y%m%d")

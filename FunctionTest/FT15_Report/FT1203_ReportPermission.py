@@ -13,7 +13,7 @@ class ReportPermission(unittest.TestCase):
         ClasMenu.menu_full_text(self, u"系统管理", u"报表设置", u"报表权限")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000180")
+        driver.switch_to.frame("frame_tab_PM000180")
 
     """系统管理-报表设置-报表权限分配"""
     def test_1203_01_set(self):

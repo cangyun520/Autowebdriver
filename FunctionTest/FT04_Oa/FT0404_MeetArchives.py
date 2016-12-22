@@ -13,7 +13,7 @@ class MeetArchives(unittest.TestCase):
         time.sleep(2)
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000799")
+        driver.switch_to.frame("frame_tab_PM000799")
 
     # 行政办公-会议室管理-会议室档案添加
     def test_0404_01_add(self):

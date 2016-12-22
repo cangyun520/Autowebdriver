@@ -12,7 +12,7 @@ class ContactsPersonal(unittest.TestCase):
         ClasMenu.menu_full_text(self, "个人事务", "通讯录", "个人通讯录")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001018")
+        driver.switch_to.frame("frame_tab_PM001018")
 
     # 个人事务-个人通讯录-新增数据功能
     def test_0205_01_add(self):

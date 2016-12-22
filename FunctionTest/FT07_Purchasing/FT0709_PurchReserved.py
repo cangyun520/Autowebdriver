@@ -13,7 +13,7 @@ class PurchReserved(unittest.TestCase):
         ClasMenu.menu_part_text(self, "采购管理", "应付预留发票")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000221")
+        driver.switch_to.frame("frame_tab_PM000221")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -23,7 +23,7 @@ class PurchReserved(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -37,7 +37,7 @@ class PurchReserved(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -86,7 +86,7 @@ class PurchReserved(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_id("btnGoOCRD").click()      # 业务伙伴主数据穿透
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
+        driver.switch_to.frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
         v_general = driver.find_element_by_link_text("常规")
         try:
             v_general.is_displayed()
@@ -112,14 +112,14 @@ class PurchReserved(unittest.TestCase):
             driver.switch_to.parent_frame()
             if v_checked == "收货采购订单":
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000197")
+                driver.switch_to.frame("frame_tab_PM000197")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 有效期至
                 ClasForm.form_today(self, "dfDocDueDate")
             else:
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000219")
+                driver.switch_to.frame("frame_tab_PM000219")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 有效期至

@@ -11,13 +11,13 @@ class Resource(unittest.TestCase):
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "资源管理",)
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000393")
+        driver.switch_to.frame("frame_tab_PM000393")
 
     """微信营销-资源管理-文本素材添加功能"""
     def test_1902_01_add(self):
         """微信营销-资源管理-文本素材添加功能"""
         driver = self.driver
-        driver.switch_to_frame("pText_IFrame")
+        driver.switch_to.frame("pText_IFrame")
         driver.find_element_by_id("Button11").click()
         v_tim = time.strftime("%y%m%d%H%M")
         time.sleep(3)

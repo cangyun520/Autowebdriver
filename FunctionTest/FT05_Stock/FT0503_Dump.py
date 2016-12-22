@@ -12,7 +12,7 @@ class Dump(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "转储管理", "库存转储")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000214")
+        driver.switch_to.frame("frame_tab_PM000214")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -22,7 +22,7 @@ class Dump(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='txtBuyer_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtBPartners").send_keys("C")
         driver.find_element_by_id("Button6").click()
         time.sleep(2)
@@ -34,7 +34,7 @@ class Dump(unittest.TestCase):
         # 到仓库
         driver.find_element_by_xpath("//*[@id='tfToWas_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[3].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -46,7 +46,7 @@ class Dump(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtItems").send_keys("A000")
         driver.find_element_by_id("btnItems").click()
         time.sleep(1)

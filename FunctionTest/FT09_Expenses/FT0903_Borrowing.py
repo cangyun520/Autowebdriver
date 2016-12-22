@@ -14,7 +14,7 @@ class Borrowing(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         js = "window.scrollTo(0,0)"
         driver.execute_script(js)
-        driver.switch_to_frame("frame_tab_PM000768")
+        driver.switch_to.frame("frame_tab_PM000768")
 
     """费用管理-借款-单据添加功能"""
     def test_0903_01_add(self):
@@ -22,13 +22,13 @@ class Borrowing(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%y%m%d%H%M")
         driver.find_element_by_id("IsReturnTiem").send_keys(time.strftime("%Y-%m-%d"))       # 预计归还时间
         driver.find_element_by_id("Sum").send_keys(random.randint(100, 5000))        # 借款金额
         driver.find_element_by_xpath("//*[@id='ProjectCode_Container']/div/span").click()        # 项目
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         v_Projectlist = driver.find_elements_by_class_name("x-grid3-row")
         v_Projectlist[random.randint(0, (len(v_Projectlist)-1))].click()
         driver.find_element_by_id("btnSelect").click()
@@ -70,7 +70,7 @@ class Borrowing(unittest.TestCase):
         else:
             ActionChains(driver).double_click(v_list[random.randint(0, len(v_list)-1)].click()).perform()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         driver.find_element_by_id("btnCancel").click()
         time.sleep(2)
         ClasForm.form_button_yes(self, "是")

@@ -12,7 +12,7 @@ class LibraryHarddisk(unittest.TestCase):
         ClasMenu.menu_full_text(self, "个人事务", "知识文库", "网络硬盘")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000810")
+        driver.switch_to.frame("frame_tab_PM000810")
 
     # 知识文库-网络硬盘-单据添加功能
     def test_0208_01_add(self):

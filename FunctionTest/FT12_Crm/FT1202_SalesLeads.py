@@ -12,7 +12,7 @@ class SalesLeads(unittest.TestCase):
         ClasMenu.menu_full_text(self, "客户关系", "售后管理", "服务呼叫")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000277")
+        driver.switch_to.frame("frame_tab_PM000277")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -23,7 +23,7 @@ class SalesLeads(unittest.TestCase):
         # 选择业务伙伴-客户
         driver.find_element_by_xpath("//*[@id='customer_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)

@@ -14,7 +14,7 @@ class PurchQuotation(unittest.TestCase):
         ClasMenu.menu_part_text(self, "采购管理", "采购订单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000191")
+        driver.switch_to.frame("frame_tab_PM000191")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -24,7 +24,7 @@ class PurchQuotation(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         time.sleep(1)
         driver.find_element_by_id("btnSelect").click()
@@ -37,7 +37,7 @@ class PurchQuotation(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -53,10 +53,10 @@ class PurchQuotation(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("采购订单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000191")
+        driver.switch_to.frame("frame_tab_PM000191")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -90,7 +90,7 @@ class PurchQuotation(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_id("btnGoOCRD").click()      # 业务伙伴主数据穿透
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
+        driver.switch_to.frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
         v_general = driver.find_element_by_link_text("常规")
         try:
             v_general.is_displayed()
@@ -117,21 +117,21 @@ class PurchQuotation(unittest.TestCase):
             # print(v_checked)
             if v_checked == "采购收货":
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000197")
+                driver.switch_to.frame("frame_tab_PM000197")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 有效期至
                 ClasForm.form_today(self, "dfDocDueDate")
             elif v_checked == "应付发票":
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000215")
+                driver.switch_to.frame("frame_tab_PM000215")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 有效期至
                 ClasForm.form_today(self, "dfDocDueDate")
             else:
                 ClasForm.form_top(self, 0)
-                driver.switch_to_frame("frame_tab_PM000221")
+                driver.switch_to.frame("frame_tab_PM000221")
                 # 排除自定义字段遮挡干扰
                 ClasForm.form_field_hide(self, driver)
                 # 有效期至
@@ -160,12 +160,12 @@ class PurchQuotation(unittest.TestCase):
         if driver.find_element_by_id("btnTarget").is_displayed():
             driver.find_element_by_id("btnTarget").click()
             time.sleep(3)
-            driver.switch_to_default_content()
+            driver.switch_to.default_content()
             v_active = driver.find_element_by_class_name("active")        # 获取对象
             # print(v_active.text)
             v_active_id = v_active.get_attribute("id")       # 获取对象ID
             v_menu_id = v_active_id[3:]       # 截取第3个字符到结尾
-            driver.switch_to_frame("frame" + v_menu_id)
+            driver.switch_to.frame("frame" + v_menu_id)
             if driver.find_element_by_id("btnBase").is_displayed():
                 print("目标凭证点击穿透查看OK")
         else:

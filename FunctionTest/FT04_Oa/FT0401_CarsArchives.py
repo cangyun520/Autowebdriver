@@ -12,7 +12,7 @@ class CarsArchives(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "车辆管理", "车辆档案")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000802")
+        driver.switch_to.frame("frame_tab_PM000802")
 
     # 行政办公-车辆管理-车辆档案添加功能
     def test_0401_01_add(self):

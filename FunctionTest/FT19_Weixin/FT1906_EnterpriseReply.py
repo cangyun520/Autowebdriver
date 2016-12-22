@@ -14,7 +14,7 @@ class EnterpriseReply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "企业回复管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000653")
+        driver.switch_to.frame("frame_tab_PM000653")
 
     """移动端配置-微信企业号-企业回复管理添加"""
     def test_1904_01_Keyword(self):

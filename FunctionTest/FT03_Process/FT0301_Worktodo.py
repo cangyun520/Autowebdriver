@@ -10,7 +10,7 @@ class Worktodo(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_full_text(self, "流程处理", "待办工作")
-        driver.switch_to_frame("frame_tab_PM000040")
+        driver.switch_to.frame("frame_tab_PM000040")
 
     # 流程处理-待办工作
     def test_0301(self):

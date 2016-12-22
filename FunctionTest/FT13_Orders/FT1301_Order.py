@@ -13,7 +13,7 @@ class Order(unittest.TestCase):
         ClasMenu.menu_full_text(self, "订货管理", "订货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001043")
+        driver.switch_to.frame("frame_tab_PM001043")
 
     # 订货管理-订货-新增单据
     def test_1301_01_Add(self):
@@ -21,7 +21,7 @@ class Order(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         v_wlline = driver.find_element_by_xpath(
             "//*[@id='gpBorrow']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]")
         ActionChains(driver).double_click(v_wlline).perform()
@@ -29,7 +29,7 @@ class Order(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtItems").send_keys("A000")
         driver.find_element_by_id("btnItems").click()
         time.sleep(1)
@@ -44,7 +44,7 @@ class Order(unittest.TestCase):
         # 订货单位编号
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C2")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)

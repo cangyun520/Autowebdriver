@@ -12,7 +12,7 @@ class SalesARI_Pay(unittest.TestCase):
         ClasMenu.menu_full_text(self, "销售管理", "应收发票+付款")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000202")
+        driver.switch_to.frame("frame_tab_PM000202")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -27,7 +27,7 @@ class SalesARI_Pay(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -49,10 +49,10 @@ class SalesARI_Pay(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收发票+付款添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000202")
+        driver.switch_to.frame("frame_tab_PM000202")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -72,7 +72,7 @@ class SalesARI_Pay(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_id("btnGoOCRD").click()      # 客户主数据穿透
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
+        driver.switch_to.frame("winActivity_IFrame")     # 切换到业务伙伴主数据查看页面
         v_general = driver.find_element_by_link_text("常规")
         try:
             v_general.is_displayed()

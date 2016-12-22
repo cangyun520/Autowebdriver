@@ -13,7 +13,7 @@ class CirculateApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "借料还料", "借料申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000871")
+        driver.switch_to.frame("frame_tab_PM000871")
 
     # 库存管理---借料申请单
     def test_0504_01_Add(self):
@@ -21,11 +21,11 @@ class CirculateApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         # 項目
         driver.find_element_by_xpath("//*[@id='Project_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtProtect").send_keys("PRJ")
         driver.find_element_by_id("btnProtect").click()
         time.sleep(2)
@@ -46,7 +46,7 @@ class CirculateApply(unittest.TestCase):
         # 业务伙伴编号
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -64,7 +64,7 @@ class CirculateApply(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("I0000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -95,7 +95,7 @@ class CirculateApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         driver.find_element_by_id("btnLast").click()
         time.sleep(3)
         if driver.find_element_by_id("btnCopyTo").is_displayed():
@@ -103,11 +103,11 @@ class CirculateApply(unittest.TestCase):
             time.sleep(1)
             driver.find_element_by_link_text("借料单").click()
             time.sleep(4)
-            driver.switch_to_default_content()
-            driver.switch_to_frame("frame_tab_PM000884")
+            driver.switch_to.default_content()
+            driver.switch_to.frame("frame_tab_PM000884")
             driver.find_element_by_xpath("//*[@id='OutWarehouse_Container']/div/span").click()
             time.sleep(3)
-            driver.switch_to_frame("winAdd_IFrame")
+            driver.switch_to.frame("winAdd_IFrame")
             driver.find_elements_by_class_name("x-grid3-row")[0].click()
             driver.find_element_by_id("btnSelect").click()
             time.sleep(2)

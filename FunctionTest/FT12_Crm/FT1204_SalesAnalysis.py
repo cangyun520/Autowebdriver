@@ -12,7 +12,7 @@ class SalesAnalysis(unittest.TestCase):
         ClasMenu.menu_full_text(self, "客户关系", "售前管理", "销售机会分析")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001074")
+        driver.switch_to.frame("frame_tab_PM001074")
 
     # 客户关系---销售管理---销售机会分析查询所有
     def test_1204_01_query(self):
@@ -25,8 +25,8 @@ class SalesAnalysis(unittest.TestCase):
         v_list = driver.find_elements_by_link_text("详细")
         v_list[0].click()
         time.sleep(4)
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000316")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000316")
         v_goto = driver.find_element_by_id("btnGoOCRD")
         if v_goto.is_displayed():
             print("点击‘详细’可穿透查看源单据")

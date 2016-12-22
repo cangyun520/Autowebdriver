@@ -12,7 +12,7 @@ class MaterialMaster(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "物料主数据管理")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000911")
+        driver.switch_to.frame("frame_tab_PM000911")
 
     # 库存管理---物料主数据管理
     def test_0501_01_add(self):
@@ -21,7 +21,7 @@ class MaterialMaster(unittest.TestCase):
         v_tim = time.strftime("%y%m%d%H%M%S")
         driver.find_element_by_id("btnSingleAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")     # 切换到新增物料页面
+        driver.switch_to.frame("winActivity_IFrame")     # 切换到新增物料页面
         # 物料编号
         v_wlcode = random.choice(
             ['CA', 'IA', 'LA', 'SA', 'HA', 'PA'])+"".join(random.choice("0123456789") for i in range(8))
@@ -36,7 +36,7 @@ class MaterialMaster(unittest.TestCase):
         # 保修模板
         driver.find_element_by_xpath("//*[@id='txtTemplet_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换保修模板选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换保修模板选择窗体
         v_template = driver.find_elements_by_class_name("x-grid3-row")
         v_template[random.randint(0, len(v_template) - 1)].click()
         driver.find_element_by_id("Button1").click()
@@ -49,7 +49,7 @@ class MaterialMaster(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='txtFirstSupplier_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换供应商选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换供应商选择窗体
         v_suppliers = driver.find_elements_by_class_name("x-grid3-row")
         v_suppliers[random.randint(0, len(v_suppliers) - 1)].click()
         driver.find_element_by_id("Button1").click()
@@ -87,7 +87,7 @@ class MaterialMaster(unittest.TestCase):
         v_wllists = driver.find_elements_by_class_name("x-grid3-row")
         ActionChains(driver).double_click(v_wllists[random.randint(0, len(v_wllists) - 1)]).perform()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")     # 切换到更新物料页面
+        driver.switch_to.frame("winActivity_IFrame")     # 切换到更新物料页面
         # 条形码
         driver.find_element_by_id("txtBarCode").send_keys("TXM" + v_tim)
         driver.find_element_by_id("btnSave").click()

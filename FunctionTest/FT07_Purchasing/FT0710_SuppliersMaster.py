@@ -12,7 +12,7 @@ class SuppliersMaster(unittest.TestCase):
         ClasMenu.menu_full_text(self, "采购管理", "供应商主数据")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000417")
+        driver.switch_to.frame("frame_tab_PM000417")
 
     # --客商管理---供应商主数据
     def test_0710_01_Add(self):
@@ -28,7 +28,7 @@ class SuppliersMaster(unittest.TestCase):
         # 组
         driver.find_element_by_xpath("//*[@id='tfGroupCode_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         v_gyslist = driver.find_elements_by_class_name("x-grid3-row")
         v_gyslist[random.randint(0, len(v_gyslist) - 1)].click()
         driver.find_element_by_id("Button1").click()

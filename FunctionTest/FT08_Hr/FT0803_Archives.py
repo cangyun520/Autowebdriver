@@ -12,7 +12,7 @@ class Archives(unittest.TestCase):
         ClasMenu.menu_full_text(self, "人事管理", "人员管理", "档案管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000888")
+        driver.switch_to.frame("frame_tab_PM000888")
 
     # 人事管理-人员管理-档案管理添加功能
     def test_0803_01(self):
@@ -20,14 +20,14 @@ class Archives(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winEdit_IFrame")
+        driver.switch_to.frame("winEdit_IFrame")
         # v_tim = time.strftime("%Y%m%d %H%M%S")
         # 员工姓名
         driver.find_element_by_id("txtEmployeeName").send_keys(fun_data_name())
         # 系统用户
         driver.find_element_by_xpath("//*[@id='txtEmployeeCode_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winItem_IFrame")
+        driver.switch_to.frame("winItem_IFrame")
         v_l_user = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_l_user) > 0:
             v_l_user[0].click()

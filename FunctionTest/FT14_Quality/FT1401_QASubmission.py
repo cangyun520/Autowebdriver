@@ -12,7 +12,7 @@ class QASubmission(unittest.TestCase):
         ClasMenu.menu_full_text(self, "质检管理", "送检单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000831")
+        driver.switch_to.frame("frame_tab_PM000831")
 
     # 质检管理-送检单-新增单据功能
     def test_1401_01(self):
@@ -21,20 +21,20 @@ class QASubmission(unittest.TestCase):
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(5)
         # 进入添加界面
-        driver.switch_to_frame("winSendInspection_IFrame")
+        driver.switch_to.frame("winSendInspection_IFrame")
         driver.find_element_by_id("cbInspectionType").click()
         v_check = driver.find_elements_by_class_name("x-combo-list-item")
         v_check[0].click()
         time.sleep(1)
         driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen91").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到订单信息选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到订单信息选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("Button1").click()
         time.sleep(3)
         driver.switch_to.default_content()
-        driver.switch_to_frame("frame_tab_PM000831")
-        driver.switch_to_frame("winSendInspection_IFrame")
+        driver.switch_to.frame("frame_tab_PM000831")
+        driver.switch_to.frame("winSendInspection_IFrame")
         driver.find_element_by_id("ext-comp-1014").click()
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()

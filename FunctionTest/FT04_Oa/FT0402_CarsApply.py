@@ -12,7 +12,7 @@ class CarsApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "车辆管理", "车辆申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000803")
+        driver.switch_to.frame("frame_tab_PM000803")
 
     # 行政办公-车辆管理-车辆申请添加
     def test_0402_02_add(self):
@@ -21,11 +21,11 @@ class CarsApply(unittest.TestCase):
         driver.find_element_by_id("btnApply").click()
         time.sleep(3)
         v_tim = time.strftime("%y%m%d%H%M")
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         # 用车人
         driver.find_element_by_xpath("//*[@id='trigfiApplyPerson_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to_frame("winSelectUser_IFrame")      # 切换到用户选择页面
+        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择页面
         driver.find_elements_by_class_name("x-grid3-row")[random.randint(1, 10)].click()
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(1)
@@ -33,7 +33,7 @@ class CarsApply(unittest.TestCase):
         # 车牌号
         driver.find_element_by_xpath("//*[@id='trgPlateNumber_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to_frame("winSelectTraffic_IFrame")      # 切换到车辆选择页面
+        driver.switch_to.frame("winSelectTraffic_IFrame")      # 切换到车辆选择页面
         v_car = driver.find_elements_by_class_name("x-grid3-row")
         v_car[random.randint(0, len(v_car) - 1)].click()
         driver.find_element_by_id("btnConfirm").click()
@@ -42,7 +42,7 @@ class CarsApply(unittest.TestCase):
         # 随行人员
         driver.find_element_by_xpath("//*[@id='trgEntourageName_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to_frame("winSelectUser_IFrame")      # 切换到用户选择页面
+        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择页面
         driver.find_elements_by_class_name("x-grid3-row")[random.randint(1, 10)].click()
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(1)

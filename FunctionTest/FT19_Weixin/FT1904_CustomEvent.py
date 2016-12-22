@@ -14,7 +14,7 @@ class CustomEvent(unittest.TestCase):
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "自定义事件",)
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000595")
+        driver.switch_to.frame("frame_tab_PM000595")
 
     """移动端配置-微信企业号-自定义事件添加"""
     def test_1904_add(self):

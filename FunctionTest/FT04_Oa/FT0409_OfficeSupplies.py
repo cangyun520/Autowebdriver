@@ -12,7 +12,7 @@ class OfficeSupplies(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "办公用品管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000796")
+        driver.switch_to.frame("frame_tab_PM000796")
 
     # 行政办公-办公用品管理-单据添加功能
     def test_0409_01_add(self):

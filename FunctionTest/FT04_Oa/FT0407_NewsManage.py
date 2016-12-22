@@ -12,7 +12,7 @@ class NewsManage(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "新闻公告", "新闻公告管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000289")
+        driver.switch_to.frame("frame_tab_PM000289")
 
     # 行政办公---新闻公告---新闻公告管理
     def test_0407_01_Add(self):
@@ -20,8 +20,8 @@ class NewsManage(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='form_wizard_1']/div[2]/div[1]/div/div[2]/a").click()
         time.sleep(3)
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000290")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000290")
         v_tim = time.strftime("%Y%m%d%H%M")
         driver.find_element_by_id("txt_title").send_keys("新闻公告(全体)Auto" + v_tim)
         time.sleep(1)
@@ -45,9 +45,9 @@ class NewsManage(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='form_wizard_1']/div[2]/div[1]/div/div[2]/a").click()
         time.sleep(3)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         driver.execute_script("window.scrollTo(0,300)")
-        driver.switch_to_frame("frame_tab_PM000290")
+        driver.switch_to.frame("frame_tab_PM000290")
         time.sleep(1)
         driver.find_element_by_id("btnWorkflow").click()
         time.sleep(3)

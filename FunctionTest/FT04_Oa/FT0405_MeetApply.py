@@ -12,7 +12,7 @@ class MeetApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "会议室管理", "会议室申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000800")
+        driver.switch_to.frame("frame_tab_PM000800")
 
     # 行政办公-会议室管理-会议室申请添加
     def test_0405_01_add(self):
@@ -20,7 +20,7 @@ class MeetApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%y%m%d%H%M")
         # 会议主题
         driver.find_element_by_id("txtMeetingSubject").send_keys("会议室主题Auto" + v_tim)

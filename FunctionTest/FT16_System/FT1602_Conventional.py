@@ -15,7 +15,7 @@ class Conventional(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000389")
+        driver.switch_to.frame("frame_tab_PM000389")
         Decimal_cbxIsTax = driver.find_element_by_id("cbxIsTax")
         try:
             Decimal_cbxIsTax.is_displayed()
@@ -31,7 +31,7 @@ class Conventional(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000172")
+        driver.switch_to.frame("frame_tab_PM000172")
         Header_btnRead = driver.find_element_by_id("btnRead")
         try:
             Header_btnRead.is_displayed()
@@ -47,7 +47,7 @@ class Conventional(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000255")
+        driver.switch_to.frame("frame_tab_PM000255")
         Row_btnSave = driver.find_element_by_id("btnSave")
         try:
             Row_btnSave.is_displayed()
@@ -63,7 +63,7 @@ class Conventional(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000414")
+        driver.switch_to.frame("frame_tab_PM000414")
         Row_btnSave = driver.find_element_by_id("gpRole")
         try:
             Row_btnSave.is_displayed()

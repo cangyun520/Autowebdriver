@@ -13,7 +13,7 @@ class ProjectChange(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         time.sleep(2)
-        driver.switch_to_frame("frame_tab_PM000756")
+        driver.switch_to.frame("frame_tab_PM000756")
 
     # -项目管理-项目信息变更
     def test_050303_01_Add(self):
@@ -21,7 +21,7 @@ class ProjectChange(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='trProjectCode_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winProjectNo_IFrame")
+        driver.switch_to.frame("winProjectNo_IFrame")
         # 查询筛选数据
         driver.find_element_by_id("txtSearchText").send_keys("PRJ")
         driver.find_element_by_id("btnSearch").click()
@@ -40,7 +40,7 @@ class ProjectChange(unittest.TestCase):
         # 项目经理
         driver.find_element_by_xpath("//*[@id='tfProjectManager_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winReciver_IFrame")
+        driver.switch_to.frame("winReciver_IFrame")
         v_list_user = driver.find_elements_by_class_name("x-grid3-row")
         v_list_user[random.randint(0, len(v_list_user) - 1)].click()
         driver.find_element_by_id("btnConfirm").click()
@@ -55,7 +55,7 @@ class ProjectChange(unittest.TestCase):
         # 合同编号
         driver.find_element_by_xpath("//*[@id='trContractNo_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winContact_IFrame")
+        driver.switch_to.frame("winContact_IFrame")
         v_list_contract = driver.find_elements_by_class_name("x-grid3-row")
         v_list_contract[random.randint(0, len(v_list_contract) - 1)].click()
         driver.find_element_by_id("Button1").click()

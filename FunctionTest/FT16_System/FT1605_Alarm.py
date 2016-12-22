@@ -14,7 +14,7 @@ class Alarm(unittest.TestCase):
         ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"消息模板")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000822")
+        driver.switch_to.frame("frame_tab_PM000822")
         driver.find_element_by_id("txtSearchTitle").send_keys("销售报价单")
         driver.find_element_by_id("btnSelect").click()
         time.sleep(2)
@@ -32,7 +32,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000146")
+        driver.switch_to.frame("frame_tab_PM000146")
         driver.find_element_by_id("btnSet").click()
         time.sleep(3)
         v_title = driver.find_elements_by_class_name("x-window-header-text")
@@ -50,7 +50,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000231")
+        driver.switch_to.frame("frame_tab_PM000231")
         driver.find_element_by_id("btnAdd").click()
         v_title = driver.find_elements_by_class_name("x-window-header-text")
         for i in v_title:
@@ -67,7 +67,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000424")
+        driver.switch_to.frame("frame_tab_PM000424")
         v_field = driver.find_element_by_id("Button1")
         try:
             v_field.is_displayed()
@@ -82,7 +82,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000879")
+        driver.switch_to.frame("frame_tab_PM000879")
         v_select = driver.find_element_by_id("btnSet")
         try:
             v_select.is_displayed()
@@ -97,7 +97,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000025")
+        driver.switch_to.frame("frame_tab_PM000025")
         time.sleep(3)
         v_import = driver.find_element_by_id("btnImport")
         try:
@@ -113,7 +113,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000026")
+        driver.switch_to.frame("frame_tab_PM000026")
         v_container = driver.find_element_by_id("btnQuery_Container")
         try:
             v_container.is_displayed()
@@ -128,7 +128,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000157")
+        driver.switch_to.frame("frame_tab_PM000157")
         v_add = driver.find_element_by_id("btnAdd")
         try:
             v_add.is_displayed()
@@ -142,7 +142,7 @@ class Alarm(unittest.TestCase):
         ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"自由流设计")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000981")
+        driver.switch_to.frame("frame_tab_PM000981")
         v_search = driver.find_element_by_id("btnSearch")
         try:
             v_search.is_displayed()
@@ -157,7 +157,7 @@ class Alarm(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM001019")
+        driver.switch_to.frame("frame_tab_PM001019")
         v_search = driver.find_element_by_id("btnSearch")
         try:
             v_search.is_displayed()

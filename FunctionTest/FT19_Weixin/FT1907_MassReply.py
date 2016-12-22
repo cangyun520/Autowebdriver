@@ -14,7 +14,7 @@ class MassReply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "群发管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000738")
+        driver.switch_to.frame("frame_tab_PM000738")
 
     """移动端配置-微信企业号-企业回复管理添加"""
     def test_1907_01_Keyword(self):
@@ -31,7 +31,7 @@ class MassReply(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         v_tim = time.strftime("%m%d%H")
         time.sleep(3)
-        driver.switch_to_frame("winEdit_IFrame")
+        driver.switch_to.frame("winEdit_IFrame")
         v_list_user = driver.find_elements_by_class_name("x-tree-node")
         v_list_user[1].click()
         v_list_user[2].click()

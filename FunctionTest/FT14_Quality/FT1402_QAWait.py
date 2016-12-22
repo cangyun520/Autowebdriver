@@ -12,7 +12,7 @@ class QAWait(unittest.TestCase):
         ClasMenu.menu_full_text(self, "质检管理", "待检管理")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000833")
+        driver.switch_to.frame("frame_tab_PM000833")
 
     # 质检管理-待检管理-分配质检员
     def test_1402_01(self):
@@ -22,7 +22,7 @@ class QAWait(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_id("BtnAdd").click()     # 分配质检员
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")
+        driver.switch_to.frame("winSendInspection_IFrame")
         v_user = driver.find_elements_by_class_name("x-grid3-row")
         v_user[random.randint(0, len(v_user) - 1)].click()
         driver.find_element_by_id("btnSelect").click()

@@ -14,7 +14,7 @@ class ReleaseTrain(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         time.sleep(3)
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000939")
+        driver.switch_to.frame("frame_tab_PM000939")
 
     """人事管理-员工合同-合同管理"""
     def test_0814_01(self):
@@ -24,7 +24,7 @@ class ReleaseTrain(unittest.TestCase):
         driver.find_element_by_id("btnSign").click()
         time.sleep(3)
         driver.switch_to.parent_frame()
-        driver.switch_to_frame("frame_tab_PM000940")
+        driver.switch_to.frame("frame_tab_PM000940")
         # 档案编号
         driver.find_element_by_xpath("//*[@id='txtEmployeeID_Container']/div/span").click()
         time.sleep(2)

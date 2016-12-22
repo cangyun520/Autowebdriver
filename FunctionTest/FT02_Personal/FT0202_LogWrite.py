@@ -9,7 +9,7 @@ class LogWrite(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_full_text(self, "个人事务", "工作日志", "日志填报")
-        driver.switch_to_frame("frame_tab_PM000483")
+        driver.switch_to.frame("frame_tab_PM000483")
 
     # 个人事务-工作日志-日志填报
     def test_0202_01(self):
@@ -27,7 +27,7 @@ class LogWrite(unittest.TestCase):
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
         # 用户弹出窗体
-        driver.switch_to_frame("frame_users")
+        driver.switch_to.frame("frame_users")
         for i in driver.find_elements_by_tag_name("td"):
             if i.text == "超级管理员":
                 i.click()
@@ -71,7 +71,7 @@ class LogWrite(unittest.TestCase):
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
         # 用户弹出窗体
-        driver.switch_to_frame("frame_users")
+        driver.switch_to.frame("frame_users")
         for i in driver.find_elements_by_tag_name("td"):
             if i.text == "超级管理员":
                 i.click()
@@ -115,7 +115,7 @@ class LogWrite(unittest.TestCase):
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
         # 用户弹出窗体
-        driver.switch_to_frame("frame_users")
+        driver.switch_to.frame("frame_users")
         for i in driver.find_elements_by_tag_name("td"):
             if i.text == "超级管理员":
                 i.click()

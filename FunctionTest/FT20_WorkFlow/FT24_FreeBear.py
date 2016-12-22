@@ -27,12 +27,12 @@ class FreeBear(unittest.TestCase):
                 # print(var_active.text)
                 var_active_id = var_active.get_attribute("id")                      # 获取对象ID
                 var_menu_id = var_active_id[3:]                                      # 截取第3个字符到结尾
-                driver.switch_to_frame("frame" + var_menu_id)
+                driver.switch_to.frame("frame" + var_menu_id)
                 # 老页面自由流审批人选择-admin-审批通过
                 if driver.find_element_by_id("btnSelectAppover").is_displayed():
                     driver.find_element_by_id("btnSelectAppover").click()
                     time.sleep(2)
-                    driver.switch_to_frame("winSelectUser_IFrame")      # 切换到用户信息选择窗体
+                    driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户信息选择窗体
                     driver.find_element_by_id("txtUserName").send_keys("admin")
                     driver.find_element_by_id("btnQuery").click()
                     time.sleep(2)
@@ -63,7 +63,7 @@ class FreeBear(unittest.TestCase):
                         unittest.expectedFailure("test_0101_bearPass")
                 ClasForm.form_button_yes(self, "确定")
                 # 返回初始页面
-                driver.switch_to_default_content()
+                driver.switch_to.default_content()
                 time.sleep(1)
                 v_a += 1
         else:

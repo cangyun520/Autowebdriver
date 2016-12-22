@@ -9,7 +9,7 @@ class WorkTask(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self,"个人事务", "任务管理", "工作任务")
-        driver.switch_to_frame("frame_tab_PM000795")
+        driver.switch_to.frame("frame_tab_PM000795")
 
     # 个人事务-任务管理-工作任务
     def test_0210(self):

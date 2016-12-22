@@ -14,7 +14,7 @@ class ReleaseTrain(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         time.sleep(3)
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001053")
+        driver.switch_to.frame("frame_tab_PM001053")
 
     """人事管理-培训管理-发布培训添加"""
     def test_0812_01(self):

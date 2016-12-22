@@ -9,7 +9,7 @@ class Workentrusted(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "流程处理", "委托工作", "已委托工作")
-        driver.switch_to_frame("frame_tab_PM000089")
+        driver.switch_to.frame("frame_tab_PM000089")
 
     # 流程处理-已委托工作
     def test_0304(self):

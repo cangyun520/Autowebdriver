@@ -9,7 +9,7 @@ class Workhande(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "流程处理", "办结工作")
-        driver.switch_to_frame("frame_tab_PM000032")
+        driver.switch_to.frame("frame_tab_PM000032")
 
     # 流程处理-办结工作
     def test_0303(self):

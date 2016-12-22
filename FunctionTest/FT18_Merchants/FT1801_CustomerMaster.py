@@ -13,7 +13,7 @@ class CustomerMaster(unittest.TestCase):
         ClasMenu.menu_full_text(self, "销售管理", "客商管理", "客户主数据")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000067")
+        driver.switch_to.frame("frame_tab_PM000067")
 
     # --客商管理---客户主数据
     def test_1801_01_Add(self):
@@ -29,7 +29,7 @@ class CustomerMaster(unittest.TestCase):
         # 组
         driver.find_element_by_xpath("//*[@id='tfGroupCode_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         v_khlist = driver.find_elements_by_class_name("x-grid3-row")
         v_khlist[random.randint(0, len(v_khlist)-1)].click()
         driver.find_element_by_id("Button1").click()
@@ -50,7 +50,7 @@ class CustomerMaster(unittest.TestCase):
         # 业务伙伴项目
         driver.find_element_by_xpath("//*[@id='txtProjectCode_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         v_prjlist = driver.find_elements_by_class_name("x-grid3-row")
         v_prjlist[random.randint(0, len(v_prjlist) - 1)].click()
         driver.find_element_by_id("Button11").click()
@@ -169,7 +169,7 @@ class CustomerMaster(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnSearch").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         v_khlist = driver.find_elements_by_class_name("x-grid3-row")
         v_khlist[random.randint(0, len(v_khlist) - 1)].click()
         driver.find_element_by_id("btnSelect").click()

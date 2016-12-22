@@ -12,7 +12,7 @@ class VoteAdd(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "投票管理", "创建投票")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000487")
+        driver.switch_to.frame("frame_tab_PM000487")
 
     # 行政办公-创建投票-单选投票添加
     def test_0406_01_add(self):

@@ -11,7 +11,7 @@ class Menu(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM000179")
+        driver.switch_to.frame("frame_tab_PM000179")
 
     # 系统管理---菜单管理
     def test_1601_Config(self):

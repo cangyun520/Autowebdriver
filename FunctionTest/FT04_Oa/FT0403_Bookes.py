@@ -12,7 +12,7 @@ class Bookes(unittest.TestCase):
         ClasMenu.menu_full_text(self, "行政办公", "图书管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000797")
+        driver.switch_to.frame("frame_tab_PM000797")
 
     # 行政办公-图书管理-单据添加
     def test_0903_01_add(self):

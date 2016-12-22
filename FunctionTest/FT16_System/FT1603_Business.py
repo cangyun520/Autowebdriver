@@ -14,7 +14,7 @@ class Business(unittest.TestCase):
         ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"自由流设计")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000981")
+        driver.switch_to.frame("frame_tab_PM000981")
         FreeStream_Search = driver.find_element_by_id("btnSearch")
         try:
             FreeStream_Search.is_displayed()
@@ -30,7 +30,7 @@ class Business(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
-        driver.switch_to_frame("frame_tab_PM001019")
+        driver.switch_to.frame("frame_tab_PM001019")
         v_search = driver.find_element_by_id("btnSearch")
         try:
             v_search.is_displayed()

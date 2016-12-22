@@ -11,7 +11,7 @@ class ProjectDate(unittest.TestCase):
         # 打开菜单
         ClasMenu.menu_full_text(self, "项目管理", "项目主数据")
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000753")
+        driver.switch_to.frame("frame_tab_PM000753")
 
     # 项目管理-项目主数据-同步项目主数据功能
     def test_050301_ProjectDate(self):

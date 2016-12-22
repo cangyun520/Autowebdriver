@@ -12,7 +12,7 @@ class RecruitPlan(unittest.TestCase):
         ClasMenu.menu_full_text(self,"人事管理", "招聘管理", "招聘需求与计划")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001012")
+        driver.switch_to.frame("frame_tab_PM001012")
 
     """人事管理-招聘管理-招聘需求与计划查看"""
     def test_0802_01(self):

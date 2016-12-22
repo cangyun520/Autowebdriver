@@ -15,7 +15,7 @@ class Reimbursement(unittest.TestCase):
         ClasMenu.menu_full_text(self, "费用管理", "差旅费报销")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000782")
+        driver.switch_to.frame("frame_tab_PM000782")
 
     """费用管理-差旅费报销-单据添加功能"""
     def test_0605_01_add(self):
@@ -23,12 +23,12 @@ class Reimbursement(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%Y%m%d %H:%M")
         # 报销部门
         driver.find_element_by_xpath("//*[@id='OrgName_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("总经办")
         driver.find_element_by_id("btnBPartners").click()
         time.sleep(1)
@@ -39,7 +39,7 @@ class Reimbursement(unittest.TestCase):
         # 报销人
         driver.find_element_by_xpath("//*[@id='PersonName_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         for i in driver.find_elements_by_class_name("x-grid3-row"):
             i.click()
         driver.find_element_by_id("btnSelect").click()
@@ -123,7 +123,7 @@ class Reimbursement(unittest.TestCase):
         else:
             ActionChains(driver).double_click(v_list[random.randint(0, len(v_list)-1)].click()).perform()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         # 取消关闭页面
         driver.find_element_by_id("btnCancel").click()
         time.sleep(2)

@@ -11,7 +11,7 @@ class ProjectApproval(unittest.TestCase):
         ClasMenu.menu_full_text(self, "项目管理", "项目立项")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000755")
+        driver.switch_to.frame("frame_tab_PM000755")
 
     # 项目管理-项目立项-添加单据
     def test_050302_01_add(self):

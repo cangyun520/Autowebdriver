@@ -14,7 +14,7 @@ class WebSMS(unittest.TestCase):
         ClasMenu.menu_full_text(self, "个人事务", "消息中心")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000416")
+        driver.switch_to.frame("frame_tab_PM000416")
 
     # 个人事务-站内短信
     def test_0201_01(self):
@@ -22,8 +22,8 @@ class WebSMS(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_link_text("发消息").click()
         time.sleep(3)
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM001067")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM001067")
         try:
             driver.find_element_by_id("btnsave").is_displayed()
             print("个人事务-消息中心,【发消息】跳转功能正常")
@@ -36,8 +36,8 @@ class WebSMS(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_link_text("发消息").click()
         time.sleep(3)
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM001067")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM001067")
         write_file = open(root_path() + 'PubliData\character5K.txt', 'r')
         v_lines = write_file.read()
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")

@@ -12,7 +12,7 @@ class Transfer(unittest.TestCase):
         ClasMenu.menu_full_text(self, "人事管理", "员工异动", "调动")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000894")
+        driver.switch_to.frame("frame_tab_PM000894")
 
     """人事管理-员工异动-调动"""
     def test_0806_01(self):
@@ -20,12 +20,12 @@ class Transfer(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnEdit").click()
         time.sleep(3)
-        driver.switch_to_frame("winEdit_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winEdit_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%Y%m%d %H:%M")
         # 员工姓名
         driver.find_element_by_xpath("//*[@id='txtEmployeeName_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winItem_IFrame")
+        driver.switch_to.frame("winItem_IFrame")
         v_yhlist = driver.find_elements_by_class_name("x-grid3-row")
         v_yhlist[random.randint(0, len(v_yhlist)-1)].click()
         driver.find_element_by_id("btnSelect").click()
@@ -34,7 +34,7 @@ class Transfer(unittest.TestCase):
         # 调动后部门
         driver.find_element_by_xpath("//*[@id='hidOrgNameAfter_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winItem_IFrame")
+        driver.switch_to.frame("winItem_IFrame")
         v_yhlist = driver.find_elements_by_class_name("x-grid3-row")
         v_yhlist[random.randint(0, len(v_yhlist)-1)].click()
         driver.find_element_by_id("btnSelect").click()
@@ -43,7 +43,7 @@ class Transfer(unittest.TestCase):
         # 调动后岗位
         driver.find_element_by_xpath("//*[@id='txtAfterJobs_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winItem_IFrame")
+        driver.switch_to.frame("winItem_IFrame")
         v_yhlist = driver.find_elements_by_class_name("x-grid3-row")
         v_yhlist[random.randint(0, len(v_yhlist)-1)].click()
         driver.find_element_by_id("btnSelect").click()

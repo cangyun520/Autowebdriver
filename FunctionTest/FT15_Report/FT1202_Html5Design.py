@@ -13,7 +13,7 @@ class Html5Design(unittest.TestCase):
         ClasMenu.menu_full_text(self, u"系统管理", u"报表设置", u"Html5报表设计器")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000656")
+        driver.switch_to.frame("frame_tab_PM000656")
 
     """系统管理-报表设置-SQL为空检验"""
     def test_1202_01_sqlNull(self):

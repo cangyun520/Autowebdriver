@@ -13,7 +13,7 @@ class Reimbursement(unittest.TestCase):
         ClasMenu.menu_full_text(self, "费用管理", "费用报销")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000784")
+        driver.switch_to.frame("frame_tab_PM000784")
 
     """费用管理-费用报销-单据添加功能"""
     def test_0904_01_add(self):
@@ -21,12 +21,12 @@ class Reimbursement(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%Y%m%d %H:%M")
         # 报销部门
         driver.find_element_by_xpath("//*[@id='OrgName_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("总经办")
         driver.find_element_by_id("btnBPartners").click()
         time.sleep(1)
@@ -37,7 +37,7 @@ class Reimbursement(unittest.TestCase):
         # 报销人
         driver.find_element_by_xpath("//*[@id='PersonName_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         for i in driver.find_elements_by_class_name("x-grid3-row"):
             i.click()
         driver.find_element_by_id("btnSelect").click()
@@ -72,7 +72,7 @@ class Reimbursement(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(2)
@@ -115,7 +115,7 @@ class Reimbursement(unittest.TestCase):
         else:
             ActionChains(driver).double_click(v_list[random.randint(0, len(v_list)-1)].click()).perform()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         # 取消关闭页面
         driver.find_element_by_id("btnCancel").click()
         time.sleep(2)

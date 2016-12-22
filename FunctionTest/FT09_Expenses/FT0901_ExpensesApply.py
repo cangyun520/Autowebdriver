@@ -13,7 +13,7 @@ class ExpensesApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "费用管理", "费用申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000764")
+        driver.switch_to.frame("frame_tab_PM000764")
 
     """费用管理-费用申请-单据添加功能"""
     def test_0901_01_add(self):
@@ -21,11 +21,11 @@ class ExpensesApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%y%m%d%H%M")
         driver.find_element_by_xpath("//*[@id='CostType_Container']/div/span").click()        # 费用类型
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")         # 切换到费用类型选择窗体
+        driver.switch_to.frame("winAdd_IFrame")         # 切换到费用类型选择窗体
         v_typelist = driver.find_elements_by_class_name("x-grid3-row")
         v_typelist[random.randint(0, (len(v_typelist)-1))].click()
         driver.find_element_by_id("Button1").click()
@@ -70,7 +70,7 @@ class ExpensesApply(unittest.TestCase):
         else:
             ActionChains(driver).double_click(v_list[random.randint(0, len(v_list)-1)].click()).perform()
         time.sleep(3)
-        driver.switch_to_frame("winActivity_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         driver.find_element_by_id("btnCancel").click()
         time.sleep(2)
         ClasForm.form_button_yes(self, "是")

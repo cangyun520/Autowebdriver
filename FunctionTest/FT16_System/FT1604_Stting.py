@@ -13,7 +13,7 @@ class Stting(unittest.TestCase):
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "报销类型设置")
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000762")
+        driver.switch_to.frame("frame_tab_PM000762")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%m%d%H%M")
@@ -22,7 +22,7 @@ class Stting(unittest.TestCase):
         # 关联菜单
         driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen65").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         v_check = driver.find_elements_by_class_name("x-grid3-row-checker")
         for i in v_check:
             i.click()
@@ -33,7 +33,7 @@ class Stting(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100201")
         driver.find_element_by_id("btnBPartners").click()
         time.sleep(1)
@@ -62,7 +62,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "财务设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000763")
+        driver.switch_to.frame("frame_tab_PM000763")
         driver.find_element_by_id("btnSave").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
@@ -80,7 +80,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "销售合同条款")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000728")
+        driver.switch_to.frame("frame_tab_PM000728")
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%Y%m%d%H%M")
         if v_save.is_displayed():
@@ -103,7 +103,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "收款阶段设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000726")
+        driver.switch_to.frame("frame_tab_PM000726")
         v_add = driver.find_element_by_id("btnAdd")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_add.is_displayed():
@@ -125,7 +125,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "采购合同条款")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000729")
+        driver.switch_to.frame("frame_tab_PM000729")
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_save.is_displayed():
@@ -148,7 +148,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "付款阶段设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000727")
+        driver.switch_to.frame("frame_tab_PM000727")
         v_add = driver.find_element_by_id("btnAdd")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_add.is_displayed():
@@ -170,7 +170,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000730")
+        driver.switch_to.frame("frame_tab_PM000730")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
@@ -178,7 +178,7 @@ class Stting(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100101")
         time.sleep(1)
         for i in driver.find_elements_by_class_name("x-grid3-cell-inner"):
@@ -211,7 +211,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000730")
+        driver.switch_to.frame("frame_tab_PM000730")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
@@ -219,7 +219,7 @@ class Stting(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100101")
         time.sleep(1)
         for i in driver.find_elements_by_class_name("x-grid3-cell-inner"):
@@ -252,7 +252,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目类型")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000758")
+        driver.switch_to.frame("frame_tab_PM000758")
         v_add = driver.find_element_by_id("btnAdd")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_add.is_displayed():
@@ -273,7 +273,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目组")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000759")
+        driver.switch_to.frame("frame_tab_PM000759")
         v_tim = time.strftime("%m%d%H%M")
         driver.find_element_by_id("btnAdd").click()
         driver.find_element_by_id("txtTitle_F").send_keys("项目组名称Auto" + v_tim)
@@ -302,7 +302,7 @@ class Stting(unittest.TestCase):
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "自定义事件")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000595")
+        driver.switch_to.frame("frame_tab_PM000595")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         v_tim = time.strftime("%y%m%d%H%M")

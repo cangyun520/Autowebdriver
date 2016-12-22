@@ -13,7 +13,7 @@ class PaymentApply(unittest.TestCase):
         ClasMenu.menu_full_text(self, "费用管理", "付款申请")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001083")
+        driver.switch_to.frame("frame_tab_PM001083")
 
     """费用管理-付款申请-单据添加"""
     def test_0905_01_add(self):
@@ -21,11 +21,13 @@ class PaymentApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")        # 切换到新增页面
+        # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")
         v_tim = time.strftime("%y%m%d%H%M")
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span/img[2]").click()        # 收款单位
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")         # 切换到收款单位选择窗体
+        # 切换到收款单位选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("v1")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -58,7 +60,7 @@ class PaymentApply(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanel1']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         v_wlcode = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_wlcode) > 5:
             v_total = 0
@@ -96,7 +98,8 @@ class PaymentApply(unittest.TestCase):
         else:
             ActionChains(driver).double_click(v_list[random.randint(0, len(v_list)-1)].click()).perform()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")        # 切换到新增页面
+        # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")
         driver.find_element_by_id("btnCancel").click()
         time.sleep(2)
         ClasForm.form_button_yes(self, "是")
@@ -113,11 +116,11 @@ class PaymentApply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")        # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%y%m%d%H%M")
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span/img[2]").click()        # 收款单位
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")         # 切换到收款单位选择窗体
+        driver.switch_to.frame("winAdd_IFrame")         # 切换到收款单位选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("v1")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -150,7 +153,7 @@ class PaymentApply(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanel1']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(2)
@@ -174,10 +177,13 @@ class PaymentApply(unittest.TestCase):
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
         v_tim = time.strftime("%Y%m%d%H%M")
-        driver.switch_to_frame("winSendInspection_IFrame")        # 切换到新增页面
-        driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span/img[2]").click()        # 收款单位
+        # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")
+        # 收款单位
+        driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")         # 切换到收款单位选择窗体
+        # 切换到收款单位选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("v1")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)

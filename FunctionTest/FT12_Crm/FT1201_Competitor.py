@@ -12,7 +12,7 @@ class Competitor(unittest.TestCase):
         ClasMenu.menu_full_text(self, "客户关系", "售前管理", "竞争对手维护")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001073")
+        driver.switch_to.frame("frame_tab_PM001073")
 
     # 客户关系---销售管理---竞争对手维护数据添加
     def test_1201_01_Add(self):

@@ -12,7 +12,7 @@ class OtherOut(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "其他出入库", "其他出库")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000209")
+        driver.switch_to.frame("frame_tab_PM000209")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
@@ -22,7 +22,7 @@ class OtherOut(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='tfName_Container']/div/span").click()        # 库存收发货类型
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(1)
@@ -35,7 +35,7 @@ class OtherOut(unittest.TestCase):
         driver.find_element_by_xpath(
             "//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)

@@ -10,7 +10,7 @@ class WeixinUser(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         time.sleep(2)
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000615")
+        driver.switch_to.frame("frame_tab_PM000615")
 
     """移动端配置-微信企业号-微信用户管理【编辑】"""
     def test_1905_01_edit(self):

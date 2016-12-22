@@ -9,7 +9,7 @@ class Processmonitoring(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "流程处理", "流程监控")
-        driver.switch_to_frame("frame_tab_PM000028")
+        driver.switch_to.frame("frame_tab_PM000028")
 
     # 流程处理-流程监控
     def test_0309_01(self):
