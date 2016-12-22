@@ -34,7 +34,7 @@ def fun_idcard():
     return '%s%s' % (x, last[y % 11])
 
 
-# 获取姓名数据
+# 获取姓名
 def fun_data_name():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -45,7 +45,7 @@ def fun_data_name():
     return arr[random.randint(1, len(arr)-1)]
 
 
-# 获取手机号码数据
+# 获取手机号码
 def fun_data_mobile():
     v_iphone = random.choice(
         ['139', '188', '185', '136', '158', '151', '177']
@@ -53,7 +53,7 @@ def fun_data_mobile():
     return v_iphone
 
 
-# 获取邮箱号码数据
+# 获取邮箱号码
 def fun_data_email():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -64,7 +64,7 @@ def fun_data_email():
     return arr[random.randint(1, len(arr)-1)]
 
 
-# 获取英文名称数据
+# 获取英文名称
 def fun_data_englishname():
     v_data = csv.reader(open(root_path() + 'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -75,7 +75,7 @@ def fun_data_englishname():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取职位名称数据
+# 获取职位名称
 def fun_data_job():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -86,7 +86,7 @@ def fun_data_job():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取公司名称数据
+# 获取公司名称
 def fun_data_company():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -97,7 +97,7 @@ def fun_data_company():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取详细地址数据
+# 获取详细地址
 def fun_data_address():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -108,7 +108,7 @@ def fun_data_address():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取高校名称数据
+# 获取高校名称
 def fun_data_university():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -119,7 +119,7 @@ def fun_data_university():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取高校专业数据
+# 获取高校专业
 def fun_data_specialty():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -130,7 +130,7 @@ def fun_data_specialty():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取中国人力资格证书数据
+# 获取中国人力资格证书
 def fun_data_certificate():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -141,7 +141,7 @@ def fun_data_certificate():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取城市数据
+# 获取城市
 def fun_data_city():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -152,7 +152,7 @@ def fun_data_city():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取中国人力职务名称数据
+# 获取中国人力职务名称
 def fun_data_position():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -163,7 +163,7 @@ def fun_data_position():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取省份数据
+# 获取省份
 def fun_data_province():
     v_data = csv.reader(open(root_path()+'PubliData/cvs/basedata.csv', 'r'))
     arr = []
@@ -174,7 +174,7 @@ def fun_data_province():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 获取中国少数民族名称数据
+# 获取中国少数民族名称
 def fun_data_nation():
     v_data = csv.reader(open(root_path() + 'PubliData/cvs/nation.csv', 'r'))
     arr = []
@@ -185,13 +185,13 @@ def fun_data_nation():
     return arr[random.randint(1, len(arr) - 1)]
 
 
-# 随机生成网址数据
+# 随机生成网址
 def fun_data_www():
     v_www = "www." + "".join(random.choice("abcdefghjklmnopqrst") for i in range(6)) + ".com"
     return v_www
 
 
-# 获取自定义测试数据
+# 获取自定义字符串测试
 def fun_data_character(start, end):
     write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
     v_lines = write_file.read()
@@ -204,8 +204,8 @@ def fun_data_sql(filename):
     write_file = open(root_path() + 'PubliData/sql/' + filename, 'r')
     """
     .read()         读取整个文件
-    .readline()     读取一行数据
-    .readlines()    读取所有行的数据
+    .readline()     读取一行
+    .readlines()    读取所有行的
     """
     v_lines = write_file.read()
     return v_lines
