@@ -15,7 +15,7 @@ class PaymentApply(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM001083")
 
-    """费用管理-付款申请-单据添加功能"""
+    """费用管理-付款申请-单据添加"""
     def test_0905_01_add(self):
         """费用管理-付款申请-单据添加功能"""
         driver = self.driver
