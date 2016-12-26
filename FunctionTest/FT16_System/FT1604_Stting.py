@@ -310,10 +310,10 @@ class Stting(unittest.TestCase):
         driver.find_element_by_id("txtTitle").send_keys("时间名称" + v_tim)
         # 事件key
         driver.find_element_by_id("txtEventKey").send_keys(v_tim)
+        # 回复内容
         driver.find_element_by_xpath("//*[@id='txtContent_Container']/div/span").click()
         time.sleep(3)
-        v_lists = driver.find_elements_by_class_name("x-grid3-row")
-        v_lists[random.randint(0, len(v_lists) - 1)].click()
+        driver.find_element_by_id("GridPanelTextItem").click()
         driver.find_element_by_id("Button1").click()
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()

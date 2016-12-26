@@ -123,7 +123,7 @@ class ClasMenu(object):
                 time.sleep(1)
         else:
             pass
-        time.sleep(3)
+        time.sleep(4)
 
     def menu_part_text(self, *v_menu):
         # 关键字名称菜单
@@ -133,7 +133,7 @@ class ClasMenu(object):
                 time.sleep(1)
         else:
             pass
-        time.sleep(3)
+        time.sleep(4)
 
 
 class ClasForm:
