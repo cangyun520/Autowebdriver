@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class ClasLogin():
+class ClasLogin:
     """初始测试准备工作"""
     def __login_url(self, driver):
         # 内网118环境
@@ -112,7 +112,7 @@ class ClasLogin():
         ClasLogin.__login_user(self, driver, "sp01")
 
 
-class ClasMenu(object):
+class ClasMenu:
     """打开菜单连接
     """
     def menu_full_text(self, *v_menu):
