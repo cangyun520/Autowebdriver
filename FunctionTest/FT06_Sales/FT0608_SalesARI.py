@@ -54,10 +54,6 @@ class SalesARI(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收发票添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to.default_content()
-        ClasForm.form_top(self, 0)
-        time.sleep(1)
-        driver.switch_to.frame("frame_tab_PM000200")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:

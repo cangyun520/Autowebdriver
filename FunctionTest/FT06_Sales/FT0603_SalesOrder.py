@@ -31,7 +31,8 @@ class SalesOrder(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         driver.switch_to.parent_frame()
-        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        v_tim = time.strftime("%Y%m%d %H:%M:%S")
+        # 行-物料号
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
@@ -50,13 +51,20 @@ class SalesOrder(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         driver.switch_to.parent_frame()
+        # 行-备注
+        driver.find_element_by_xpath(
+            "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[4]").click()
+        time.sleep(1)
+        driver.switch_to.active_element.send_keys(v_tim + "Auto")
+        # 行-数量
+        driver.find_element_by_xpath(
+            "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[5]").click()
+        time.sleep(1)
+        driver.switch_to.active_element.send_keys(random.randint(1, 8))
+        # 备注
         driver.find_element_by_id("txtComments").send_keys("销售订单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to.default_content()
-        ClasForm.form_top(self, 0)
-        time.sleep(1)
-        driver.switch_to.frame("frame_tab_PM000190")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -166,6 +174,48 @@ class SalesOrder(unittest.TestCase):
                 print("目标凭证点击穿透查看OK")
         else:
             print("当前单据状态未清")
+
+    # 销售管理-销售订单-单据复制从
+    def test_0603_06_CopyFrom(self):
+        """销售管理-销售订单-新增单据功能"""
+        driver = self.driver
+        # 业务伙伴
+        driver.find_element_by_xpath("//*[@id='bodyContent_ctl72_Container']/div/div/div/span").click()
+        time.sleep(3)
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.find_element_by_id("txtSearchText").send_keys("C")
+        driver.find_element_by_id("btnSearch").click()
+        time.sleep(2)
+        driver.find_elements_by_class_name("x-grid3-row")[1].click()
+        driver.find_element_by_id("btnSelect").click()
+        time.sleep(3)
+        driver.switch_to.parent_frame()
+        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        # 复制从
+        driver.find_element_by_id("btnCopyFrom").click()
+        # 复制从-销售报价单
+        driver.find_element_by_id("MenuItemCopyFromQuotations").click()
+        time.sleep(3)
+        driver.switch_to.frame("winAdd_IFrame")
+        v_l_copy = driver.find_elements_by_class_name("x-grid3-row")
+        if len(v_l_copy) > 0:
+            v_l_copy[0].click()
+        driver.find_element_by_id("btnSelect").click()
+        driver.switch_to.parent_frame()
+        time.sleep(2)
+        ClasForm.form_button_yes(self, "否")
+        time.sleep(2)
+        driver.find_element_by_id("btnSave").click()
+        time.sleep(3)
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            if "成功" in i.text:
+                print(i.text)
+            elif "流程已触发" in i.text:
+                print(i.text)
+            else:
+                print(i.text)
+                unittest.expectedFailure("test_0603_06_CopyFrom")
 
     def tearDown(self):
         self.driver.quit()
