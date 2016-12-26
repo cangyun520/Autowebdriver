@@ -3,22 +3,22 @@ from PubliCode.onlineClass import *
 from PubliCode.randData import *
 
 
-class HomePage(unittest.TestCase):
+class HomeTask(unittest.TestCase):
     """登录后首页"""
 
     def setUp(self):
         self.driver = webdriver.Chrome()
         # 打开登录页面
         ClasLogin.login_setup(self)
+        self.driver.find_element_by_link_text(u"查看我的任务").click()
+        time.sleep(3)
+        self.driver.switch_to.frame("frame_tab_PM000789")
 
-    # 首页-我的任务-新增
+    """首页-我的任务-新增功能"""
     def test_01_Task(self):
         """首页-我的任务-新增功能检查"""
         driver = self.driver
         v_time = time.strftime("%Y%m%d")
-        driver.find_element_by_link_text(u"查看我的任务").click()
-        time.sleep(3)
-        driver.switch_to.frame("frame_tab_PM000789")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         driver.switch_to.frame("winEdit_IFrame")     # 切换到新建页面
@@ -64,46 +64,31 @@ class HomePage(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_01_Task")
 
-    # 首页-工作汇报页面检查
-    def test_02_work(self):
-        """首页-工作汇报页面检查"""
+    """首页-我的任务-编辑功能"""
+    def test_02_edit(self):
+        """首页-我的任务-编辑功能"""
         driver = self.driver
-        driver.find_element_by_link_text(u"查看汇报给我的工作").click()
-        time.sleep(3)
-        driver.switch_to.frame("frame_tab_PM000483")
-        # 清空
-        driver.find_element_by_xpath(
-            "//*[@id='tab3']/div[1]/div/div/div/div/form/div[2]/div/div[1]/div/div/button[1]"
-        ).click()
-        time.sleep(1)
-        # 查询
-        driver.find_element_by_xpath(
-            "//*[@id='tab3']/div[1]/div/div/div/div/form/div[2]/div/div[1]/div/div/button[1]"
-        ).click()
-        time.sleep(2)
-
-    # 首页-工作汇报页面检查
-    def test_03_file(self):
-        """首页-查看我的文件"""
-        driver = self.driver
-        driver.find_element_by_link_text(u"查看我的文件").click()
-        time.sleep(3)
-        driver.switch_to.frame("frame_tab_PM000815")
-        driver.find_element_by_id("btnAddCategory").click()
-        time.sleep(1)
         v_time = time.strftime("%Y%m%d")
-        driver.find_element_by_id("txtCategoryName").send_keys(v_time)
-        driver.find_element_by_id("Button1").click()
-        time.sleep(2)
-        v_tip = driver.find_elements_by_class_name("ext-mb-text")
-        for i in v_tip:
-            if "成功" in i.text:
-                print(i.text)
-            elif "名称已存在" in i.text:
-                print(i.text)
-            else:
-                print(i.text)
-                unittest.expectedFailure("test_03_file")
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
+        if len(v_list) != 0:
+            v_list[random.randint(0, len(v_list)-1)].click()
+            driver.find_element_by_id("btnUpdate").click()
+            time.sleep(3)
+            driver.switch_to.frame("winEdit_IFrame")
+            # 到期日期
+            ClasForm.form_today(self, "fieldExpireDate")
+            driver.find_element_by_id("btnEdit").click()
+            time.sleep(2)
+            v_tip = driver.find_elements_by_class_name("ext-mb-text")
+            for i in v_tip:
+                if "修改成功" in i.text:
+                    print(i.text)
+                else:
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_02_edit.jpg")
+                    print(i.text)
+                    unittest.expectedFailure("test_02_edit")
+        else:
+            print("列表页面无数据")
 
     def tearDown(self):
         self.driver.quit()
@@ -113,9 +98,9 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(HomePage("test_01_Task"))
+    testsuit.addTest(HomeTask("test_01_Task"))
     v_tim = time.strftime("%y%m%d%H%M")
-    FileName = root_path() + 'TestReport/STRport/' + v_tim + ' ST01_HomePage.html'
+    FileName = root_path() + 'TestReport/STRport/' + v_tim + ' ST01_HomeTask.html'
     ReportFile = open(FileName, 'wb')
     runner = HTMLTestRunner(stream=ReportFile,
                             title="首页冒烟测试",
