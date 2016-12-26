@@ -80,7 +80,7 @@ class Reimbursement(unittest.TestCase):
         )
         ActionChains(driver).double_click(v_date_start).perform()
         time.sleep(1)
-        driver.switch_to.active_element
+        # driver.switch_to.active_element
         ClasForm.form_today(self, "DateField1")
         time.sleep(1)
         # 报销明细-到达日期
@@ -104,6 +104,21 @@ class Reimbursement(unittest.TestCase):
         ActionChains(driver).double_click(v_add_end).perform()
         time.sleep(1)
         driver.switch_to.active_element.send_keys(fun_data_city())
+        # 报销项目
+        v_add_end = driver.find_element_by_xpath(
+            "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[6]"
+        )
+        ActionChains(driver).double_click(v_add_end).perform()
+        time.sleep(1)
+        driver.find_element_by_xpath(
+            "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div[2]/div/span").click()
+        time.sleep(3)
+        driver.switch_to.frame("winAdd_IFrame")
+        v_type = driver.find_elements_by_class_name()
+        v_type[random.randint(0, len(v_type)-1)].click()
+        driver.find_element_by_id("Button1").click()
+        time.sleep(2)
+        driver.switch_to.parent_frame()
         # 金额
         v_money = driver.find_element_by_xpath(
             "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[7]"
@@ -111,10 +126,6 @@ class Reimbursement(unittest.TestCase):
         ActionChains(driver).double_click(v_money).perform()
         time.sleep(1)
         driver.switch_to.active_element.send_keys(random.randint(100, 9999))
-        # 附件张数
-
-        # 备注
-
         # 自由流审批人选择函数
         ClasFlow.flow_free(self, "bear")
         driver.find_element_by_id("btnWorkflow").click()

@@ -27,6 +27,7 @@ class HomePage(unittest.TestCase):
         driver.find_element_by_id("fieldTitle").send_keys(Keys.ENTER)
         # 备注
         driver.find_element_by_id("txtContent").send_keys(fun_data_character(500, 1000))
+        # 负责人
         driver.find_element_by_xpath("//*[@id='Container3']/div[3]/div[1]/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择窗体
@@ -36,7 +37,21 @@ class HomePage(unittest.TestCase):
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(1)
         driver.switch_to.parent_frame()
-        # # 移动到页面顶部，防止对象遮挡
+        # 参与人
+        driver.find_element_by_xpath("//*[@id='x-form-el-fieldReciver']/div/span").click()
+        time.sleep(3)
+        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择窗体
+        driver.find_element_by_id("gpReciver").click()
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
+        n = 1
+        while n < len(v_list):
+            v_list[n].click()
+            n += 1
+        time.sleep(1)
+        driver.find_element_by_id("btnConfirm").click()
+        time.sleep(1)
+        driver.switch_to.parent_frame()
+        # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 100)
         driver.find_element_by_id("btnEdit").click()
         time.sleep(2)
