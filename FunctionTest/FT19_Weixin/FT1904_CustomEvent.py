@@ -20,6 +20,7 @@ class CustomEvent(unittest.TestCase):
     def test_1904_add(self):
         """移动端配置-微信企业号-自定义事件添加"""
         driver = self.driver
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         v_tim = time.strftime("%y%m%d%H%M")
@@ -29,8 +30,10 @@ class CustomEvent(unittest.TestCase):
         driver.find_element_by_id("txtEventKey").send_keys(v_tim)
         driver.find_element_by_xpath("//*[@id='txtContent_Container']/div/span").click()
         time.sleep(3)
-        var_lists = driver.find_elements_by_class_name("x-grid3-row")
-        var_lists[random.randint(0, len(var_lists) - 1)].click()
+        driver.find_element_by_id("GridPanelTextItem").click()
+        # v_lists = driver.find_elements_by_class_name("x-grid3-row")
+        # print(len(v_lists))
+        # v_lists[random.randint(len(v_list), len(v_lists) - 1)].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()

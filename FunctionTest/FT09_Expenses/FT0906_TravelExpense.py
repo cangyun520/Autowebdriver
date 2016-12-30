@@ -73,14 +73,13 @@ class Reimbursement(unittest.TestCase):
         ActionChains(driver).context_click(v_lines).perform()
         driver.find_element_by_link_text("添加行").click()
         time.sleep(1)
-        # 报销明细页签
+        # ------报销明细页签------
         # 报销明细-出发日期
         v_date_start = driver.find_element_by_xpath(
             "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[2]"
         )
         ActionChains(driver).double_click(v_date_start).perform()
         time.sleep(1)
-        # driver.switch_to.active_element
         ClasForm.form_today(self, "DateField1")
         time.sleep(1)
         # 报销明细-到达日期
@@ -111,21 +110,43 @@ class Reimbursement(unittest.TestCase):
         ActionChains(driver).double_click(v_add_end).perform()
         time.sleep(1)
         driver.find_element_by_xpath(
-            "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div[2]/div/span").click()
+            "//*[@id='ext-comp-1006']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
-        v_type = driver.find_elements_by_class_name()
+        v_type = driver.find_elements_by_class_name("x-grid3-row")
         v_type[random.randint(0, len(v_type)-1)].click()
         driver.find_element_by_id("Button1").click()
-        time.sleep(2)
+        time.sleep(1)
         driver.switch_to.parent_frame()
         # 金额
         v_money = driver.find_element_by_xpath(
-            "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[7]"
+            "//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[8]"
         )
         ActionChains(driver).double_click(v_money).perform()
         time.sleep(1)
         driver.switch_to.active_element.send_keys(random.randint(100, 9999))
+        # ------补贴明细页签------
+        driver.find_element_by_link_text("补贴明细").click()
+        time.sleep(1)
+        v_lines = driver.find_element_by_xpath("//*[@id='gpSubsidies']/div/div/div/div/div[2]")
+        ActionChains(driver).context_click(v_lines).perform()
+        driver.find_element_by_link_text("复制从报销明细").click()
+        time.sleep(1)
+        # 人数
+        v_users = driver.find_element_by_xpath(
+            "//*[@id='gpSubsidies']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[7]"
+        )
+        ActionChains(driver).double_click(v_users).perform()
+        time.sleep(1)
+        driver.switch_to.active_element.send_keys(random.randint(1, 10))
+        # 天数
+        v_days = driver.find_element_by_xpath(
+            "//*[@id='gpSubsidies']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[8]"
+        )
+        ActionChains(driver).double_click(v_days).perform()
+        time.sleep(1)
+        driver.switch_to.active_element.send_keys(random.randint(2, 20))
+        time.sleep(1)
         # 自由流审批人选择函数
         ClasFlow.flow_free(self, "bear")
         driver.find_element_by_id("btnWorkflow").click()

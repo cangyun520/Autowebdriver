@@ -2,7 +2,6 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
-import win32api
 
 
 class FT01_FixedProcesses(unittest.TestCase):
@@ -18,7 +17,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "项目管理", "项目立项")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000755")
+        driver.switch_to.frame("frame_tab_PM000755")
         v_tim = time.strftime("%y%m%d%H%M")
         # 项目编号
         driver.find_element_by_id("txtProjectCode").send_keys("PRJNO_" + v_tim)
@@ -45,7 +44,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050302_01_Initiate")
 
-    # 项目管理------项目信息变更
+    # 项目管理-项目信息变更
     def test_050303_01_Initiate(self):
         """项目管理-项目信息变更-新增变更功能检查"""
         driver = self.driver
@@ -54,10 +53,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         time.sleep(2)
-        driver.switch_to_frame("frame_tab_PM000756")
+        driver.switch_to.frame("frame_tab_PM000756")
         driver.find_element_by_xpath("//*[@id='trProjectCode_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winProjectNo_IFrame")
+        driver.switch_to.frame("winProjectNo_IFrame")
         # 查询筛选数据
         driver.find_element_by_id("txtSearchText").send_keys("PRJ")
         driver.find_element_by_id("btnSearch").click()
@@ -74,13 +73,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 项目经理
         driver.find_element_by_xpath("//*[@id='tfProjectManager_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winReciver_IFrame")
+        driver.switch_to.frame("winReciver_IFrame")
         v_list_user = driver.find_elements_by_class_name("x-grid3-row")
         v_list_user[random.randint(0, len(v_list_user) - 1)].click()
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(2)
         driver.switch_to.parent_frame()
-
         # 立项时间
         ClasForm.form_today(self, "dateBuildsData")
         # 计划开始日期
@@ -90,7 +88,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 合同编号
         driver.find_element_by_xpath("//*[@id='trContractNo_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winContact_IFrame")
+        driver.switch_to.frame("winContact_IFrame")
         v_list_contract = driver.find_elements_by_class_name("x-grid3-row")
         v_list_contract[random.randint(0, len(v_list_contract) - 1)].click()
         driver.find_element_by_id("Button1").click()
@@ -104,7 +102,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 break
 
-    # -----销售管理------销售报价单
+    # 销售管理-销售报价单
     def test_050401_01_Initiate(self):
         """销售管理-销售报价单-新增单据功能"""
         driver = self.driver
@@ -112,12 +110,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "销售报价单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000192")
+        driver.switch_to.frame("frame_tab_PM000192")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -125,13 +124,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000192")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000192")
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -146,10 +145,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("销售报价单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000192")
+        driver.switch_to.frame("frame_tab_PM000192")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -160,7 +159,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050401_01_Initiate")
 
-    # -----销售管理------销售订单
+    # 销售管理-销售订单
     def test_050402_01_Initiate(self):
         """销售管理-销售订单-新增单据功能"""
         driver = self.driver
@@ -168,13 +167,14 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "销售订单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000190")
+        driver.switch_to.frame("frame_tab_PM000190")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         # 业务伙伴
         driver.find_element_by_xpath("//*[@id='bodyContent_ctl72_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -187,7 +187,8 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -202,10 +203,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("销售订单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_todefault_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000190")
+        driver.switch_to.frame("frame_tab_PM000190")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -216,7 +217,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050402_01_Initiate")
 
-    # -----销售管理------预收款申请
+    # 销售管理-预收款申请
     def test_050403_01_Initiate(self):
         """销售管理-预收款申请-新增单据功能"""
         driver = self.driver
@@ -224,12 +225,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "预收款申请")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000198")
+        driver.switch_to.frame("frame_tab_PM000198")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -244,7 +246,8 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -259,10 +262,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("预收款申请添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000198")
+        driver.switch_to.frame("frame_tab_PM000198")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -274,7 +277,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050403_01_Initiate")
 
-    # -----销售管理------应收发票
+    # 销售管理-应收发票
     def test_050404_01_Initiate(self):
         """销售管理-应收发票-新增单据功能"""
         driver = self.driver
@@ -282,12 +285,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "应收发票")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000200")
+        driver.switch_to.frame("frame_tab_PM000200")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -300,7 +304,8 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -315,10 +320,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收发票添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000200")
+        driver.switch_to.frame("frame_tab_PM000200")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -330,7 +335,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050404_01_Initiate")
 
-    # -----销售管理------应收发票+付款
+    # 销售管理-应收发票+付款
     def test_050405_01_Initiate(self):
         """销售管理-应收发票+付款-新增单据功能"""
         driver = self.driver
@@ -338,7 +343,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "销售管理", "应收发票+付款")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000202")
+        driver.switch_to.frame("frame_tab_PM000202")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -346,7 +351,8 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -368,10 +374,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收发票+付款添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000202")
+        driver.switch_to.frame("frame_tab_PM000202")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -383,7 +389,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050405_01_Initiate")
 
-    # -----销售管理------应收贷项凭证
+    # 销售管理-应收贷项凭证
     def test_050406_01_Initiate(self):
         """销售管理-应收贷项凭证-新增单据功能"""
         driver = self.driver
@@ -391,12 +397,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "应收贷项凭证")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000196")
+        driver.switch_to.frame("frame_tab_PM000196")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -409,7 +416,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -424,10 +431,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收贷项凭证添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000196")
+        driver.switch_to.frame("frame_tab_PM000196")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -439,7 +446,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050406_01_Initiate")
 
-    # -----销售管理------应收预留发票
+    # 销售管理-应收预留发票
     def test_050407_01_Initiate(self):
         """销售管理-应收预留发票-新增单据功能"""
         driver = self.driver
@@ -447,12 +454,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "销售管理", "应收预留发票")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000223")
+        driver.switch_to.frame("frame_tab_PM000223")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtBPartners").send_keys("C")
         driver.find_element_by_id("Button6").click()
         time.sleep(2)
@@ -466,7 +473,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -481,10 +488,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("应收预留发票添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000223")
+        driver.switch_to.frame("frame_tab_PM000223")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -496,14 +503,14 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050407_01_Initiate")
 
-    # -----采购管理------采购申请
+    # 采购管理-采购申请
     def test_050501_01_Initiate(self):
         """采购管理-采购申请-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "采购管理", "采购申请")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000294")
+        driver.switch_to.frame("frame_tab_PM000294")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_id("dfReqDate").send_keys(time.strftime("%Y/%m/%d"))
@@ -518,7 +525,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -545,20 +552,20 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050501_01_Initiate")
 
-    # -----采购管理------采购报价单
+    # 采购管理-采购报价单
     def test_050502_01_Initiate(self):
         """采购管理-采购报价单-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "采购报价单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000193")
+        driver.switch_to.frame("frame_tab_PM000193")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         # 选择供应商
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -571,7 +578,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -587,10 +594,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("采购报价单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000193")
+        driver.switch_to.frame("frame_tab_PM000193")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -602,19 +609,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050502_01_Initiate")
 
-    # -----采购管理------采购订单
+    # 采购管理-采购订单
     def test_050503_01_Initiate(self):
         """采购管理-采购订单-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "采购订单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000191")
+        driver.switch_to.frame("frame_tab_PM000191")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         time.sleep(1)
         driver.find_element_by_id("btnSelect").click()
@@ -625,7 +632,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -641,10 +648,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("采购订单添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000191")
+        driver.switch_to.frame("frame_tab_PM000191")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -656,19 +663,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050503_01_Initiate")
 
-    # -----采购管理------采购预付款申请
+    # 采购管理-采购预付款申请
     def test_050505_01_Initiate(self):
         """采购管理-采购预付款申请-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "采购预付款申请")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000218")
+        driver.switch_to.frame("frame_tab_PM000218")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -680,7 +687,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -707,19 +714,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050505_01_Initiate")
 
-    # -----采购管理------应付发票
+    # 采购管理-应付发票
     def test_050507_01_Initiate(self):
         """采购管理-应付发票-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "应付发票")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000215")
+        driver.switch_to.frame("frame_tab_PM000215")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -729,7 +736,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -755,19 +762,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050507_01_Initiate")
 
-    # -----采购管理------应付贷项凭证
+    # 采购管理-应付贷项凭证
     def test_050508_01_Initiate(self):
         """采购管理-应付贷项凭证-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "应付贷项凭证")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000219")
+        driver.switch_to.frame("frame_tab_PM000219")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -777,7 +784,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -803,19 +810,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050508_01_Initiate")
 
-    # -----采购管理------应付预留发票
+    # 采购管理-应付预留发票
     def test_050509_01_Initiate(self):
         """采购管理-应付预留发票-新增单据功能检查"""
         driver = self.driver
         ClasMenu.menu_part_text(self, "采购管理", "应付预留发票")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000221")
+        driver.switch_to.frame("frame_tab_PM000221")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -825,7 +832,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -852,7 +859,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050509_01_Initiate")
 
-    # -----质检管理------送检单
+    # 质检管理-送检单
     def test_050601_01_Initiate(self):
         """质检管理-送检单-新增单据功能检查"""
         driver = self.driver
@@ -861,24 +868,24 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 移动到页面底部，防止对象遮挡
         js_down = "window.scrollTo(0,0)"
         driver.execute_script(js_down)
-        driver.switch_to_frame("frame_tab_PM000831")
+        driver.switch_to.frame("frame_tab_PM000831")
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(5)
         # 进入添加界面
-        driver.switch_to_frame("winSendInspection_IFrame")
+        driver.switch_to.frame("winSendInspection_IFrame")
         driver.find_element_by_id("cbInspectionType").click()
         var_check = driver.find_elements_by_class_name("x-combo-list-item")
         var_check[0].click()
         time.sleep(1)
         driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen91").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到订单信息选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到订单信息选择窗体
         driver.find_element_by_id("gpSelect").click()
         driver.find_element_by_id("Button1").click()
         time.sleep(3)
         driver.switch_to.default_content()
-        driver.switch_to_frame("frame_tab_PM000831")
-        driver.switch_to_frame("winSendInspection_IFrame")
+        driver.switch_to.frame("frame_tab_PM000831")
+        driver.switch_to.frame("winSendInspection_IFrame")
         driver.find_element_by_id("ext-comp-1014").click()
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
@@ -893,7 +900,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050610_01_Initiate")
 
-    # -----库存管理------销售交货
+    # 库存管理-销售交货
     def test_050701_01_Initiate(self):
         """库存管理-销售交货-新增单据功能"""
         driver = self.driver
@@ -901,12 +908,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "库存管理", "销售交货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000194")
+        driver.switch_to.frame("frame_tab_PM000194")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -914,13 +921,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000194")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000194")
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -935,10 +942,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("销售交货添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000194")
+        driver.switch_to.frame("frame_tab_PM000194")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -948,7 +955,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050701_01_Initiate")
 
-    # -----库存管理------销售退货
+    # 库存管理-销售退货
     def test_050702_01_Initiate(self):
         """库存管理-销售退货-新增单据功能"""
         driver = self.driver
@@ -956,12 +963,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "库存管理", "销售退货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000195")
+        driver.switch_to.frame("frame_tab_PM000195")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("C")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -969,13 +976,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000195")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000195")
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -990,10 +997,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("销售退货添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000195")
+        driver.switch_to.frame("frame_tab_PM000195")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -1003,7 +1010,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050702_01_Initiate")
 
-    # -----库存管理------采购收货
+    # 库存管理-采购收货
     def test_050703_01_Initiate(self):
         """库存管理-采购收货-新增单据功能"""
         driver = self.driver
@@ -1011,12 +1018,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "库存管理", "采购收货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000197")
+        driver.switch_to.frame("frame_tab_PM000197")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("V")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -1024,13 +1031,13 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        driver.switch_to_default_content()
-        driver.switch_to_frame("frame_tab_PM000197")
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000197")
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1051,10 +1058,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("采购收货添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000197")
+        driver.switch_to.frame("frame_tab_PM000197")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -1064,7 +1071,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050703_01_Initiate")
 
-    # -----库存管理------采购退货
+    # 库存管理-采购退货
     def test_050704_01_Initiate(self):
         """库存管理-采购退货-新增单据功能"""
         driver = self.driver
@@ -1072,12 +1079,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_part_text(self, "库存管理", "采购退货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000201")
+        driver.switch_to.frame("frame_tab_PM000201")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("V")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(2)
@@ -1090,7 +1097,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1106,10 +1113,10 @@ class FT01_FixedProcesses(unittest.TestCase):
         driver.find_element_by_id("txtComments").send_keys("采购退货添加Auto" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
-        driver.switch_to_default_content()
+        driver.switch_to.default_content()
         ClasForm.form_top(self, 0)
         time.sleep(1)
-        driver.switch_to_frame("frame_tab_PM000201")
+        driver.switch_to.frame("frame_tab_PM000201")
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功，单号" in i.text:
@@ -1119,19 +1126,19 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050702_01_Initiate")
 
-    # -----库存管理------库存转储申请
+    # 库存管理-库存转储申请
     def test_05070501_01_Initiate(self):
         """库存管理-库存转储申请-新增单据功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "库存管理", "转储管理", "库存转储申请")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000736")
+        driver.switch_to.frame("frame_tab_PM000736")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='txtBuyer_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtBPartners").send_keys("C")
         driver.find_element_by_id("Button6").click()
         time.sleep(2)
@@ -1145,7 +1152,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtItems").send_keys("A000")
         driver.find_element_by_id("btnItems").click()
         time.sleep(1)
@@ -1160,7 +1167,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[3]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[3].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -1180,7 +1187,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070501_01_Initiate")
 
-    # -----库存管理------库存转储
+    # 库存管理-库存转储
     def test_05070502_01_Initiate(self):
         """库存管理-库存转储-新增单据功能"""
         driver = self.driver
@@ -1188,12 +1195,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "转储管理", "库存转储")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000214")
+        driver.switch_to.frame("frame_tab_PM000214")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='txtBuyer_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
         driver.find_element_by_id("txtBPartners").send_keys("C")
         driver.find_element_by_id("Button6").click()
         time.sleep(2)
@@ -1205,7 +1212,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 到仓库
         driver.find_element_by_xpath("//*[@id='tfToWas_Container']/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[3].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
@@ -1215,7 +1222,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtItems").send_keys("A000")
         driver.find_element_by_id("btnItems").click()
         time.sleep(1)
@@ -1242,7 +1249,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070502_01_Initiate")
 
-    # -----库存管理------其他入库
+    # 库存管理-其他入库
     def test_05070702_01_Initiate(self):
         """库存管理-其他入库-新增单据功能"""
         driver = self.driver
@@ -1250,12 +1257,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "其他出入库", "其他入库")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000207")
+        driver.switch_to.frame("frame_tab_PM000207")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='tfName_Container']/div/span").click()        # 库存收发货类型
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(1)
@@ -1266,7 +1273,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1293,7 +1300,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070702_01_Initiate")
 
-    # -----库存管理------其他出库
+    # 库存管理-其他出库
     def test_05070701_01_Initiate(self):
         """库存管理-其他出库-新增单据功能"""
         driver = self.driver
@@ -1301,12 +1308,12 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "其他出入库", "其他出库")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000209")
+        driver.switch_to.frame("frame_tab_PM000209")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_xpath("//*[@id='tfName_Container']/div/span").click()        # 库存收发货类型
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(1)
@@ -1317,7 +1324,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='GridPanelNR']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(2)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1344,7 +1351,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070701_01_Initiate")
 
-    # -----库存管理------借料申请单
+    # 库存管理-借料申请单
     def test_05070601_01_Initiate(self):
         """库存管理-借料申请单-新增单据功能"""
         driver = self.driver
@@ -1352,18 +1359,18 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "借料还料", "借料申请单")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000871")
+        driver.switch_to.frame("frame_tab_PM000871")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         var_wlline = driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]")
         ActionChains(driver).double_click(var_wlline).perform()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1386,7 +1393,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070601_01_Initiate")
 
-    # -----库存管理------借料单
+    # 库存管理-借料单
     def test_05070602_01_Initiate(self):
         """库存管理-借料申请单-新增单据功能"""
         driver = self.driver
@@ -1394,18 +1401,18 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "库存管理", "借料还料", "借料单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000883")
+        driver.switch_to.frame("frame_tab_PM000883")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         var_wlline = driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]")
         ActionChains(driver).double_click(var_wlline).perform()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtSearchText").send_keys("A000")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)
@@ -1420,7 +1427,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 借出仓库
         driver.find_element_by_xpath("//*[@id='OutWarehouse_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("btnSelect").click()
         time.sleep(2)
@@ -1436,7 +1443,7 @@ class FT01_FixedProcesses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_05070602_01_Initiate")
 
-    # -----订货管理------订货
+    # 订货管理-订货
     def test_050801_01_Initiate(self):
         """订货管理-订货-新增单据功能"""
         driver = self.driver
@@ -1444,16 +1451,16 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasMenu.menu_full_text(self, "订货管理", "订货")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM001043")
+        driver.switch_to.frame("frame_tab_PM001043")
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
-        driver.switch_to_frame("winSendInspection_IFrame")     # 切换到新增页面
+        driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
         var_wlline = driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]")
         ActionChains(driver).double_click(var_wlline).perform()
         time.sleep(1)
         driver.find_element_by_xpath("//*[@id='gpBorrow']/div/div/div/div/div[2]/div[2]/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")     # 切换到物料选择窗体
+        driver.switch_to.frame("winAdd_IFrame")     # 切换到物料选择窗体
         driver.find_element_by_id("txtItems").send_keys("A000")
         driver.find_element_by_id("btnItems").click()
         time.sleep(1)
@@ -1468,7 +1475,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         # 订货单位编号
         driver.find_element_by_xpath("//*[@id='PartnerNum_Container']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winAdd_IFrame")
+        driver.switch_to.frame("winAdd_IFrame")
         driver.find_element_by_id("txtSearchText").send_keys("C2")
         driver.find_element_by_id("btnSearch").click()
         time.sleep(1)

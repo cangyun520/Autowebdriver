@@ -21,18 +21,20 @@ class FixedSp01Pass(unittest.TestCase):
             v_a = 0
             while v_a < len(v_list):
                 v_list2 = driver.find_elements_by_class_name("task-title-sp")
-                ActionChains(driver).double_click(v_list2[0]).perform()              # 取第一条
+                # 取第一条
+                ActionChains(driver).double_click(v_list2[0]).perform()
                 time.sleep(4)
-                var_active = driver.find_element_by_class_name("active")            # 获取对象
+                # 获取对象
+                var_active = driver.find_element_by_class_name("active")
                 print(var_active.text)
-                var_active_id = var_active.get_attribute("id")                      # 获取对象ID
-                var_menu_id = var_active_id[3:]                                      # 截取第3个字符到结尾
+                # 获取对象ID
+                var_active_id = var_active.get_attribute("id")
+                # 截取第3个字符到结尾
+                var_menu_id = var_active_id[3:]
                 driver.switch_to_frame("frame" + var_menu_id)
                 # 审批通过
                 driver.find_element_by_id("btnPass").click()
-                # 移动到页面顶部，防止对象遮挡
                 v_tip = driver.find_elements_by_class_name("ext-mb-text")
-                v_masg = driver.find_elements_by_class_name("bootbox-body")
                 for i in v_tip:
                     if "成功" in i.text:
                         print(i.text)
@@ -45,7 +47,7 @@ class FixedSp01Pass(unittest.TestCase):
                         unittest.expectedFailure("test_0101_sp01Pass")
                 ClasForm.form_button_yes(self, "确定")
                 # 返回初始页面
-                driver.switch_to_default_content()
+                driver.switch_to.default_content()
                 time.sleep(1)
                 v_a += 1
         else:

@@ -120,10 +120,7 @@ class PurchCredit(unittest.TestCase):
         time.sleep(2)
         driver.switch_to.parent_frame()
         # 是否依据新的业务伙伴数据更新凭证行
-        for i in driver.find_elements_by_tag_name("button"):
-            if i.text == "是":
-                i.click()
-                break
+        ClasForm.form_button_yes(self, "是")
         # 有效期至
         ClasForm.form_today(self, "dfDocDueDate")
         # 备注

@@ -42,11 +42,6 @@ class MassReply(unittest.TestCase):
         v_list_user[7].click()
         v_list_user[8].click()
         v_list_user[9].click()
-        # n = 2
-        # while n < 10:
-        #     v_list_user[n].click()
-        #     print(v_list_user[n].text)
-        # n += 1
         # 内容
         driver.find_element_by_xpath("//*[@id='x-form-el-tfContent']/div/span").click()
         time.sleep(2)

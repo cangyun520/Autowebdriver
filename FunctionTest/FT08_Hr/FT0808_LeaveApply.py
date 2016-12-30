@@ -15,7 +15,7 @@ class LeaveApply(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000947")
 
     """人事管理-考勤管理-请假申请添加"""
-    def test_0808_01(self):
+    def test_0808_01_add(self):
         """人事管理-考勤管理-请假申请添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
@@ -52,9 +52,9 @@ class LeaveApply(unittest.TestCase):
             elif "成功" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0808_01.jpg")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0808_01_add.jpg")
                 print("Error：" + i.text)
-                unittest.expectedFailure("test_0808_01")
+                unittest.expectedFailure("test_0808_01_add")
 
     # 人事管理-考勤管理-请假申请草稿
     def test_0808_02(self):

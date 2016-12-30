@@ -14,8 +14,8 @@ class Archives(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000888")
 
-    # 人事管理-人员管理-档案管理添加功能
-    def test_0803_01(self):
+    '''人事管理-人员管理-档案管理添加功能'''
+    def test_0803_01_add(self):
         """人事管理-人员管理-档案管理添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
@@ -126,10 +126,12 @@ class Archives(unittest.TestCase):
         for i in v_tip:
             if "成功" in i.text:
                 print(i.text)
+            if "请检查表单" in i.text:
+                print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_080602_01.jpg")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0803_01_add.jpg")
                 print("Error：" + i.text)
-                unittest.expectedFailure("test_080602_01")
+                unittest.expectedFailure("test_0803_01_add")
 
     def tearDown(self):
         self.driver.quit()
@@ -138,7 +140,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Archives("test_0803_01"))
+    testsuit.addTest(Archives("test_0803_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

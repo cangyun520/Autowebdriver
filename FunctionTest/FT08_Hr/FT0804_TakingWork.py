@@ -15,7 +15,7 @@ class TakingWork(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000892")
 
     """人事管理-员工异动-入职"""
-    def test_0804_01(self):
+    def test_0804_01_add_add(self):
         """人事管理-员工异动-入职"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
@@ -84,8 +84,8 @@ class TakingWork(unittest.TestCase):
             elif "保存单据成功" in i.text:
                 print(i.text)
             else:
-                unittest.expectedFailure("test_0804_01")
-                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0804_01.jpg")
+                unittest.expectedFailure("test_0804_01_add")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0804_01_add.jpg")
                 print("Error：" + i.text)
 
     def tearDown(self):
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(TakingWork("test_0804_01"))
+    testsuit.addTest(TakingWork("test_0804_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

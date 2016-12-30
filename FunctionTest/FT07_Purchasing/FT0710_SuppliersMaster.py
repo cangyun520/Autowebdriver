@@ -8,13 +8,12 @@ class SuppliersMaster(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        # 打开菜单
         ClasMenu.menu_full_text(self, "采购管理", "供应商主数据")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000417")
 
-    # --客商管理---供应商主数据
+    # 客商管理---供应商主数据
     def test_0710_01_Add(self):
         """客商管理-供应商主数据-新增单据功能"""
         driver = self.driver
@@ -76,10 +75,8 @@ class SuppliersMaster(unittest.TestCase):
         # 备注页签
         driver.find_element_by_link_text("备注").click()
         time.sleep(1)
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
         driver.find_element_by_id("bzjy").clear()
-        driver.find_element_by_id("bzjy").send_keys(v_lines[100:1100])
+        driver.find_element_by_id("bzjy").send_keys(fun_data_character(100, 1000))
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)

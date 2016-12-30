@@ -7,9 +7,9 @@ class Stting(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理---业务设置---费用设置
+    """业务设置-费用设置-类型添加功能"""
     def test_1604_01_ApplyAdd(self):
-        """业务设置-费用设置-类型添加功能检查"""
+        """业务设置-费用设置-类型添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "报销类型设置")
         ClasForm.form_top(self, 0)
@@ -55,9 +55,9 @@ class Stting(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1604_01_ApplyAdd")
 
-    # 系统管理---业务设置---财务设置
+    """费用设置-财务设置-报销金额添加功能"""
     def test_1604_02_FinanceAdd(self):
-        """费用设置-财务设置-报销金额添加功能检查"""
+        """费用设置-财务设置-报销金额添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "财务设置")
         # 移动到页面顶部，防止对象遮挡
@@ -73,9 +73,9 @@ class Stting(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1604_02_FinanceAdd")
 
-    # 系统管理---业务设置---销售设置
+    """业务设置-销售合同条款-合同条款添加添加"""
     def test_1604_03_SalesContract(self):
-        """业务设置-销售合同条款-合同条款添加添加检查"""
+        """业务设置-销售合同条款-合同条款添加添加"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "销售合同条款")
         # 移动到页面顶部，防止对象遮挡
@@ -84,10 +84,8 @@ class Stting(unittest.TestCase):
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%Y%m%d%H%M")
         if v_save.is_displayed():
-            v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-            v_lines = v_write_file.read()
             driver.find_element_by_id("descrption").clear()
-            driver.find_element_by_id("descrption").send_keys(v_tim + v_lines[500:2000])
+            driver.find_element_by_id("descrption").send_keys(v_tim + fun_data_character(100, 1000))
             time.sleep(2)
             v_save.click()
             time.sleep(3)
@@ -96,9 +94,9 @@ class Stting(unittest.TestCase):
             print("BUG 业务设置-销售设置-销售合同条款添加数据错误")
             unittest.expectedFailure("test_1604_03_SalesContract")
 
-    # 业务设置-销售设置-收款阶段设置报警天数添加检查
+    """业务设置-销售设置-收款阶段设置报警天数添加"""
     def test_1604_04_SalesPhase(self):
-        """业务设置-销售设置-收款阶段设置报警天数添加检查"""
+        """业务设置-销售设置-收款阶段设置报警天数添加"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "收款阶段设置")
         # 移动到页面顶部，防止对象遮挡
@@ -118,9 +116,9 @@ class Stting(unittest.TestCase):
             print("BUG 业务设置-销售设置-收款阶段设置添加报警天数错误")
             unittest.expectedFailure("test_1604_04_SalesPhase")
 
-    # 系统管理---业务设置---采购设置
+    """采购设置-采购合同条款-数据添加功能"""
     def test_1604_05_Contract(self):
-        """采购设置-采购合同条款-数据添加功能检查"""
+        """采购设置-采购合同条款-数据添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "采购合同条款")
         # 移动到页面顶部，防止对象遮挡
@@ -132,6 +130,7 @@ class Stting(unittest.TestCase):
             v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
             v_lines = v_write_file.read()
             driver.find_element_by_id("descrption").clear()
+            time.sleep(1)
             driver.find_element_by_id("descrption").send_keys(v_tim + v_lines[10:1000])
             time.sleep(2)
             v_save.click()
@@ -141,9 +140,9 @@ class Stting(unittest.TestCase):
             print("BUG 业务设置-采购设置-采购合同条款数据添加错误")
             unittest.expectedFailure("test_1604_05_Contract")
 
-    # 采购设置-付款阶段设置-付款阶段设置添加报警天数功能检查
+    """采购设置-付款阶段设置-付款阶段设置添加报警天数功能"""
     def test_1604_06_Phase(self):
-        """采购设置-付款阶段设置-付款阶段设置添加报警天数功能检查"""
+        """采购设置-付款阶段设置-付款阶段设置添加报警天数功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "付款阶段设置")
         # 移动到页面顶部，防止对象遮挡
@@ -155,7 +154,7 @@ class Stting(unittest.TestCase):
             v_add.click()
             time.sleep(2)
             driver.find_element_by_id("txtName").send_keys("付款名称Auto" + v_tim)
-            driver.find_element_by_id("txtWarningDays").send_keys(random.randint(1,100))
+            driver.find_element_by_id("txtWarningDays").send_keys(random.randint(1, 100))
             driver.find_element_by_id("BtnSaveForm").click()
             time.sleep(3)
             print("业务设置-采购设置-付款阶段设置添加报警天数正常")
@@ -163,9 +162,9 @@ class Stting(unittest.TestCase):
             print("BUG 业务设置-采购设置-付款阶段设置添加报警天数正常错误")
             unittest.expectedFailure("test_1604_06_Phase")
 
-    # 业务设置-库存设置-库存收发货设置
+    """业务设置-库存设置-库存收货添加功能"""
     def test_1604_07_TransceiverStart(self):
-        """业务设置-库存设置-库存收货添加功能检查"""
+        """业务设置-库存设置-库存收货添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
         # 移动到页面顶部，防止对象遮挡
@@ -204,9 +203,9 @@ class Stting(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1604_07_TransceiverStart")
 
-    # 业务设置-库存设置-库存发货添加功能检查
+    """业务设置-库存设置-库存发货添加功能"""
     def test_1604_08_delivery(self):
-        """业务设置-库存设置-库存发货添加功能检查"""
+        """业务设置-库存设置-库存发货添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
         # 移动到页面顶部，防止对象遮挡
@@ -245,9 +244,9 @@ class Stting(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1604_08_delivery")
 
-    # 系统管理---业务设置---项目设置
+    """业务设置-项目设置-项目类型添加功能"""
     def test_1604_10_TypeAdd(self):
-        """业务设置-项目设置-项目类型添加功能检查"""
+        """业务设置-项目设置-项目类型添加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目类型")
         # 移动到页面顶部，防止对象遮挡
@@ -266,9 +265,9 @@ class Stting(unittest.TestCase):
             print("BUG 项目设置-项目类型-【添加】-不显示，请检查页面是否正常")
             unittest.expectedFailure("test_1604_10_TypeAdd")
 
-    # 业务设置-项目设置-项目组加功能检查
+    """业务设置-项目设置-项目组加功能"""
     def test_1604_11_PrjGroup(self):
-        """业务设置-项目设置-项目组加功能检查"""
+        """业务设置-项目设置-项目组加功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目组")
         # 移动到页面顶部，防止对象遮挡
@@ -295,9 +294,9 @@ class Stting(unittest.TestCase):
                 print(v_tip)
                 unittest.expectedFailure("test_1604_11_PrjGroup")
 
-    # 系统管理---移动端配置---自定义事件
+    """移动端配置-微信企业号-自定义事件发布功能"""
     def test_1604_12_WeixinEdd(self):
-        """移动端配置-微信企业号-自定义事件发布功能检查"""
+        """移动端配置-微信企业号-自定义事件发布功能"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "自定义事件")
         # 移动到页面顶部，防止对象遮挡
@@ -310,10 +309,10 @@ class Stting(unittest.TestCase):
         driver.find_element_by_id("txtTitle").send_keys("时间名称" + v_tim)
         # 事件key
         driver.find_element_by_id("txtEventKey").send_keys(v_tim)
-        # 回复内容
         driver.find_element_by_xpath("//*[@id='txtContent_Container']/div/span").click()
         time.sleep(3)
-        driver.find_element_by_id("GridPanelTextItem").click()
+        v_lists = driver.find_elements_by_class_name("x-grid3-row")
+        v_lists[random.randint(0, len(v_lists) - 1)].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()

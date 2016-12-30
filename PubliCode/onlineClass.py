@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class ClasLogin:
+class ClasLogin():
     """初始测试准备工作"""
     def __login_url(self, driver):
         # 内网118环境
@@ -55,9 +55,9 @@ class ClasLogin:
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.login_url(self, driver)
+        ClasLogin.__login_url(self, driver)
         # 用户登录
-        ClasLogin.login_user(self, driver, "fq01")
+        ClasLogin.__login_user(self, driver, "fq01")
 
     def login_setup_bear(self):
         # 设置页面上隐形的等待时间30秒
@@ -112,7 +112,7 @@ class ClasLogin:
         ClasLogin.__login_user(self, driver, "sp01")
 
 
-class ClasMenu:
+class ClasMenu(object):
     """打开菜单连接
     """
     def menu_full_text(self, *v_menu):
@@ -123,7 +123,7 @@ class ClasMenu:
                 time.sleep(1)
         else:
             pass
-        time.sleep(4)
+        time.sleep(3)
 
     def menu_part_text(self, *v_menu):
         # 关键字名称菜单
@@ -133,7 +133,7 @@ class ClasMenu:
                 time.sleep(1)
         else:
             pass
-        time.sleep(4)
+        time.sleep(3)
 
 
 class ClasForm:
@@ -148,7 +148,7 @@ class ClasForm:
     def form_today(self, uid):
         # 选择当天日期
         self.driver.find_element_by_id(uid).click()
-        for i in self.driver.find_elements_by_class_name("x-btn-mc"):
+        for i in self.driver.find_elements_by_tag_name("button"):
             if i.text == "今天":
                 i.click()
             time.sleep(1)

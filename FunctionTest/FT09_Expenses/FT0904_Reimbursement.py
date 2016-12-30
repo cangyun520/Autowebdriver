@@ -21,7 +21,8 @@ class Reimbursement(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
-        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
+        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")
         v_tim = time.strftime("%Y%m%d %H:%M")
         # 报销部门
         driver.find_element_by_xpath("//*[@id='OrgName_Container']/div/span").click()
@@ -30,7 +31,8 @@ class Reimbursement(unittest.TestCase):
         driver.find_element_by_id("txtBPartners").send_keys("总经办")
         driver.find_element_by_id("btnBPartners").click()
         time.sleep(1)
-        driver.find_elements_by_class_name("x-grid3-row")[0].click()        # 选择总经办
+        # 选择总经办
+        driver.find_elements_by_class_name("x-grid3-row")[0].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(2)
         driver.switch_to.parent_frame()

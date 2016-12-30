@@ -46,21 +46,9 @@ class WeixinUser(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("BtnDelUser").click()
         time.sleep(2)
-        v_tip = driver.find_elements_by_class_name("ext-mb-text")
-        for i in v_tip:
-            if "选择需要" in i.text:
-                print(i.text)
-                ClasForm.form_button_yes(self, "确定")
-            else:
-                print(i.text)
-                unittest.expectedFailure("test_1905_01_edit")
-        v_list = driver.find_elements_by_class_name("x-grid3-row")
-        v_list[1].click()
-        driver.find_element_by_id("BtnDelUser").click()
-        time.sleep(2)
         v_title = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_title:
-            if "确定删除" in i.text:
+            if "请选择需要删除" in i.text:
                 print(i.text)
                 break
             else:

@@ -18,7 +18,7 @@ class SalesQuotation(unittest.TestCase):
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self, driver)
 
-    # --销售管理---销售报价单
+    # 销售管理---销售报价单
     def test_0602_01_Add(self):
         """销售管理-销售报价单-新增单据功能"""
         driver = self.driver

@@ -14,7 +14,7 @@ class NewsManage(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000289")
 
-    # 行政办公---新闻公告---新闻公告管理
+    """行政办公-通知公告-新闻公告管理-单据添加功能"""
     def test_0407_01_Add(self):
         """行政办公-通知公告-新闻公告管理-单据添加功能"""
         driver = self.driver
@@ -26,8 +26,10 @@ class NewsManage(unittest.TestCase):
         driver.find_element_by_id("txt_title").send_keys("新闻公告(全体)Auto" + v_tim)
         time.sleep(1)
         # 内容
-        driver.find_element_by_id("txt_Content").send_keys(fun_data_character(100, 1000))
-        time.sleep(2)
+        driver.find_element_by_xpath("//*[@id='tab_Biz']/div/div[5]/div/div/div[2]/iframe").click()
+        driver.switch_to.active_element.send_keys(fun_data_character(100, 1000))
+        time.sleep(1)
+        ClasFlow.flow_free_icon(self, "bear")
         driver.find_element_by_id("btnWorkflow").click()
         time.sleep(3)
         for i in driver.find_elements_by_class_name("bootbox-body"):
@@ -39,7 +41,7 @@ class NewsManage(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_050502_01_Add")
 
-    # 行政办公-通知公告-新闻公告添加界面必填项校验
+    """行政办公-通知公告-新闻公告添加界面必填项校验"""
     def test_0407_02(self):
         """行政办公-通知公告-新闻公告添加界面必填项校验"""
         driver = self.driver
