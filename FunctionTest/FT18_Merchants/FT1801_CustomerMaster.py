@@ -185,6 +185,38 @@ class CustomerMaster(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1801_03_search")
 
+    # 客户主数据-增加地址
+    def test_1801_04(self):
+        """客商管理-客户主数据-更新添加联系人"""
+        driver = self.driver
+        v_tim = time.strftime("%y%m%d%H%M%S")
+        driver.find_element_by_id("btnLast").click()
+        time.sleep(3)
+        driver.find_element_by_id("btnPrevious").click()
+        time.sleep(3)
+        # 联系人页签
+        driver.find_element_by_link_text("地址").click()
+        v_person = driver.find_elements_by_class_name("x-grid3-hd-inner")[2]
+        ActionChains(driver).context_click(v_person).perform()
+        driver.find_element_by_id("MenuItem1").click()
+        time.sleep(1)
+        # 地址-新增地址窗体
+        driver.find_element_by_id("DAddressName").send_keys(fun_data_address())
+        # 街道邮箱
+
+        driver.find_element_by_id("btnYes").click()
+        time.sleep(1)
+        driver.find_element_by_id("btnSave").click()
+        time.sleep(4)
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            if "成功" in i.text:
+                print(i.text)
+            else:
+                driver.get_screenshot_as_file(root_path() + "TestPicture/test_1801_02.jpg")
+                print("Error：" + i.text)
+                unittest.expectedFailure("test_1801_02")
+
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

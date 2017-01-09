@@ -10,7 +10,7 @@ test_dir = root_path() + "FunctionTest"
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='FT1*.py')
 if __name__ == '__main__':
     v_tim = time.strftime("%Y%m%d")
-    FileName = root_path() + 'TestReport/FTRport/' + v_tim + ' FT_online02.htm'
+    FileName = root_path() + 'TestReport/FTRport/' + v_tim + 'FT_online02.htm'
     fp = open(FileName, 'wb')
     runner = HTMLTestRunner(stream=fp,
                             title='online功能集成自动化测试',

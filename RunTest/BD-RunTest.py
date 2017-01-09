@@ -10,7 +10,7 @@ test_dir = root_path() + "BaseDataSet"
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='DB*.py')
 v_tim = time.strftime("%Y%m%d")
 if __name__ == '__main__':
-    FileName = root_path() + 'TestReport/BDReport/' + v_tim + ' BD_online.htm'
+    FileName = root_path() + 'TestReport/BDReport/' + v_tim + 'BD_online.htm'
     fp = open(FileName, 'wb')
     runner = HTMLTestRunner(stream=fp,
                             title='online基础数据添加自动化测试',

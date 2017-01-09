@@ -33,6 +33,15 @@ class CarsArchives(unittest.TestCase):
         driver.find_element_by_id("txtName").send_keys(v_car)
         # 座位数
         driver.find_element_by_id("numSeats").send_keys(random.randint(1, 7))
+        # 驾驶员
+        driver.find_element_by_xpath("//*[@id='trgDriver_Container']/div/span/img[2]").click()
+        time.sleep(3)
+        driver.switch_to.frame("winSelectUser_IFrame")
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
+        v_list[random.randint(0, len(v_list)-1)].click()
+        driver.find_element_by_id("btnConfirm").click()
+        driver.switch_to.parent_frame()
+        time.sleep(1)
         # 购买时间
         driver.find_element_by_id("dtBuyTime").click()
         time.sleep(1)

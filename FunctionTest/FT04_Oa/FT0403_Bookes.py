@@ -32,6 +32,9 @@ class Bookes(unittest.TestCase):
         # 出版社
         driver.find_element_by_id("txtAddPublisher").send_keys("出版社" + v_tim)
         time.sleep(1)
+        # 出版日期
+        ClasForm.form_today(self, "datefiPublishDate")
+        time.sleep(1)
         # 存放地点
         driver.find_element_by_id("txtPlace").send_keys("存放地点" + v_tim)
         # 单价

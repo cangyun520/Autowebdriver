@@ -151,6 +151,7 @@ class ClasForm:
         for i in self.driver.find_elements_by_tag_name("button"):
             if i.text == "今天":
                 i.click()
+                break
             time.sleep(1)
 
     # 弹出时间控件任意选择N月以后的某一天
@@ -204,7 +205,7 @@ class ClasFlow:
             self.driver.find_element_by_id("btnConfirm").click()
             time.sleep(2)
             self.driver.switch_to.parent_frame()
-        except ImportError:
+        except:
             pass
 
     def flow_free_icon(self, usernam):
