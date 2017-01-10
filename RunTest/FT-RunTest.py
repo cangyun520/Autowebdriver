@@ -11,12 +11,15 @@ discover = unittest.defaultTestLoader.discover(
     test_dir,
     pattern='FT*.py'
 )
+
 if __name__ == '__main__':
     v_tim = time.strftime("%Y%m%d")
     FileName = root_path() + 'TestReport/FTRport/' + v_tim + 'FT_online.htm'
     fp = open(FileName, 'wb')
-    runner = HTMLTestRunner(stream=fp,
-                            title='online功能集成自动化测试',
-                            description='online自动化测试——主流程功能测试执行结果统计')
+    runner = HTMLTestRunner(
+        stream=fp,
+        title='online功能集成自动化测试',
+        description='online自动化测试——主流程功能测试执行结果统计'
+    )
     runner.run(discover)
     fp.close()
