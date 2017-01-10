@@ -198,14 +198,32 @@ class CustomerMaster(unittest.TestCase):
         driver.find_element_by_link_text("地址").click()
         v_person = driver.find_elements_by_class_name("x-grid3-hd-inner")[2]
         ActionChains(driver).context_click(v_person).perform()
-        driver.find_element_by_id("MenuItem1").click()
+        time.sleep(1)
+        driver.find_element_by_id("AddBorrow").click()
         time.sleep(1)
         # 地址-新增地址窗体
-        driver.find_element_by_id("DAddressName").send_keys(fun_data_address())
+        # 地址标识
+        driver.find_element_by_id("TAddressName").send_keys(v_tim)
         # 街道邮箱
-
-        driver.find_element_by_id("btnYes").click()
-        time.sleep(1)
+        driver.find_element_by_id("TStreet").send_keys(random.randint(111111, 999999))
+        # 街区
+        driver.find_element_by_id("TBlock").send_keys(fun_data_address())
+        # 城市
+        driver.find_element_by_id("TCity").send_keys(fun_data_city())
+        # 邮政编码
+        driver.find_element_by_id("TZipCode").send_keys(fun_data_email())
+        # 县
+        driver.find_element_by_id("TCounty").send_keys(fun_data_city())
+        # 省份
+        driver.find_element_by_id("TStateP").click()
+        v_list = driver.find_elements_by_class_name("x-combo-list-item")
+        v_list[random.randint(0, len(v_list)-0)].click()
+        # 街道号
+        driver.find_element_by_id("TStreetNo").send_keys(random.randint(111, 999))
+        # 楼层号
+        driver.find_element_by_id("TBuilding").send_keys(random.randint(11, 99))
+        driver.find_element_by_id("Button3").click()
+        time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
