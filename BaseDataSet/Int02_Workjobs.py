@@ -19,20 +19,29 @@ class Workjobs(unittest.TestCase):
     def test_Int02_01(self):
         """审批警报-固定流程设计-相对岗管理添加"""
         driver = self.driver
-        driver.find_element_by_id("btnAdd").click()
-        time.sleep(2)
-        driver.find_element_by_id("txtTitle_F").send_keys("发起")
-        driver.find_element_by_id("BtnSaveForm").click()
-        time.sleep(1)
-        driver.find_element_by_id("txtTitle_F").clear()
-        driver.find_element_by_id("txtTitle_F").send_keys("审批")
-        driver.find_element_by_id("BtnSaveForm").click()
-        time.sleep(1)
-        driver.find_element_by_id("txtTitle_F").clear()
-        driver.find_element_by_id("txtTitle_F").send_keys("终审")
-        driver.find_element_by_id("BtnSaveForm").click()
-        time.sleep(1)
-        driver.find_element_by_id("Button1").click()
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
+        if len(v_list) < 3:
+            driver.find_element_by_id("btnAdd").click()
+            time.sleep(2)
+            for i in v_list:
+                if "发起" not in i.text:
+                    driver.find_element_by_id("txtTitle_F").send_keys("发起")
+                    driver.find_element_by_id("BtnSaveForm").click()
+                    time.sleep(1)
+                    break
+                elif "审批" not in i.text:
+                    driver.find_element_by_id("txtTitle_F").clear()
+                    driver.find_element_by_id("txtTitle_F").send_keys("审批")
+                    driver.find_element_by_id("BtnSaveForm").click()
+                    time.sleep(1)
+                elif "终审" not in i.text:
+                    driver.find_element_by_id("txtTitle_F").clear()
+                    driver.find_element_by_id("txtTitle_F").send_keys("终审")
+                    driver.find_element_by_id("BtnSaveForm").click()
+                    time.sleep(1)
+            driver.find_element_by_id("Button1").click()
+        else:
+            print("已经有3个相对岗了")
 
     # 审批警报-相对岗管理-发起岗位用户添加
     def test_Int02_02(self):
@@ -111,6 +120,8 @@ class Workjobs(unittest.TestCase):
         v_tip = driver.find_elements_by_tag_name("ext-mb-text")
         for i in v_tip:
             if "操作成功" in i.text:
+                print(i.text)
+            elif "一个人" in i.text:
                 print(i.text)
             else:
                 unittest.expectedFailure("test_Int02_04")

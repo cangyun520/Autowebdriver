@@ -11,9 +11,8 @@ v_tim = time.strftime("%Y%m%d")
 test_dir = root_path() + "FunctionTest"
 discover = unittest.defaultTestLoader.discover(
     test_dir,
-    pattern='FT*.py'
+    pattern='FT01*.py'
 )
-
 # 报告文件存放路径
 FileName = root_path() + 'TestReport/FTRport/' + v_tim + 'FT_online.htm'
 fp = open(FileName, 'wb')
