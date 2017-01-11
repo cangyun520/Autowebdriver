@@ -34,7 +34,7 @@ class FreeBear(unittest.TestCase):
                 v_frame = "frame" + var_menu_id
                 driver.switch_to.frame(v_frame)
                 # 新页面自由流审批人选择-bear-审批通过
-                if v_frame in ["frame_tab_PM012013", "frame_tab_PM000290"]:
+                if v_frame in ["frame_tab_PM001013", "frame_tab_PM000290"]:
                     driver.find_element_by_id("userphoto").click()
                     time.sleep(2)
                     driver.find_element_by_xpath("//*[@id='gridUser_filter']/label/input").send_keys("admin")
