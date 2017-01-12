@@ -147,6 +147,10 @@ class ClasForm:
     # 弹出时间控件选择【今天】
     def form_today(self, uid):
         # 选择当天日期
+        """
+
+        :rtype: object
+        """
         self.driver.find_element_by_id(uid).click()
         for i in self.driver.find_elements_by_tag_name("button"):
             if i.text == "今天":
