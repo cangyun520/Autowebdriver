@@ -21,9 +21,9 @@ class CustomerMaster(unittest.TestCase):
         driver = self.driver
         v_tim = time.strftime("%y%m%d%H%M%S")
         # 客户代码
-        driver.find_element_by_id("txtCardCode").send_keys("CA" + str(random.randint(1000, 9000)))
+        driver.find_element_by_id("txtCardCode").send_keys("KH" + str(random.randint(11111, 99999)))
         # 客户名称
-        driver.find_element_by_id("txtCardName").send_keys("客户Auto" + v_tim + "股份公司")
+        driver.find_element_by_id("txtCardName").send_keys("客户Au" + v_tim + "股份公司")
         # 外文名称
         driver.find_element_by_id("txtCardFName").send_keys("CustomerAuto" + v_tim)
         # 组

@@ -144,18 +144,23 @@ class ClasForm:
         js_top = "window.scrollTo(0," + str(number) + ")"
         self.driver.execute_script(js_top)
 
-    # 弹出时间控件选择【今天】
+    # 表头弹出时间控件选择【今天】
     def form_today(self, uid):
         # 选择当天日期
-        """
-
-        :rtype: object
-        """
         self.driver.find_element_by_id(uid).click()
         for i in self.driver.find_elements_by_tag_name("button"):
             if i.text == "今天":
                 i.click()
                 break
+            time.sleep(1)
+
+    # 行弹出时间控件选择【今天】
+    def form_today_line(self, uid):
+        # 选择当天日期
+        self.driver.find_element_by_id(uid).click()
+        for i in self.driver.find_elements_by_tag_name("button"):
+            if i.text == "今天":
+                i.click()
             time.sleep(1)
 
     # 弹出时间控件任意选择N月以后的某一天

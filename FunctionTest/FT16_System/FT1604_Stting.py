@@ -302,6 +302,7 @@ class Stting(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000595")
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         v_tim = time.strftime("%y%m%d%H%M")
@@ -312,7 +313,7 @@ class Stting(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='txtContent_Container']/div/span").click()
         time.sleep(3)
         v_lists = driver.find_elements_by_class_name("x-grid3-row")
-        v_lists[random.randint(0, len(v_lists) - 1)].click()
+        v_lists[random.randint(v_list, len(v_lists)-1)].click()
         driver.find_element_by_id("Button1").click()
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()
