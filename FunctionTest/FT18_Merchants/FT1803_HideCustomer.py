@@ -13,7 +13,7 @@ class HideCustomer(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000734")
 
-    # --客商管理---潜在客户主数据
+    # 客商管理---潜在客户主数据
     def test_1803_01_Add(self):
         """客商管理-潜在客户主数据-单据取消功能"""
         driver = self.driver

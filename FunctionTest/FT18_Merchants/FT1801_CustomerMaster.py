@@ -15,7 +15,7 @@ class CustomerMaster(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000067")
 
-    # --客商管理---客户主数据
+    # 客商管理---客户主数据
     def test_1801_01_Add(self):
         """客商管理-客户主数据-新增单据功能"""
         driver = self.driver
