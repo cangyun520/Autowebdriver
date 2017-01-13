@@ -6,7 +6,7 @@ class Application(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "应用中心",)
+        ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "应用中心")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000596")
