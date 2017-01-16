@@ -1,18 +1,20 @@
-import unittest
-import time
-from HTMLTestRunner import HTMLTestRunner
-from PubliCode.randData import root_path
+
 from PubliCode.onlineClass import *
 
-'''项目集成测试报告
-指定测试用例为当前文件夹下的test_case目录
-通过自定函数获取当前文件所在路径
+'''
+    *   OnlineBox功能集成测试报告
+    *   指定测试用例为当前文件夹下的test_case目录
+    *   通过自定函数获取当前文件所在路径
+    *   获取最新测试报告，并打印运行错误用例
+    *   把结果发送到指定邮箱
+    *   Arvin
+    *   2017-01-13
 '''
 v_tim = time.strftime("%Y%m%d")
 test_dir = root_path() + "FunctionTest"
 discover = unittest.defaultTestLoader.discover(
     test_dir,
-    pattern='FT01*.py'
+    pattern='FT*.py'
 )
 # 报告文件存放路径
 FileName = root_path() + 'TestReport/FTRport/' + v_tim + 'FT_online.htm'
@@ -65,5 +67,3 @@ class RunResult(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
-
-

@@ -1,6 +1,10 @@
 
 import random
 from PubliCode.onlineClass import *
+'''
+    *   Arvin
+    *   2017-01-13
+'''
 
 
 class Workentrusting(unittest.TestCase):
