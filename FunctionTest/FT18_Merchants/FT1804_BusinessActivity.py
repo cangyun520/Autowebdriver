@@ -12,7 +12,7 @@ class BusinessActivity(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000740")
 
-    # 业务活动---业务活动
+    """业务活动-业务活动-业务活动功能"""
     def test_1804_01_call(self):
         """业务活动-业务活动-业务活动功能"""
         driver = self.driver
@@ -37,9 +37,7 @@ class BusinessActivity(unittest.TestCase):
         # 内容页签
         driver.find_element_by_link_text("内容").click()
         time.sleep(1)
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
-        driver.find_element_by_id("txtNotes").send_keys(v_lines[300:1300])
+        driver.find_element_by_id("txtNotes").send_keys(fun_data_character(10,500))
         time.sleep(2)
         # 链接凭证页签-单据类型
         driver.find_element_by_link_text("链接凭证").click()

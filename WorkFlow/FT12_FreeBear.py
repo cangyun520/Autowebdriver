@@ -1,7 +1,6 @@
 
 from selenium.webdriver.common.action_chains import ActionChains
 from PubliCode.onlineClass import *
-import sys
 
 
 class FreeBear(unittest.TestCase):
@@ -10,7 +9,7 @@ class FreeBear(unittest.TestCase):
         # 打开登录页面
         ClasLogin.login_setup_bear(self)
 
-    # 首页-------流程审批
+    '''首页-流程审批'''
     def test_1201_bearPass(self):
         """Online流程中间审批通过"""
         driver = self.driver
@@ -39,7 +38,7 @@ class FreeBear(unittest.TestCase):
                     time.sleep(2)
                     driver.find_element_by_xpath("//*[@id='gridUser_filter']/label/input").send_keys("admin")
                     time.sleep(1)
-                    driver.find_element_by_id("gridUser").click()
+                    driver.find_element_by_xpath("//*[@id='gridUser']/tbody/tr").click()
                     driver.find_element_by_id("btnUserOK").click()
                     time.sleep(1)
                 else:
@@ -56,10 +55,10 @@ class FreeBear(unittest.TestCase):
                     driver.switch_to.parent_frame()
                     time.sleep(1)
                 driver.find_element_by_id("btnPass").click()
+                time.sleep(2)
                 v_tip = driver.find_elements_by_class_name("ext-mb-text")
                 v_masg = driver.find_elements_by_class_name("bootbox-body")
-                v_tip = v_tip + v_masg
-                for i in v_tip:
+                for i in v_tip or v_masg:
                     if "成功" in i.text:
                         print(i.text)
                     elif "已结算其中一个基本单据" in i.text:

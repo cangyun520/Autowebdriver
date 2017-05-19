@@ -15,7 +15,7 @@ class WorkFlow(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000025")
 
-    # 审批警报-固定流程设计-流程设计器导入流程xml
+    '''审批警报-固定流程设计-流程设计器导入流程xml'''
     def test_Int02_05(self):
         """审批警报-固定流程设计-流程设计器导入流程xml"""
         driver = self.driver

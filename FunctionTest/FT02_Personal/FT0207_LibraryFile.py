@@ -9,16 +9,17 @@ from PubliCode.randData import *
 
 class LibraryFile(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "个人事务", "知识文库", "公用文件柜")
+        ClasMenu.menu_full_text(self, "事务处理", "知识文库", "公用文件柜")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000809")
 
-    # 知识文库-公用文件柜-单据添加功能
+    '''知识文库-公用文件柜-单据添加功能'''
     def test_0207_01_add(self):
         """知识文库-公用文件柜-单据添加功能"""
         driver = self.driver

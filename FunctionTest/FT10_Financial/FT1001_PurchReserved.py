@@ -16,7 +16,7 @@ class PurchReserved(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001079")
 
-    # 财务管理---财务付款
+    '''财务管理-财务付款'''
     def test_1001_01_way(self):
         """财务管理-付款-金额为空校验付款方式"""
         driver = self.driver
@@ -24,11 +24,65 @@ class PurchReserved(unittest.TestCase):
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
-            if "到期总金额不能为空" in i.text:
+            if "金额不能为空" in i.text:
                 print(i.text)
             else:
                 print(i.text)
                 unittest.expectedFailure("test_1001_01_way")
+
+    '''财务管理-财务付款-查询功能'''
+    def test_1001_02_query(self):
+        """财务管理-财务付款-查询功能"""
+        driver = self.driver
+        driver.find_element_by_id("btnSearch").click()
+        time.sleep(3)
+        driver.switch_to.frame("winAdd_IFrame")
+        driver.find_element_by_id("gpSelect").click()
+        driver.find_element_by_id("btnSelect").click()
+        time.sleep(2)
+        driver.switch_to.parent_frame()
+        v_list = driver.find_elements_by_class_name("x-grid3-row")
+        if len(v_list) > 0:
+            print("单据查询数据正常显示")
+        else:
+            unittest.expectedFailure("test_1001_02_query")
+            print("BUG-单据查询数据不正常")
+            driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1001_02_query.jpg")
+
+    '''财务管理-财务付款-新增功能'''
+    def test_1001_03_add(self):
+        """财务管理-付款-单据新增"""
+        driver = self.driver
+        driver.find_element_by_xpath("//*[@id='txtCardCode_Container']/div/span").click()
+        time.sleep(3)
+        # 切换到业务伙伴选择窗体
+        driver.switch_to.frame("winAdd_IFrame")
+        driver.find_element_by_id("txtCodeWhere").send_keys("V")
+        driver.find_element_by_id("Button2").click()
+        time.sleep(2)
+        driver.find_elements_by_class_name("x-grid3-row")[1].click()
+        driver.find_element_by_id("Button13").click()
+        time.sleep(3)
+        driver.switch_to.parent_frame()
+        v_check = driver.find_elements_by_class_name("x-grid3-row-checker")
+        v_check[0].click()
+        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        driver.find_element_by_id("btnPay").click()
+        time.sleep(2)
+        driver.find_element_by_id("txtTrsfrRef").send_keys("自动付款" + v_tim)
+        driver.find_element_by_id("btnCopyTrsfrSum").click()
+        driver.find_element_by_id("btnWindowOK").click()
+        time.sleep(2)
+        driver.find_element_by_id("txtRemarks").send_keys("Python自动付款" + v_tim)
+        driver.find_element_by_id("btnSave").click()
+        time.sleep(3)
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            if "成功" in i.text:
+                print(i.text)
+            else:
+                print(i.text)
+                unittest.expectedFailure("test_1001_03_add")
 
     def tearDown(self):
         self.driver.quit()

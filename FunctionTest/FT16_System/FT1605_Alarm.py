@@ -4,14 +4,15 @@ from PubliCode.onlineClass import *
 
 class Alarm(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理---审批流程---消息模板
-    def test_1605_Message(self):
-        """系统管理---审批流程---消息模板"""
+    '''系统管理-审批流程-消息模板'''
+    def test_1605_01_Message(self):
+        """系统管理-审批流程-消息模板"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"消息模板")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"消息模板")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000822")
@@ -25,10 +26,11 @@ class Alarm(unittest.TestCase):
             else:
                 print("BUG 关键字查询")
 
-    def test_1605_MSet(self):
-        """系统管理---审批流程---消息配置"""
+    """系统管理-审批流程-消息配置"""
+    def test_1605_02_MSet(self):
+        """系统管理-审批流程-消息配置"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"消息配置")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"消息配置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
@@ -43,27 +45,11 @@ class Alarm(unittest.TestCase):
             else:
                 print("BUG 审批流程-消息配置窗体不显示")
 
-    def test_1605_Post(self):
-        """系统管理---审批流程---相对岗管理"""
+    """系统管理-审批流程-工作流字段"""
+    def test_1605_04_Field(self):
+        """系统管理-审批流程-工作流字段"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"相对岗管理")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        # 切换到右侧表单页面
-        driver.switch_to.frame("frame_tab_PM000231")
-        driver.find_element_by_id("btnAdd").click()
-        v_title = driver.find_elements_by_class_name("x-window-header-text")
-        for i in v_title:
-            if "相对岗信息" in i.text:
-                print("审批流程-相对岗管理-页面显示正常")
-                break
-            else:
-                print("BUG 审批流程-相对岗管理配置窗体不显示")
-
-    def test_1605_Field(self):
-        """系统管理---审批流程---工作流字段"""
-        driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"工作流字段")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"工作流字段")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
@@ -75,10 +61,11 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-工作流字段-【全部展开】-不显示")
 
-    def test_1605_Permission(self):
-        """系统管理---审批流程---字段权限配置"""
+    """系统管理-审批流程-字段权限配置"""
+    def test_1605_05_Permission(self):
+        """系统管理-审批流程-字段权限配置"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"字段权限配置")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"字段权限配置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
@@ -90,10 +77,11 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-字段权限配置-【设置】-不显示")
 
-    def test_1605_Designer(self):
-        """系统管理---审批流程---流程设计器"""
+    """系统管理-审批流程-流程设计器"""
+    def test_1605_06_Designer(self):
+        """系统管理-审批流程-流程设计器"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"流程设计器")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"流程设计器")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
@@ -106,10 +94,11 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-流程设计器-【导入】-不显示")
 
-    def test_1605_Version(self):
-        """系统管理---审批流程---流程版本管理"""
+    """系统管理-审批流程-流程版本管理"""
+    def test_1605_07_Version(self):
+        """系统管理-审批流程-流程版本管理"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"流程版本管理")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"流程版本管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
@@ -121,8 +110,9 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-流程版本管理-【查询】-不显示")
 
-    def test_1605_Alarm(self):
-        """系统管理---审批流程---预警报警"""
+    """系统管理-审批流程-预警报警"""
+    def test_1605_08_Alarm(self):
+        """系统管理-审批流程-预警报警"""
         driver = self.driver
         ClasMenu.menu_full_text(self, u"系统管理", u"警报设置", u"预警报警")
         # 移动到页面顶部，防止对象遮挡
@@ -136,10 +126,11 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-预警报警-【添加】-不显示")
 
-    def test_1605_FreeStream(self):
+    """审批流程-警报设置-自由流设计单据UI检查"""
+    def test_1605_09_FreeStream(self):
         """审批流程-警报设置-自由流设计单据UI检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"自由流设计")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"自由流设计")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000981")
@@ -150,10 +141,11 @@ class Alarm(unittest.TestCase):
         except ImportError:
             print("BUG 审批流程-自由流设计-【查询】-不显示")
 
-    def test_1605_Billboard(self):
+    """系统管理-审批流程-流程看板"""
+    def test_1605_10_Billboard(self):
         """系统管理-审批流程-流程看板"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"审批流程", u"流程看板")
+        ClasMenu.menu_full_text(self, u"系统管理", u"流程设置", u"流程看板")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面

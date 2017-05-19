@@ -9,13 +9,14 @@ from PubliCode.onlineClass import *
 
 class Workcontact(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, "流程处理", "流程进度跟踪")
+        ClasMenu.menu_full_text(self, "事务处理", "流程处理", "流程进度跟踪")
         driver.switch_to.frame("frame_tab_PM000030")
 
-    # 流程处理-流程进度跟踪
+    '''流程处理-流程进度跟踪'''
     def test_0307_01(self):
         """流程处理-流程进度跟踪-【查询】检查"""
         driver = self.driver

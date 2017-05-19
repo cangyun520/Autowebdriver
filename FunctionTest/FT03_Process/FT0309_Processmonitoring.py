@@ -9,13 +9,14 @@ from PubliCode.onlineClass import *
 
 class Processmonitoring(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, "流程处理", "流程监控")
+        ClasMenu.menu_full_text(self, "事务处理", "流程处理", "流程监控")
         driver.switch_to.frame("frame_tab_PM000028")
 
-    # 流程处理-流程监控
+    '''流程处理-流程监控'''
     def test_0309_01(self):
         """流程处理-流程监控-【查询】检查"""
         driver = self.driver
@@ -27,7 +28,7 @@ class Processmonitoring(unittest.TestCase):
         else:
             print("流程监控-页面-显示正常")
 
-    # 流程处理-流程监控
+    '''流程处理-流程监控'''
     def test_0309_02(self):
         """流程处理-流程监控-查看流程进度跟踪"""
         driver = self.driver

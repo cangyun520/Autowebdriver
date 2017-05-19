@@ -14,7 +14,7 @@ class Competitor(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001073")
 
-    # 客户关系---销售管理---竞争对手维护数据添加
+    '''客户关系-销售管理-竞争对手维护数据添加'''
     def test_1201_01_Add(self):
         """客户关系-竞争对手维护--新增单据功能"""
         driver = self.driver
@@ -35,9 +35,9 @@ class Competitor(unittest.TestCase):
         time.sleep(1)
         print(v_company)
 
-    # 客户关系---销售管理---批量删除按钮校验
+    '''客户关系-销售管理-批量删除按钮校验'''
     def test_1201_02_Batchdelete(self):
-        """客户关系---销售管理---批量删除按钮校验"""
+        """客户关系-销售管理-批量删除按钮校验"""
         driver = self.driver
         driver.find_element_by_id("btnBatchDel").click()
         time.sleep(1)

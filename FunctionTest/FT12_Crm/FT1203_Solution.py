@@ -14,7 +14,7 @@ class Solution(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000279")
 
-    # 客户关系---销售管理---解决方案
+    '''客户关系-销售管理-解决方案'''
     def test_1203_01_Add(self):
         """客户关系-售后管理-解决方案-新增单据功能"""
         driver = self.driver
@@ -41,6 +41,7 @@ class Solution(unittest.TestCase):
         driver.find_element_by_id("Descriptio").send_keys(fun_data_character(200, 400))
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()
+        time.sleep(3)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:

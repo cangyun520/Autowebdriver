@@ -9,16 +9,17 @@ from PubliCode.randData import *
 
 class LibraryHarddisk(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "个人事务", "知识文库", "网络硬盘")
+        ClasMenu.menu_full_text(self, "事务处理", "知识文库", "网络硬盘")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000810")
 
-    # 知识文库-网络硬盘-单据添加功能
+    '''知识文库-网络硬盘-单据添加功能'''
     def test_0208_01_add(self):
         """知识文库-网络硬盘-单据添加功能"""
         driver = self.driver

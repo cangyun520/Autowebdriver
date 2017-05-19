@@ -10,7 +10,7 @@ class FreeAdmin(unittest.TestCase):
         # 打开登录页面
         ClasLogin.login_setup_admin(self)
 
-    # 首页-------流程审批
+    # 首页-流程审批
     def test_1301_bearadmin(self):
         """Online流程中间审批通过"""
         driver = self.driver
@@ -31,7 +31,7 @@ class FreeAdmin(unittest.TestCase):
                 var_active_id = var_active.get_attribute("id")
                 # 截取第3个字符到结尾
                 var_menu_id = var_active_id[3:]
-                driver.switch_to_frame("frame" + var_menu_id)
+                driver.switch_to.frame("frame" + var_menu_id)
                 # 审批通过
                 driver.find_element_by_id("btnPass").click()
                 v_tip = driver.find_elements_by_class_name("ext-mb-text")

@@ -9,14 +9,14 @@ class QASubmission(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "质检管理", "送检单")
+        ClasMenu.menu_full_text(self, "采购管理", "质检", "送检单")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000831")
 
-    # 质检管理-送检单-新增单据功能
+    '''采购管理-送检单-新增单据功能'''
     def test_1401_01(self):
-        """质检管理-送检单-新增单据功能"""
+        """采购管理-送检单-新增单据功能"""
         driver = self.driver
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(5)
@@ -35,7 +35,7 @@ class QASubmission(unittest.TestCase):
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM000831")
         driver.switch_to.frame("winSendInspection_IFrame")
-        driver.find_element_by_id("ext-comp-1014").click()
+        driver.find_element_by_id("ext-comp-1015").click()
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)

@@ -17,13 +17,15 @@ class Int04_HR(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000888")
 
-    # 人事管理------人员管理------档案管理
+    '''人事管理-人员管理-档案管理'''
     def test_Int04_01_Import(self):
         driver = self.driver
         driver.find_element_by_id("Button1").click()
         time.sleep(2)
-        driver.find_element_by_id("UploadFile").send_keys(root_path() + "PubliData/excel/HRuser250.xlsx")
+        driver.switch_to.frame("winInit_IFrame")
+        driver.find_element_by_id("UploadFile").send_keys(root_path() + "PubliData/excel/HRuser.xls")
         time.sleep(1)
+        driver.find_element_by_id("ckbCover").click()
         driver.find_element_by_id("BtnSaveForm").click()
         time.sleep(5)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")

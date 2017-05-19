@@ -6,13 +6,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-class ClasLogin():
+class ClasLogin:
     """初始测试准备工作"""
-    def __login_url(self, driver):
-        # 内网118环境
-        # v_url = "http://192.168.2.118:8024"
-        # test环境
-        v_url = "http://test.b1box.net"
+    def __login_url(self):
+        # 环境URL地址
+        driver = self.driver
+        f = open(root_path() + 'PubliData/config/url.txt', 'r')
+        v_url = f.readline()
+        f.close()
         driver.maximize_window()
         driver.get(v_url)
         forget_pasd = driver.find_element_by_partial_link_text("忘记密码")
@@ -20,31 +21,38 @@ class ClasLogin():
             driver.get(v_url)
         time.sleep(2)
 
-    def __login_user(self, driver, uname):
+    def __login_user(self, uname):
         """用户登录
         # log_file = open(root_path() + 'PubliData/LogName.txt', 'r')
         # usernam = log_file.readline()
         """
-        password = 1
+        driver = self.driver
+        password = 123456
         driver.find_element_by_id("user_login").clear()
         driver.find_element_by_id("user_login").send_keys(uname)
         driver.find_element_by_id("user_pass").clear()
         driver.find_element_by_id("user_pass").send_keys(password)
         driver.find_element_by_id("btn_Login").click()
-        time.sleep(4)
+        time.sleep(3)
+        if driver.find_element_by_link_text("系统管理").is_displayed():
+            pass
+        else:
+            driver.refresh()
+            time.sleep(2)
 
     def login_setup(self):
         # 设置页面上隐形的智能等待时间30秒
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(20)
         # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
         self.verificationErrors = []
         # 是否接受下一个警告，默认为是
         self.accept_next_alert = True
         driver = self.driver
+        time.sleep(1)
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "admin")
+        ClasLogin.__login_user(self, "admin")
 
     def login_setup_fq(self):
         # 设置页面上隐形的等待时间30秒
@@ -55,9 +63,9 @@ class ClasLogin():
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "fq01")
+        ClasLogin.__login_user(self, "fq01")
 
     def login_setup_bear(self):
         # 设置页面上隐形的等待时间30秒
@@ -68,9 +76,9 @@ class ClasLogin():
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "bear")
+        ClasLogin.__login_user(self, "bear")
 
     def login_setup_admin(self):
         # 设置页面上隐形的等待时间30秒
@@ -81,9 +89,9 @@ class ClasLogin():
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "admin")
+        ClasLogin.__login_user(self, "admin")
 
     def login_setup_arvin(self):
         # 设置页面上隐形的等待时间30秒
@@ -94,9 +102,9 @@ class ClasLogin():
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "arvin")
+        ClasLogin.__login_user(self, "arvin")
 
     def login_setup_sp01(self):
         # 设置页面上隐形的等待时间30秒
@@ -107,14 +115,13 @@ class ClasLogin():
         self.accept_next_alert = True
         driver = self.driver
         # 打开菜单
-        ClasLogin.__login_url(self, driver)
+        ClasLogin.__login_url(self)
         # 用户登录
-        ClasLogin.__login_user(self, driver, "sp01")
+        ClasLogin.__login_user(self, "sp01")
 
 
-class ClasMenu(object):
-    """打开菜单连接
-    """
+class ClasMenu:
+    """打开菜单连接"""
     def menu_full_text(self, *v_menu):
         # 全名称菜单
         if v_menu != "":
@@ -136,15 +143,14 @@ class ClasMenu(object):
         time.sleep(3)
 
 
-class ClasForm:
-    """处理表单内部特殊字段数据
-    """
+class ClasForm():
+    """处理表单内部特殊字段数据"""
     def form_top(self, number):
         # js移动到页面顶部，防止对象遮挡
         js_top = "window.scrollTo(0," + str(number) + ")"
         self.driver.execute_script(js_top)
 
-    # 表头弹出时间控件选择【今天】
+    '''表头弹出时间控件选择【今天】'''
     def form_today(self, uid):
         # 选择当天日期
         self.driver.find_element_by_id(uid).click()
@@ -152,18 +158,18 @@ class ClasForm:
             if i.text == "今天":
                 i.click()
                 break
-            time.sleep(1)
+        time.sleep(1)
 
-    # 行弹出时间控件选择【今天】
+    '''行弹出时间控件选择【今天】'''
     def form_today_line(self, uid):
         # 选择当天日期
         self.driver.find_element_by_id(uid).click()
         for i in self.driver.find_elements_by_tag_name("button"):
             if i.text == "今天":
                 i.click()
-            time.sleep(1)
+                break
 
-    # 弹出时间控件任意选择N月以后的某一天
+    '''弹出时间控件任意选择N月以后的某一天'''
     def form_today_next(self, number, uid, nextmonth, today):
         self.driver.find_element_by_id(uid).click()
         v_month = self.driver.find_elements_by_class_name("x-date-right")
@@ -179,27 +185,38 @@ class ClasForm:
                 i.click()
                 break
 
-    # 页面自定义字段隐藏
-    def form_field_hide(self, driver):
+    '''页面自定义字段隐藏'''
+    def form_field_hide(self):
         # 隐藏自定义字段
+        driver = self.driver
         if driver.find_element_by_id("panelColumn").is_displayed():
             driver.find_element_by_xpath("//*[@id='panelColumn']/div/div").click()
             time.sleep(1)
         else:
             pass
 
-    # 根据名称点击页面按钮
+    '''根据名称点击页面按钮'''
     def form_button_yes(self, v_str):
-        for i in self.driver.find_elements_by_tag_name("button"):
-            if i.text == v_str:
-                i.click()
-                break
+        v_tip_t = self.driver.find_elements_by_class_name("x-window-header-text")
+        for i in v_tip_t:
+            if "提示" in i.text:
+                for ii in self.driver.find_elements_by_tag_name("button"):
+                    if ii.text == v_str:
+                        ii.click()
+                        break
         time.sleep(2)
+
+    '''检查窗体是否一直处于加载中卡死'''
+    def form_loading(self, testcase):
+        v_load = self.driver.find_elements_by_class_name("x-mask-loading")
+        for i in v_load:
+            if "数据加载中" in i.text:
+                print("复制从窗体界面一直处于加载中，导致页面假死，请检查！")
+                unittest.expectedFailure(testcase)
 
 
 class ClasFlow:
-    """处理单据固定流，自由流操作
-    """
+    """处理单据固定流，自由流操作"""
     def flow_free(self, usernam):
         # 自由流处理
         try:
@@ -218,26 +235,22 @@ class ClasFlow:
             pass
 
     def flow_free_icon(self, usernam):
-        # 图标形状自由流
-        try:
-            self.driver.find_element_by_id("userphoto").is_displayed()
-            self.driver.find_element_by_id("userphoto").click()
-            time.sleep(6)
-            for i in self.driver.find_elements_by_tag_name("td"):
-                if i.text == usernam:
-                    i.click()
-            time.sleep(1)
-            self.driver.find_element_by_id("btnUserOK").click()
-            time.sleep(2)
-        except ImportError:
-            pass
+        self.driver.find_element_by_id("userphoto").click()
+        time.sleep(3)
+        for i in self.driver.find_elements_by_tag_name("td"):
+            if i.text == usernam:
+                i.click()
+        time.sleep(1)
+        self.driver.find_element_by_id("btnUserOK").click()
+        time.sleep(2)
 
 
 class ClasPopupWindow:
     """表头弹出窗体数据选择
     """
-    def popup_project(self, driver):
+    def popup_project(self):
         # 项目弹出窗体数据选择
+        driver = self.driver
         driver.find_element_by_xpath("//*[@id='ProjectCode_Container']/div/span").click()
         time.sleep(3)
         driver.switch_to_frame("winAdd_IFrame")

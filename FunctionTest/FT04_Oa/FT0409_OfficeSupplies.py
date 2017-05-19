@@ -9,7 +9,8 @@ from PubliCode.randData import *
 
 class OfficeSupplies(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
@@ -18,7 +19,7 @@ class OfficeSupplies(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000796")
 
-    # 行政办公-办公用品管理-单据添加功能
+    '''行政办公-办公用品管理-单据添加功能'''
     def test_0409_01_add(self):
         """行政办公-办公用品管理-单据添加功能"""
         driver = self.driver
@@ -54,7 +55,6 @@ class OfficeSupplies(unittest.TestCase):
                 print("BUG 行政办公-办公用品管理添加数据失败，请检查页面")
         else:
             print("BUG 行政办公-办公用品管理-【添加】-不显示，请检查页面是否正常")
-
             unittest.expectedFailure("test_0409_01_add")
 
     def tearDown(self):

@@ -9,12 +9,12 @@ class QAWait(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "质检管理", "待检管理")
+        ClasMenu.menu_full_text(self, "采购管理", "质检", "待检管理")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000833")
 
-    # 质检管理-待检管理-分配质检员
+    '''质检管理-待检管理-分配质检员'''
     def test_1402_01(self):
         """质检管理-待检管理-分配质检员功能"""
         driver = self.driver

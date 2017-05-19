@@ -5,7 +5,8 @@ from PubliCode.randData import *
 
 class Resource(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "资源管理",)

@@ -9,7 +9,8 @@ from PubliCode.randData import *
 
 class VoteAdd(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
@@ -18,7 +19,7 @@ class VoteAdd(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000487")
 
-    # 行政办公-创建投票-单选投票添加
+    '''行政办公-创建投票-单选投票添加'''
     def test_0406_01_add(self):
         """行政办公-创建投票-单选投票添加功能"""
         driver = self.driver

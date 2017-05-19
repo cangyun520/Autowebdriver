@@ -7,13 +7,13 @@ class Expenses(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 业务设置-费用设置-类型添加
+    '''业务设置-费用设置-类型添加'''
     def test_DB01_01_ApplyAdd(self):
         """业务设置-费用设置-类型添加"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "报销类型设置")
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000762")
+        driver.switch_to.frame("frame_tab_PM000762")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%m%d%H%M")
@@ -22,7 +22,7 @@ class Expenses(unittest.TestCase):
         # 关联菜单
         driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen65").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         v_check = driver.find_elements_by_class_name("x-grid3-row-checker")
         for i in v_check:
             i.click()
@@ -33,7 +33,7 @@ class Expenses(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100201")
         driver.find_element_by_id("btnBPartners").click()
         time.sleep(1)
@@ -53,14 +53,45 @@ class Expenses(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_DB01_01_ApplyAdd")
 
-    # 费用设置-财务设置-报销金额添加
+    '''费用设置-财务设置-报销金额添加'''
     def test_DB01_02_FinanceAdd(self):
         """费用设置-财务设置-报销金额添加"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "财务设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000763")
+        driver.switch_to.frame("frame_tab_PM000763")
+
+        # 检查费用报销是否勾选
+        v_fybx = driver.find_element_by_id("ChkExpenseReimbursement")
+        if v_fybx.is_selected():
+            pass
+        else:
+            v_fybx.click()
+        # 检查差旅费报销单是否勾选
+        v_fybx = driver.find_element_by_id("ChkTravelExpense")
+        if v_fybx.is_selected():
+            pass
+        else:
+            v_fybx.click()
+        # 检查费用申请单是否勾选
+        v_fybx = driver.find_element_by_id("ChkCostApply")
+        if v_fybx.is_selected():
+            pass
+        else:
+            v_fybx.click()
+        # 检查付款单是否勾选
+        v_fybx = driver.find_element_by_id("ChkPayment")
+        if v_fybx.is_selected():
+            pass
+        else:
+            v_fybx.click()
+        # 检查还款单是否勾选
+        v_fybx = driver.find_element_by_id("ChkRepayment")
+        if v_fybx.is_selected():
+            pass
+        else:
+            v_fybx.click()
         driver.find_element_by_id("btnSave").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")

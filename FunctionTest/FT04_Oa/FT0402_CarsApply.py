@@ -18,22 +18,27 @@ class CarsApply(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000803")
 
-    # 行政办公-车辆管理-车辆申请添加
+    '''行政办公-车辆管理-车辆申请添加'''
     def test_0402_02_add(self):
         """行政办公-车辆管理-车辆申请添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnApply").click()
         time.sleep(3)
         v_tim = time.strftime("%y%m%d%H%M")
-        driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
+        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")
         # 用车人
         driver.find_element_by_xpath("//*[@id='trigfiApplyPerson_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择页面
+
+        # 切换到用户选择页面
+        driver.switch_to.frame("winSelectUser_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[random.randint(1, 10)].click()
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(1)
+        # driver.switch_to.frame("frame_tab_PM000803")
         driver.switch_to.parent_frame()
+
         # 车牌号
         driver.find_element_by_xpath("//*[@id='trgPlateNumber_Container']/div/span/img[2]").click()
         time.sleep(3)
@@ -46,7 +51,8 @@ class CarsApply(unittest.TestCase):
         # 随行人员
         driver.find_element_by_xpath("//*[@id='trgEntourageName_Container']/div/span/img[2]").click()
         time.sleep(3)
-        driver.switch_to.frame("winSelectUser_IFrame")      # 切换到用户选择页面
+        # 切换到用户选择页面
+        driver.switch_to.frame("winSelectUser_IFrame")
         driver.find_elements_by_class_name("x-grid3-row")[random.randint(1, 10)].click()
         driver.find_element_by_id("btnConfirm").click()
         time.sleep(1)
@@ -70,7 +76,7 @@ class CarsApply(unittest.TestCase):
         for i in v_tip:
             if "流程已触发" in i.text:
                 print(i.text)
-            elif "该车辆选择时间段内已被申请" in i.text:
+            elif "时间段内已被申请" in i.text:
                 print(i.text)
             else:
                 driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0402_02_add.jpg")

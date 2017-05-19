@@ -93,23 +93,23 @@ class DB04_Stock(unittest.TestCase):
                 unittest.expectedFailure("test_DB04_02_TransceiverStart")
 
     # 业务设置-库存设置-状态启用/停用
-    def test_DB04_03_TransceiverStart(self):
-        """业务设置-库存设置-库存发货添加功能检查"""
-        driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000730")
-        driver.find_elements_by_class_name("x-grid3-row")[0].click()
-        driver.find_element_by_id("btnStart").click()
-        time.sleep(1)
-        v_tip = driver.find_elements_by_class_name("ext-mb-text")
-        for i in v_tip:
-            if "启用成功" in i.text:
-                print(i.text)
-            else:
-                print(i.text)
-                unittest.expectedFailure("test_DB04_03_TransceiverStart")
+    # def test_DB04_03_TransceiverStart(self):
+    #     """业务设置-库存设置-库存发货添加功能检查"""
+    #     driver = self.driver
+    #     ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
+    #     # 移动到页面顶部，防止对象遮挡
+    #     ClasForm.form_top(self, 0)
+    #     driver.switch_to_frame("frame_tab_PM000730")
+    #     driver.find_elements_by_class_name("x-grid3-row")[0].click()
+    #     driver.find_element_by_id("btnStart").click()
+    #     time.sleep(1)
+    #     v_tip = driver.find_elements_by_class_name("ext-mb-text")
+    #     for i in v_tip:
+    #         if "启用成功" in i.text:
+    #             print(i.text)
+    #         else:
+    #             print(i.text)
+    #             # unittest.expectedFailure("test_DB04_03_TransceiverStart")?
 
     # 系统管理-业务设置-库存设置-借料还料设置
     def test_DB04_04_CirculateAdd(self):

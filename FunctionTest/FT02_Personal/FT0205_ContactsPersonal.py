@@ -9,18 +9,19 @@ from PubliCode.randData import *
 
 class ContactsPersonal(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "个人事务", "通讯录", "个人通讯录")
+        ClasMenu.menu_full_text(self, "事务处理", "通讯录", "个人通讯录")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001018")
 
-    # 个人事务-个人通讯录-新增数据功能
+    '''事务处理-个人通讯录-新增数据功能'''
     def test_0205_01_add(self):
-        """个人事务-个人通讯录-新增数据功能"""
+        """事务处理-个人通讯录-新增数据功能"""
         driver = self.driver
         driver.find_element_by_partial_link_text("新增").click()
         time.sleep(3)
@@ -60,7 +61,8 @@ class ContactsPersonal(unittest.TestCase):
         driver.find_element_by_id("Remark").send_keys("自动添加的数据，这是测试说的" + v_tim)
         driver.find_element_by_id("btnSave").click()
         time.sleep(3)
-        driver.switch_to.parent_frame()
+        driver.switch_to.default_content()
+        # driver.switch_to.parent_frame()
         v_tip = driver.find_elements_by_class_name("bootbox-body")
         for i in v_tip:
             if "成功" in i.text:

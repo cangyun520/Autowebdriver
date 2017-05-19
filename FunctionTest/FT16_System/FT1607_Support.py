@@ -4,10 +4,11 @@ from PubliCode.onlineClass import *
 
 class Support(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理---支持中心
+    """系统管理-支持中心-系统视图"""
     def test_1607_view(self):
         """系统管理-支持中心-系统视图"""
         driver = self.driver
@@ -23,6 +24,7 @@ class Support(unittest.TestCase):
         except ImportError:
             print("BUG 支持中心-系统视图-【保存已修改的字典项】-不显示")
 
+    """系统管理-支持中心-系统日志"""
     def test_1607_log(self):
         """系统管理-支持中心-系统日志"""
         driver = self.driver
@@ -38,6 +40,7 @@ class Support(unittest.TestCase):
         except ImportError:
             print("BUG 支持中心-系统日志-【查询】-不显示")
 
+    """系统管理-支持中心-帮助中心"""
     def test_1607_help(self):
         """系统管理-支持中心-帮助中心"""
         driver = self.driver

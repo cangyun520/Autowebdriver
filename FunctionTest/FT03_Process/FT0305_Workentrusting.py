@@ -9,13 +9,14 @@ from PubliCode.onlineClass import *
 
 class Workentrusting(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, "流程处理", "委托工作", "被委托工作")
+        ClasMenu.menu_full_text(self, "事务处理", "流程处理", "委托工作", "被委托工作")
         driver.switch_to.frame("frame_tab_PM000090")
 
-    # 流程处理-被委托工作
+    '''流程处理-被委托工作'''
     def test_0305(self):
         """流程处理-被委托工作-【查询】检查"""
         driver = self.driver

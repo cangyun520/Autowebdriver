@@ -9,7 +9,8 @@ from PubliCode.randData import *
 
 class MeetArchives(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
@@ -19,7 +20,7 @@ class MeetArchives(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000799")
 
-    # 行政办公-会议室管理-会议室档案添加
+    '''行政办公-会议室管理-会议室档案添加'''
     def test_0404_01_add(self):
         """行政办公-会议室管理-会议室档案添加功能"""
         driver = self.driver

@@ -9,7 +9,8 @@ from PubliCode.randData import *
 
 class Bookes(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
@@ -18,8 +19,8 @@ class Bookes(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000797")
 
-    # 行政办公-图书管理-单据添加
-    def test_0903_01_add(self):
+    '''行政办公-图书管理-单据添加'''
+    def test_0403_01_add(self):
         """行政办公-图书管理-单据添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
@@ -56,9 +57,9 @@ class Bookes(unittest.TestCase):
             if "添加成功!" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0903_01_add.jpg")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0403_01_add.jpg")
                 print(i.text)
-                unittest.expectedFailure("test_0903_01_add")
+                unittest.expectedFailure("test_0403_01_add")
 
     def tearDown(self):
         self.driver.quit()
@@ -67,7 +68,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Bookes("test_0903_01_add"))
+    testsuit.addTest(Bookes("test_0403_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

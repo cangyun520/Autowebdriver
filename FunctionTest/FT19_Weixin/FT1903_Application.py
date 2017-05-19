@@ -3,7 +3,8 @@ from PubliCode.onlineClass import *
 
 class Application(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "应用中心")
@@ -11,7 +12,7 @@ class Application(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000596")
 
-    """系统管理-微信企业号-应用中心-【添加】检查"""
+    """系统管理-微信企业号-应用中心-检查"""
     def test_1903_add(self):
         """系统管理-微信企业号-应用中心-【添加】检查"""
         driver = self.driver

@@ -18,12 +18,13 @@ class MeetApply(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000800")
 
-    # 行政办公-会议室管理-会议室申请添加
+    '''行政办公-会议室管理-会议室申请添加'''
     def test_0405_01_add(self):
         """行政办公-会议室管理-会议室申请添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
+
         driver.switch_to.frame("winActivity_IFrame")        # 切换到新增页面
         v_tim = time.strftime("%y%m%d%H%M")
         # 会议主题

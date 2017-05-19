@@ -20,7 +20,7 @@ class Stting(unittest.TestCase):
         driver.find_element_by_id("Type").send_keys("费用类型" + v_tim)
         driver.find_element_by_id("Digest").send_keys("全选菜单Auto" + v_tim)
         # 关联菜单
-        driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen65").click()
+        driver.find_element_by_xpath("//*[@id='x-form-el-MenuLink']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winTypeAdd_IFrame")
         v_check = driver.find_elements_by_class_name("x-grid3-row-checker")
@@ -127,11 +127,9 @@ class Stting(unittest.TestCase):
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_save.is_displayed():
-            v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-            v_lines = v_write_file.read()
             driver.find_element_by_id("descrption").clear()
             time.sleep(1)
-            driver.find_element_by_id("descrption").send_keys(v_tim + v_lines[10:1000])
+            driver.find_element_by_id("descrption").send_keys(v_tim + fun_data_character(100, 800))
             time.sleep(2)
             v_save.click()
             time.sleep(3)
@@ -200,7 +198,6 @@ class Stting(unittest.TestCase):
             if "成功！" in i.text:
                 print(i.text)
             else:
-                print(i.text)
                 unittest.expectedFailure("test_1604_07_TransceiverStart")
 
     """业务设置-库存设置-库存发货添加功能"""
@@ -241,7 +238,6 @@ class Stting(unittest.TestCase):
             if "成功！" in i.text:
                 print(i.text)
             else:
-                print(i.text)
                 unittest.expectedFailure("test_1604_08_delivery")
 
     """业务设置-项目设置-项目类型添加功能"""
@@ -262,7 +258,6 @@ class Stting(unittest.TestCase):
             time.sleep(3)
             print("项目设置-项目类型-页面显示正常")
         else:
-            print("BUG 项目设置-项目类型-【添加】-不显示，请检查页面是否正常")
             unittest.expectedFailure("test_1604_10_TypeAdd")
 
     """业务设置-项目设置-项目组加功能"""
@@ -291,7 +286,6 @@ class Stting(unittest.TestCase):
             if "添加成功" in i.text:
                 print(v_tip)
             else:
-                print(v_tip)
                 unittest.expectedFailure("test_1604_11_PrjGroup")
 
     """移动端配置-微信企业号-自定义事件发布功能"""
@@ -302,29 +296,32 @@ class Stting(unittest.TestCase):
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000595")
-        v_list = driver.find_elements_by_class_name("x-grid3-row")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
+        driver.switch_to.frame("winDetail_IFrame")
         v_tim = time.strftime("%y%m%d%H%M")
         # 事件名称
         driver.find_element_by_id("txtTitle").send_keys("时间名称" + v_tim)
         # 事件key
         driver.find_element_by_id("txtEventKey").send_keys(v_tim)
+        # 回复内容
         driver.find_element_by_xpath("//*[@id='txtContent_Container']/div/span").click()
         time.sleep(3)
         v_lists = driver.find_elements_by_class_name("x-grid3-row")
-        v_lists[random.randint(v_list, len(v_lists)-1)].click()
-        driver.find_element_by_id("Button1").click()
-        time.sleep(1)
-        driver.find_element_by_id("btnSave").click()
-        time.sleep(2)
-        v_tip = driver.find_elements_by_class_name("ext-mb-text")
-        for i in v_tip:
-            if "成功" in i.text:
-                print(i.text)
-            else:
-                print(i.text)
-                unittest.expectedFailure("test_1604_12_WeixinEnSeting")
+        if len(v_lists) > 0:
+            v_lists[0].click()
+            driver.find_element_by_id("Button1").click()
+            time.sleep(1)
+            driver.find_element_by_id("btnSave").click()
+            time.sleep(2)
+            v_tip = driver.find_elements_by_class_name("ext-mb-text")
+            for i in v_tip:
+                if "成功" in i.text:
+                    print(i.text)
+                else:
+                    unittest.expectedFailure("test_1604_12_WeixinEnSeting")
+        else:
+            print("回复内容数据为空")
 
     def tearDown(self):
         self.driver.quit()

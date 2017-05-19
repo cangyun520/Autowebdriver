@@ -15,7 +15,7 @@ class CustomerMaster(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000067")
 
-    # 客商管理---客户主数据
+    '''客商管理-客户主数据-新增单据功能'''
     def test_1801_01_Add(self):
         """客商管理-客户主数据-新增单据功能"""
         driver = self.driver
@@ -54,14 +54,12 @@ class CustomerMaster(unittest.TestCase):
         v_prjlist = driver.find_elements_by_class_name("x-grid3-row")
         v_prjlist[random.randint(0, len(v_prjlist) - 1)].click()
         driver.find_element_by_id("Button11").click()
-        time.sleep(1)
+        time.sleep(2)
         driver.switch_to.parent_frame()
         # 备注页签
         driver.find_element_by_link_text("备注").click()
         time.sleep(1)
-        v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = v_write_file.read()
-        driver.find_element_by_id("bzjy").send_keys(v_lines[1:1000])
+        driver.find_element_by_id("bzjy").send_keys(fun_data_character(100, 300))
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)
@@ -74,22 +72,13 @@ class CustomerMaster(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1801_01_Add")
 
-    # 客商管理-客户主数据-更新添加联系人
+    '''客商管理-客户主数据-更新添加联系人'''
     def test_1801_02(self):
         """客商管理-客户主数据-更新添加联系人"""
         driver = self.driver
-        v_tim = time.strftime("%y%m%d%H%M%S")
         driver.find_element_by_id("btnLast").click()
-        time.sleep(3)
-        driver.find_element_by_id("btnPrevious").click()
-        time.sleep(3)
-        # 联系人页签
-        driver.find_element_by_link_text("联系人").click()
-        v_person = driver.find_elements_by_class_name("x-grid3-hd-inner")[1]
-        ActionChains(driver).context_click(v_person).perform()
-        driver.find_element_by_id("AddRecord").click()
-        time.sleep(1)
-        # 联系人页签-新增联系人窗体
+        v_tim = time.strftime("%y%m%d%H%M%S")
+        time.sleep(4)
         v_data = csv.reader(open(root_path() + 'PubliData/cvs/basedata.csv', 'r'))
         # 创建二维数组-3列
         v_list_data = [[] for i in range(3)]
@@ -100,7 +89,13 @@ class CustomerMaster(unittest.TestCase):
             v_list_data[2].append(i[7])    # 地址
         v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
         v_lines = v_write_file.read()
-        v_tim = time.strftime("%m%d%H%M%S")
+        # 联系人页签
+        driver.find_element_by_link_text("联系人").click()
+        v_person = driver.find_element_by_id("GridPanel2")
+        ActionChains(driver).context_click(v_person).perform()
+        driver.find_element_by_id("AddRecord").click()
+        time.sleep(1)
+        # 联系人页签-新增联系人窗体
         # 联系人标识
         driver.find_element_by_id("TName").send_keys(v_tim)
         # 名
@@ -147,7 +142,8 @@ class CustomerMaster(unittest.TestCase):
                 if i.text == "今天":
                     i.click()
         driver.find_element_by_xpath("//*[@id='x-form-el-TSex']/div/img").click()
-        driver.find_element_by_id("TSex").send_keys(random.choice(['男', '女']))   # 性别
+        # 性别
+        driver.find_element_by_id("TSex").send_keys(random.choice(['男', '女']))
         # 职业
         driver.find_element_by_id("TProfession").send_keys((v_list_data[1])[random.randint(1, 40)])
         driver.find_element_by_id("btnYes").click()
@@ -155,15 +151,20 @@ class CustomerMaster(unittest.TestCase):
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
-        for i in v_tip:
-            if "成功" in i.text:
+        if len(v_tip) == 0:
+            print("没有获取到提示窗体")
+            unittest.expectedFailure("test_1801_02")
+        else:
+            for i in v_tip:
                 print(i.text)
-            else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/test_1801_02.jpg")
-                print("Error：" + i.text)
-                unittest.expectedFailure("test_1801_02")
+                if "成功" in i.text:
+                    print(i.text)
+                else:
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/test_1801_02.jpg")
+                    print("Error：" + i.text)
+                    unittest.expectedFailure("test_1801_02")
 
-    # 客商管理-客户主数据-查询功能
+    '''客商管理-客户主数据-查询功能'''
     def test_1801_03_search(self):
         """客商管理-客户主数据-查询功能"""
         driver = self.driver
@@ -176,6 +177,7 @@ class CustomerMaster(unittest.TestCase):
         time.sleep(3)
         driver.switch_to.parent_frame()
         driver.find_element_by_id("btnSave").click()
+        time.sleep(4)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "成功" in i.text:
@@ -185,16 +187,16 @@ class CustomerMaster(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_1801_03_search")
 
-    # 客户主数据-增加地址
+    '''客商管理-客户主数据-更新添加地址'''
     def test_1801_04(self):
-        """客商管理-客户主数据-更新添加联系人"""
+        """客商管理-客户主数据-更新添加地址"""
         driver = self.driver
         v_tim = time.strftime("%y%m%d%H%M%S")
         driver.find_element_by_id("btnLast").click()
         time.sleep(3)
         driver.find_element_by_id("btnPrevious").click()
         time.sleep(3)
-        # 联系人页签
+        # 地址页签
         driver.find_element_by_link_text("地址").click()
         v_person = driver.find_elements_by_class_name("x-grid3-hd-inner")[2]
         ActionChains(driver).context_click(v_person).perform()

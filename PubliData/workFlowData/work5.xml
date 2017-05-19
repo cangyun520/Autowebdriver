@@ -11,11 +11,11 @@
   </fpdl:StartNode>
   <fpdl:Tasks />
   <fpdl:Activities>
-    <fpdl:Activity Id="PM000201.1" Name="1" DisplayName="采购退货发起" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect0" NewDesignerID="rect0">
+    <fpdl:Activity Id="PM000201.1" Name="1" DisplayName="采购退货Auto发起" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect0" NewDesignerID="rect0">
       <fpdl:Description></fpdl:Description>
       <fpdl:Tasks>
-        <fpdl:Task Id="PM000201.1.StartTask" Name="StartTask" DisplayName="发起" DoProcess="false" Type="FORM" NewWorkFlowID="rect0" NewDesignerID="rect0" Countersign="100" CompletionStrategy="ANY" DefaultView="Create" Priority="1" LoopStrategy="REDO">
-          <fpdl:Performer Name="" DisplayName="" RJobName="发起" RJobCode="WR000001" DistributionType="Personnel">
+        <fpdl:Task Id="PM000201.1.StartTask" Name="StartTask" DisplayName="Auto发起" DoProcess="false" Type="FORM" NewWorkFlowID="rect0" NewDesignerID="rect0" Countersign="100" CompletionStrategy="ANY" DefaultView="Create" Priority="1" LoopStrategy="REDO">
+          <fpdl:Performer Name="" DisplayName="" RJobName="Auto发起" RJobCode="WR000001" DistributionType="Personnel">
             <fpdl:Description></fpdl:Description>
             <fpdl:AssignmentHandler>Workflow.Helper.WorkflowExtension.RoleBasedAssignmentHandler, Workflow.Helper</fpdl:AssignmentHandler>
           </fpdl:Performer>
@@ -29,11 +29,11 @@
       </fpdl:Tasks>
       <fpdl:TaskRefs />
     </fpdl:Activity>
-    <fpdl:Activity Id="PM000201.2" Name="2" DisplayName="采购退货审批" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect1" NewDesignerID="rect1">
+    <fpdl:Activity Id="PM000201.2" Name="2" DisplayName="采购退货Auto审批" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect1" NewDesignerID="rect1">
       <fpdl:Description></fpdl:Description>
       <fpdl:Tasks>
-        <fpdl:Task Id="PM000201.2.任务1" Name="任务1" DisplayName="审批" DoProcess="false" Type="FORM" NewWorkFlowID="rect1" NewDesignerID="rect1" Countersign="100" CompletionStrategy="ANY" DefaultView="Approval" Priority="1" LoopStrategy="REDO">
-          <fpdl:Performer Name="" DisplayName="" RJobName="审批" RJobCode="WR000002" DistributionType="Personnel">
+        <fpdl:Task Id="PM000201.2.任务1" Name="任务1" DisplayName="Auto审批" DoProcess="false" Type="FORM" NewWorkFlowID="rect1" NewDesignerID="rect1" Countersign="100" CompletionStrategy="ANY" DefaultView="Approval" Priority="1" LoopStrategy="REDO">
+          <fpdl:Performer Name="" DisplayName="" RJobName="Auto审批" RJobCode="WR000002" DistributionType="Personnel">
             <fpdl:Description></fpdl:Description>
             <fpdl:AssignmentHandler>Workflow.Helper.WorkflowExtension.RoleBasedAssignmentHandler, Workflow.Helper</fpdl:AssignmentHandler>
           </fpdl:Performer>
@@ -47,11 +47,11 @@
       </fpdl:Tasks>
       <fpdl:TaskRefs />
     </fpdl:Activity>
-    <fpdl:Activity Id="PM000201.3" Name="3" DisplayName="采购退货终审" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect2" NewDesignerID="rect2">
+    <fpdl:Activity Id="PM000201.3" Name="3" DisplayName="采购退货Auto终审" CompletionStrategy="ALL" IsStart="False" StepNumber="0" NewWorkFlowID="rect2" NewDesignerID="rect2">
       <fpdl:Description></fpdl:Description>
       <fpdl:Tasks>
-        <fpdl:Task Id="PM000201.3.任务2" Name="任务2" DisplayName="终审" DoProcess="false" Type="FORM" NewWorkFlowID="rect2" NewDesignerID="rect2" Countersign="100" CompletionStrategy="ANY" DefaultView="Approval" Priority="1" LoopStrategy="REDO">
-          <fpdl:Performer Name="" DisplayName="" RJobName="终审" RJobCode="WR000003" DistributionType="Personnel">
+        <fpdl:Task Id="PM000201.3.任务2" Name="任务2" DisplayName="Auto终审" DoProcess="false" Type="FORM" NewWorkFlowID="rect2" NewDesignerID="rect2" Countersign="100" CompletionStrategy="ANY" DefaultView="Approval" Priority="1" LoopStrategy="REDO">
+          <fpdl:Performer Name="" DisplayName="" RJobName="Auto终审" RJobCode="WR000003" DistributionType="Personnel">
             <fpdl:Description></fpdl:Description>
             <fpdl:AssignmentHandler>Workflow.Helper.WorkflowExtension.RoleBasedAssignmentHandler, Workflow.Helper</fpdl:AssignmentHandler>
           </fpdl:Performer>

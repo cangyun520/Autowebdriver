@@ -6,7 +6,7 @@ from PubliCode.randData import root_path
 # 指定测试用例为当前文件夹下的test_case目录
 # 通过自定函数获取当前文件所在路径
 test_dir = root_path() + "WorkFlow"
-discover = unittest.defaultTestLoader.discover(test_dir, pattern='FT*.py')
+discover = unittest.defaultTestLoader.discover(test_dir, pattern='FT1*.py')
 if __name__ == '__main__':
     v_tim = time.strftime("%Y%m%d")
     FileName = root_path() + 'TestReport/FTRport/' + v_tim + ' WorkFlow.htm'

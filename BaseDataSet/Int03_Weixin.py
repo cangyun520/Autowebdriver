@@ -6,19 +6,19 @@ from selenium import webdriver
 from PubliCode.onlineClass import *
 
 
-class Int03_Weixin(unittest.TestCase):
+class IntWeixin(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理------移动端配置------应用菜单
+    '''系统管理-移动端配置-应用菜单'''
     def test_Int03_01_MenuRelease(self):
         """移动端配置-微信企业号-应用菜单发布功能检查"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "应用菜单")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000597")
+        driver.switch_to.frame("frame_tab_PM000597")
         driver.find_element_by_id("cbQyApp").click()
         # 选择应用
         v_applications = driver.find_elements_by_class_name("x-combo-list-item")
@@ -86,8 +86,8 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Int03_Weixin("test_Int03_01_MenuRelease"))
-    testsuit.addTest(Int03_Weixin("test_Int03_02_UsersSync"))
+    testsuit.addTest(IntWeixin("test_Int03_01_MenuRelease"))
+    testsuit.addTest(IntWeixin("test_Int03_02_UsersSync"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

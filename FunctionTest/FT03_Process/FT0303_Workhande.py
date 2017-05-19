@@ -9,13 +9,14 @@ from PubliCode.onlineClass import *
 
 class Workhande(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, "流程处理", "办结工作")
+        ClasMenu.menu_full_text(self, "事务处理", "流程处理", "办结工作")
         driver.switch_to.frame("frame_tab_PM000032")
 
-    # 流程处理-办结工作
+    '''流程处理-办结工作'''
     def test_0303(self):
         """流程处理-办结工作-【查询】检查"""
         driver = self.driver

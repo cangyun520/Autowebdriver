@@ -15,7 +15,7 @@ class Order(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001043")
 
-    # 订货管理-订货-新增单据
+    '''订货管理-订货-新增单据'''
     def test_1301_01_Add(self):
         """订货管理-订货-新增单据功能"""
         driver = self.driver

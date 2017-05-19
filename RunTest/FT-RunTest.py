@@ -1,6 +1,16 @@
 
 from PubliCode.onlineClass import *
 
+
+'''修改当前测试URL地址'''
+url = "http://test.b1box.net"
+f = open(root_path() + 'PubliData/config/url.txt', 'w+')
+if f.readline() == url:
+    pass
+else:
+    f.write(url)
+    f.close()
+
 '''
     *   OnlineBox功能集成测试报告
     *   指定测试用例为当前文件夹下的test_case目录

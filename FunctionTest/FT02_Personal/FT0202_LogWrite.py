@@ -3,38 +3,41 @@ from PubliCode.randData import *
 
 '''
     *   Arvin
-    *   2017-01-13
+    *   2017-04-13
 '''
 
 
 class LogWrite(unittest.TestCase):
     def setUp(self):
+        # self.driver = webdriver.PhantomJS()
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "个人事务", "工作日志", "日志填报")
+        ClasMenu.menu_full_text(self, "事务处理", "工作日志", "日志填报")
         driver.switch_to.frame("frame_tab_PM000483")
 
-    # 个人事务-工作日志-日志填报
+    '''事务处理-工作日志-日志填报'''
     def test_0202_01(self):
-        """个人事务-工作日志-日报功能测试"""
+        """事务处理-工作日志-日报功能测试"""
         driver = self.driver
-        write_file = open(root_path() + 'PubliData\character5K.txt', 'r')
-        v_lines = write_file.read()
-        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        v_time = time.strftime("%Y-%m-%d %H:%M:%S")
         # 今日完成
-        driver.find_element_by_id("WorkDiaryContent").send_keys('Arvin-日报-自动化测试 ' + v_tim)
+        driver.find_element_by_id("WorkDiaryContent").send_keys('Arvin-日报-自动化测试 ' + v_time)
         # 明日计划
-        driver.find_element_by_id("WorkDiaryWorkRecord").send_keys(v_lines[10:200])
-        driver.find_element_by_id("WorkDiaryWorkSummary").send_keys(v_lines[100:500])   # 需协调的工作
+        driver.find_element_by_id("WorkDiaryWorkRecord").send_keys(v_time + fun_data_character(10, 200))
+        driver.find_element_by_id("WorkDiaryWorkSummary").send_keys(v_time + fun_data_character(100, 500))   # 需协调的工作
+        time.sleep(1)
         # 汇报人-选择
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
         # 用户弹出窗体
+        driver.switch_to.default_content()
+        ClasForm.form_top(self,0)
+        driver.switch_to.frame("frame_tab_PM000483")
         driver.switch_to.frame("frame_users")
         for i in driver.find_elements_by_tag_name("td"):
-            if i.text == "超级管理员":
+            if "超级管理员" in i.text:
                 i.click()
                 break
         time.sleep(2)
@@ -56,26 +59,27 @@ class LogWrite(unittest.TestCase):
                 # print(i.text)
                 unittest.expectedFailure("test_0202_01")
 
-    # 个人事务-工作日志-周报功能测试
+    '''事务处理-工作日志-周报功能测试'''
     def test_0202_02(self):
-        """个人事务-工作日志-周报功能测试"""
+        """事务处理-工作日志-周报功能测试"""
         driver = self.driver
         driver.find_element_by_link_text(u"周报").click()
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
-        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        v_time = time.strftime("%Y-%m-%d %H:%M:%S")
         # 本周完成
-        driver.find_element_by_id("WorkWeekDiaryContent").send_keys('Arvin-周报-自动化测试 ' + v_tim)
+        driver.find_element_by_id("WorkWeekDiaryContent").send_keys('Arvin-周报-自动化测试 ' + v_time)
         # 本周总结
-        driver.find_element_by_id("WorkWeekDiaryWorkSummary").send_keys(v_lines[10:200])
+        driver.find_element_by_id("WorkWeekDiaryWorkSummary").send_keys(v_time + fun_data_character(10, 200))
         # 下周计划
-        driver.find_element_by_id("WorkWeekDiaryWorkRecord").send_keys(v_lines[50:300])
+        driver.find_element_by_id("WorkWeekDiaryWorkRecord").send_keys(v_time + fun_data_character(50, 300))
         # 需协调的工作
-        driver.find_element_by_id("WorkWeekDiaryWorkConcert").send_keys(v_lines[100:500])
+        driver.find_element_by_id("WorkWeekDiaryWorkConcert").send_keys(v_time + fun_data_character(100, 500))
         # 汇报人-选择
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
         # 用户弹出窗体
+        driver.switch_to.default_content()
+        ClasForm.form_top(self,0)
+        driver.switch_to.frame("frame_tab_PM000483")
         driver.switch_to.frame("frame_users")
         for i in driver.find_elements_by_tag_name("td"):
             if i.text == "超级管理员":
@@ -97,25 +101,23 @@ class LogWrite(unittest.TestCase):
                 print(i.text)
             except ImportError:
                 driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0202_02.jpg")
-                # print(i.text)
                 unittest.expectedFailure("test_0202_02")
 
-    # 个人事务-工作日志-月报功能测试
+    '''事务处理-工作日志-月报功能测试'''
     def test_0202_03(self):
-        """个人事务-工作日志-月报功能测试"""
+        """事务处理-工作日志-月报功能测试"""
         driver = self.driver
         driver.find_element_by_link_text(u"月报").click()
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
-        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
+        v_time = time.strftime("%Y-%m-%d %H:%M:%S")
         # 本月完成
-        driver.find_element_by_id("WorkMonthDiaryContent").send_keys('Arvin-月报-自动化测试 ' + v_tim)
+        driver.find_element_by_id("WorkMonthDiaryContent").send_keys('Arvin-月报-自动化测试 ' + v_time)
         # 本月总结
-        driver.find_element_by_id("WorkMonthDiarySummary").send_keys(v_lines[100:300])
+        driver.find_element_by_id("WorkMonthDiarySummary").send_keys(v_time + fun_data_character(100, 300))
         # 下月计划
-        driver.find_element_by_id("WorkMonthDiaryRecord").send_keys(v_lines[200:400])
+        driver.find_element_by_id("WorkMonthDiaryRecord").send_keys(v_time + fun_data_character(200, 400))
         # 需协调的工作
-        driver.find_element_by_id("WorkMonthDiaryConcert").send_keys(v_lines[400:600])
+        driver.find_element_by_id("WorkMonthDiaryConcert").send_keys(v_time + fun_data_character(400, 600))
+        time.sleep(1)
         # 汇报人-选择
         driver.find_element_by_link_text("选择").click()
         time.sleep(2)
@@ -144,18 +146,16 @@ class LogWrite(unittest.TestCase):
                 # print(i.text)
                 unittest.expectedFailure("test_0202_03")
 
-    # 个人事务-工作日志-我发出的日志查看
+    '''事务处理-工作日志-我发出的日志查看'''
     def test_0202_04(self):
-        """个人事务-工作日志-我发出的日志查看"""
+        """事务处理-工作日志-我发出的日志查看"""
         driver = self.driver
         driver.find_element_by_link_text(u"我发出的").click()
         driver.find_elements_by_link_text("查看详情")[0].click()
         time.sleep(2)
         # 评论
-        v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
-        driver.find_element_by_id("txt_comment").send_keys(v_tim + v_lines[1978:2142])
+        v_time = time.strftime("%Y-%m-%d %H:%M:%S")
+        driver.find_element_by_id("txt_comment").send_keys(v_time + fun_data_character(10, 100))
         time.sleep(1)
         driver.find_element_by_id("btncomment").click()
         time.sleep(1)
@@ -177,12 +177,12 @@ if __name__ == "__main__":
     testsuit = unittest.TestSuite()
     testsuit.addTest(LogWrite("test_0202_01"))
     testsuit.addTest(LogWrite("test_0202_02"))
-    v_tim = time.strftime("%y%m%d%H%M")
+    v_time = time.strftime("%y%m%d%H%M")
     # 定义报告存放路径
-    FileName = root_path() + 'TestReport/FT04_Task/' + v_tim + ' FT04_WriteLog.htm'
+    FileName = root_path() + 'TestReport/FT04_Task/' + v_time + ' FT04_WriteLog.htm'
     ReportFile = open(FileName, 'wb')
     runner = HTMLTestRunner(stream=ReportFile,
-                            title="个人事务-工作日志-日志填报",
+                            title="事务处理-工作日志-日志填报",
                             description="黑盒自动化测试执行结果统计")
     # 运行测试用例集合
     runner.run(testsuit)

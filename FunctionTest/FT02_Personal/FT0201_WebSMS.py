@@ -10,19 +10,19 @@ import re
 
 class WebSMS(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
+        # self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-
-        ClasMenu.menu_full_text(self, "个人事务", "消息中心")
+        ClasMenu.menu_full_text(self, "事务处理", "消息中心")
         # 移动到页面底部，防止对象遮挡
-        ClasForm.form_top(self, 0)
+        ClasForm.form_top(self, 500)
         driver.switch_to.frame("frame_tab_PM000416")
 
-    # 个人事务-站内短信
+    '''事务处理-站内短信'''
     def test_0201_01(self):
-        """个人事务-站内短信,【发消息】按钮功能测试"""
+        """事务处理-站内短信,【发消息】按钮功能测试"""
         driver = self.driver
         driver.find_element_by_link_text("发消息").click()
         time.sleep(3)
@@ -30,20 +30,18 @@ class WebSMS(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM001067")
         try:
             driver.find_element_by_id("btnsave").is_displayed()
-            print("个人事务-消息中心,【发消息】跳转功能正常")
+            print("事务处理-消息中心,【发消息】跳转功能正常")
         except ImportError:
-            print("BUG 个人事务-消息中心,【发消息】跳转页面错误")
+            print("BUG 事务处理-消息中心,【发消息】跳转页面错误")
 
-    """个人事务-站内短信,【发消息】按钮功能测试"""
+    """事务处理-站内短信-站内短信发送"""
     def test_0201_02(self):
-        """个人事务-站内短信,【发消息】按钮功能测试"""
+        """事务处理-站内短信发送"""
         driver = self.driver
         driver.find_element_by_link_text("发消息").click()
         time.sleep(3)
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM001067")
-        write_file = open(root_path() + 'PubliData\character5K.txt', 'r')
-        v_lines = write_file.read()
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
         # 选择收件人
         driver.find_element_by_xpath(
@@ -52,7 +50,7 @@ class WebSMS(unittest.TestCase):
         time.sleep(1)
         '''正则匹配数据'''
         for i in driver.find_elements_by_tag_name("li"):
-            pa = re.compile(r"Arvin.")
+            pa = re.compile(r"Arvin")
             match = pa.match(i.text)
             if match:
                 i.click()
@@ -60,7 +58,7 @@ class WebSMS(unittest.TestCase):
         driver.find_element_by_id("txt_title").send_keys(v_tim + "消息标题Auto")
         time.sleep(1)
         v_content = "//*[@id='ngSection']/div[1]/div/div/div/div/div/div[1]/div[3]/div/div[2]/div[4]/div[3]"
-        driver.find_element_by_xpath(v_content).send_keys(v_tim + v_lines[10:200])
+        driver.find_element_by_xpath(v_content).send_keys(v_tim + fun_data_character(10, 200))
         time.sleep(2)
         driver.find_element_by_id("btnsave").click()
         time.sleep(3)

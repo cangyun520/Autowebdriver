@@ -112,7 +112,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000192")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -169,7 +169,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000190")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         # 业务伙伴
         driver.find_element_by_xpath("//*[@id='bodyContent_ctl72_Container']/div/div/div/span").click()
         time.sleep(3)
@@ -227,7 +227,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000198")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -287,7 +287,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000200")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -345,7 +345,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000202")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
         driver.find_element_by_xpath("//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
@@ -399,7 +399,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000196")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -456,7 +456,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000223")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -512,7 +512,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000294")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_id("dfReqDate").send_keys(time.strftime("%Y/%m/%d"))
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
         # 行列表区域添加行
@@ -561,7 +561,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000193")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         # 选择供应商
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
@@ -618,7 +618,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000191")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -672,7 +672,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000218")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -723,7 +723,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000215")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -771,7 +771,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000219")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -819,7 +819,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000221")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -910,7 +910,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000194")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -965,7 +965,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000195")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -1020,7 +1020,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000197")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -1081,7 +1081,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000201")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -1135,7 +1135,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000736")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='txtBuyer_Container']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -1197,7 +1197,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000214")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='txtBuyer_Container']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")     # 切换到业务伙伴选择窗体
@@ -1259,7 +1259,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000207")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='tfName_Container']/div/span").click()        # 库存收发货类型
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
@@ -1310,7 +1310,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000209")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_xpath("//*[@id='tfName_Container']/div/span").click()        # 库存收发货类型
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
@@ -1361,7 +1361,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000871")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_id("BtnAdd").click()
         time.sleep(3)
         driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面
@@ -1403,7 +1403,7 @@ class FT01_FixedProcesses(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000883")
         # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self, driver)
+        ClasForm.form_field_hide(self)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         driver.switch_to.frame("winSendInspection_IFrame")     # 切换到新增页面

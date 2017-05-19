@@ -4,18 +4,18 @@ from PubliCode.onlineClass import *
 
 class Menu(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.PhantomJS()
         ClasLogin.login_setup(self)
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", u"功能清单", u"菜单配置")
+        ClasMenu.menu_full_text(self, u"系统管理", u"菜单设置", u"菜单配置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         # 切换到右侧表单页面
         driver.switch_to.frame("frame_tab_PM000179")
 
-    # 系统管理---菜单管理
+    '''系统管理-菜单管理-菜单配置'''
     def test_1601_Config(self):
-        """系统初始化-菜单配置"""
+        """系统初始化-菜单配置-菜单配置"""
         driver = self.driver
         driver.find_element_by_id("txtSelectMenuName").send_keys("动态表单")
         driver.find_element_by_id("btnSelect").click()
@@ -34,7 +34,6 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-
     testsuit.addTest(Menu("test_1616_Custom"))
     # 执行测试集合
     runner = unittest.TextTestRunner()

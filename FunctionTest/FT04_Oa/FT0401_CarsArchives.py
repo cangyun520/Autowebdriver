@@ -18,7 +18,7 @@ class CarsArchives(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000802")
 
-    # 行政办公-车辆管理-车辆档案添加功能
+    '''行政办公-车辆管理-车辆档案添加功能'''
     def test_0401_01_add(self):
         """行政办公-车辆管理-车辆档案添加功能"""
         driver = self.driver
@@ -40,11 +40,13 @@ class CarsArchives(unittest.TestCase):
         # 驾驶员
         driver.find_element_by_xpath("//*[@id='trgDriver_Container']/div/span/img[2]").click()
         time.sleep(3)
+
         driver.switch_to.frame("winSelectUser_IFrame")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         v_list[random.randint(0, len(v_list)-1)].click()
         driver.find_element_by_id("btnConfirm").click()
         driver.switch_to.parent_frame()
+
         time.sleep(1)
         # 购买时间
         driver.find_element_by_id("dtBuyTime").click()

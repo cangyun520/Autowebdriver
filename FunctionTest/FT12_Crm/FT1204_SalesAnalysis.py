@@ -14,7 +14,7 @@ class SalesAnalysis(unittest.TestCase):
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001074")
 
-    # 客户关系---销售管理---销售机会分析查询所有
+    '''客户关系-销售管理-销售机会分析查询所有'''
     def test_1204_01_query(self):
         """客户关系-竞争对手维护--销售机会分析查询所有"""
         driver = self.driver
@@ -22,6 +22,7 @@ class SalesAnalysis(unittest.TestCase):
         driver.find_element_by_id("Button2").click()
         time.sleep(1)
         driver.find_element_by_id("Button1").click()
+        time.sleep(1)
         v_list = driver.find_elements_by_link_text("详细")
         v_list[0].click()
         time.sleep(4)
