@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
 
     def testFindElements(self):
         driver = self.driver
-        driver.find_element_by_name("钉钉测试").click()
+        driver.find_element_by_name("工作").click()
         driver.find_element_by_name("业务管理首页").click()
         time.sleep(5)
         driver.find_element_by_name(" 客户管理 Link").click()

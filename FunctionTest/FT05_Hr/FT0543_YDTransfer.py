@@ -15,7 +15,8 @@ class Transfer(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000894")
 
     """人事管理-员工异动-调动"""
-    def test_0506_01(self):
+
+    def test_0543_01(self):
         """人事管理-员工异动-调动"""
         driver = self.driver
         driver.find_element_by_id("btnEdit").click()
@@ -67,8 +68,8 @@ class Transfer(unittest.TestCase):
                 elif "保存单据成功" in i.text:
                     print(i.text)
                 else:
-                    unittest.expectedFailure("test_0506_01")
-                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0506_01.jpg")
+                    unittest.expectedFailure("test_0543_01")
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0543_01.jpg")
                     print("Error：" + i.text)
         else:
             print("档案数据为空，不能添加")
@@ -80,7 +81,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Transfer.py("test_0506_01_add"))
+    testsuit.addTest(Transfer.py("test_0543_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

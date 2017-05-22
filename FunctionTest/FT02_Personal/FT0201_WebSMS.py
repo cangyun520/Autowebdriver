@@ -10,8 +10,7 @@ import re
 
 class WebSMS(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单

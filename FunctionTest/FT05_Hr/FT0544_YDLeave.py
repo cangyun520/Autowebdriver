@@ -15,7 +15,8 @@ class Leave(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000898")
 
     """人事管理-员工异动-离职"""
-    def test_0507_01(self):
+
+    def test_0544_01(self):
         """人事管理-员工异动-离职"""
         driver = self.driver
         driver.find_element_by_id("Button7").click()
@@ -57,9 +58,9 @@ class Leave(unittest.TestCase):
                 elif "保存单据成功" in i.text:
                     print(i.text)
                 else:
-                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0507_01.jpg")
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0544_01.jpg")
                     print("Error：" + i.text)
-                    unittest.expectedFailure("test_0507_01")
+                    unittest.expectedFailure("test_0544_01")
         else:
             print("档案数据为空，不能添加")
 
@@ -70,7 +71,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Leave.py("test_0507_01_add"))
+    testsuit.addTest(Leave.py("test_0544_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

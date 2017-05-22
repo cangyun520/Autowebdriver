@@ -19,15 +19,16 @@ class BirthdayRemind(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000890")
 
     '''人事管理-人员管理-生日提醒'''
-    def test_0504_01_Look(self):
+
+    def test_0505_01_Look(self):
         """人事管理-人员管理-生日提醒"""
         driver = self.driver
         v_check = driver.find_element_by_id("btnSearch")
         if v_check.is_displayed():
             pass
         else:
-            driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0504_01_Look.jpg")
-            unittest.expectedFailure("test_0504_01_Look")
+            driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0505_01_Look.jpg")
+            unittest.expectedFailure("test_0505_01_Look")
 
     def tearDown(self):
         self.driver.quit()
@@ -36,7 +37,7 @@ if __name__ == "__main__":
     unittest.main()
     """# 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(BirthdayRemind("test_0504_01_Look"))
+    testsuit.addTest(BirthdayRemind("test_0505_01_Look"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

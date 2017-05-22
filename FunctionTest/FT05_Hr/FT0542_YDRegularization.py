@@ -15,7 +15,8 @@ class Regularization(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000896")
 
     """人事管理-员工异动-试用转正"""
-    def test_0505_01(self):
+
+    def test_0542_01(self):
         """人事管理-员工异动-试用转正"""
         driver = self.driver
         driver.find_element_by_id("Button5").click()
@@ -54,9 +55,9 @@ class Regularization(unittest.TestCase):
                 elif "保存单据成功" in i.text:
                     print(i.text)
                 else:
-                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0505_01.jpg")
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/hr/test_0542_01.jpg")
                     print("Error：" + i.text)
-                    unittest.expectedFailure("test_0505_01")
+                    unittest.expectedFailure("test_0542_01")
         else:
             print("员工列表数据为空！")
 
@@ -67,7 +68,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(Regularization.py("test_0505_01_add"))
+    testsuit.addTest(Regularization.py("test_0542_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)
