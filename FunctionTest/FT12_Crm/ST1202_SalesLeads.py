@@ -155,7 +155,6 @@ class SalesLeads(unittest.TestCase):
                 unittest.expectedFailure("test_1202_01_Add")
 
     """CRM-售前管理-销售机会-客户编号为空穿透提示"""
-
     def test_1202_02_Client(self):
         """CRM-售前管理-销售机会-客户编号为空穿透提示"""
         driver = self.driver
