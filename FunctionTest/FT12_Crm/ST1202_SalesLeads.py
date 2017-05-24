@@ -27,7 +27,8 @@ class SalesLeads(unittest.TestCase):
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM000316")
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
-        # 进入到添加页面
+
+        # 添加业务伙伴
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
@@ -152,6 +153,29 @@ class SalesLeads(unittest.TestCase):
                 print(i.text)
                 driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1202_01_Add.jpg")
                 unittest.expectedFailure("test_1202_01_Add")
+
+    """CRM-售前管理-销售机会-客户编号为空穿透提示"""
+
+    def test_1202_02_Client(self):
+        """CRM-售前管理-销售机会-客户编号为空穿透提示"""
+        driver = self.driver
+        # 进入到新增页面
+        driver.find_element_by_id("btnAdd").click()
+        time.sleep(3)
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000316")
+
+        # 客户主数据穿透
+        driver.find_element_by_id("btnGoOCRD").click()
+        time.sleep(2)
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            if "业务伙伴代码为空" in i.text:
+                print(i.text)
+            else:
+                print(i.text)
+                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1202_02_Client.jpg")
+                unittest.expectedFailure("test_1202_02_Client")
 
     def tearDown(self):
         self.driver.quit()
