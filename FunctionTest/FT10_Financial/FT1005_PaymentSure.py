@@ -20,7 +20,10 @@ class PaymentSure(unittest.TestCase):
         driver = self.driver
         v_total = driver.find_element_by_id("gridList_info").text
         # 截取字符串，并输出统计数字
-        v_total = v_total.split()[-2]
+        if v_total == "没有数据":
+            v_num = 0
+        else:
+            v_num = v_total.split()[-2]
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         # 切换到新增页面
@@ -55,7 +58,7 @@ class PaymentSure(unittest.TestCase):
             # 截取字符串，并输出统计数字
             v_tota2 = v_tota2.split()[-2]
             print(v_tota2)
-            if int(v_tota2) > int(v_total):
+            if int(v_tota2) > int(v_num):
                 print("单据添加成功，页面多1条数据")
             else:
                 print(v_tota2)

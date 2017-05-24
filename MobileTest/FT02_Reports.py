@@ -18,19 +18,18 @@ class MyTestCase(unittest.TestCase):
         # self.desired_caps["resetKeyboard"] = "True"
         # self.desired_caps["automationName"] = "Selendroid"
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        time.sleep(3)
+        # time.sleep(3)
 
     def testFindElements(self):
         driver = self.driver
         driver.find_element_by_name("工作").click()
         driver.find_element_by_name("业务管理首页").click()
         time.sleep(5)
-        driver.find_element_by_name(" 客户管理 Link").click()
+        # driver.find_element_by_name(" 客户管理 Link").click()
 
-        time.sleep(4)
         v_an = driver.find_elements_by_class_name("android.view.View")
         for i in v_an:
-            print(i.text)
+            print(i.__dir__())
 
     def tearDown(self):
         self.driver.quit()
