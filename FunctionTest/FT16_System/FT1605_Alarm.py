@@ -4,8 +4,7 @@ from PubliCode.onlineClass import *
 
 class Alarm(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
     '''系统管理-审批流程-消息模板'''

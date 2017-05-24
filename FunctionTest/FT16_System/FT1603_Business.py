@@ -4,11 +4,10 @@ from PubliCode.onlineClass import *
 
 class Business(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    '''系统管理-系统初始化'''
+    '''审批流程-警报设置-自由流设计单据UI检查'''
     def test_1603_FreeStream(self):
         """审批流程-警报设置-自由流设计单据UI检查"""
         driver = self.driver

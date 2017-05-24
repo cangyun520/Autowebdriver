@@ -18,7 +18,7 @@ class BusinessActivity(unittest.TestCase):
         driver = self.driver
         v_tim = time.strftime("%y%m%d%H%M%S")
         # 业务伙伴代码
-        driver.find_element_by_xpath("//*[@id='bodyContent_ctl37_Container']/div/div/div/span").click()
+        driver.find_element_by_xpath("//*[@id='bodyContent_ctl38_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
         driver.switch_to.frame("winAdd_IFrame")
