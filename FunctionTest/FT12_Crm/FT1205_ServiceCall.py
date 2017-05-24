@@ -78,6 +78,7 @@ class ServiceCall(unittest.TestCase):
                 print(i.text)
             else:
                 print(i.text)
+                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1205_01_Add.jpg")
                 unittest.expectedFailure("test_1205_01_Add")
 
     def tearDown(self):
