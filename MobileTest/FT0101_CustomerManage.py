@@ -1,10 +1,10 @@
 # encoding:utf-8
-import time
+from PubliCode.config import *
 from appium import webdriver
 import unittest
 
 
-class MyTestCase(unittest.TestCase):
+class CustomerManage(unittest.TestCase):
     def setUp(self):
         # 定义初始化的属性信息
         self.desired_caps = {}
@@ -18,18 +18,25 @@ class MyTestCase(unittest.TestCase):
         # self.desired_caps["resetKeyboard"] = "True"
         # self.desired_caps["automationName"] = "Selendroid"
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        # time.sleep(3)
 
-    def testFindElements(self):
+    def test_0101_01_check(self):
         driver = self.driver
-        driver.find_element_by_name("工作").click()
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
-        # driver.find_element_by_name(" 客户管理 Link").click()
+        time.sleep(2)
+        driver.find_element_by_name("钉钉测试").click()
 
+        driver.find_element_by_name("业务管理首页").click()
+        time.sleep(3)
         v_an = driver.find_elements_by_class_name("android.view.View")
-        for i in v_an:
-            print(i.__dir__())
+        v_an[2].click()
+        time.sleep(3)
+
+        # 进入到客户管理页面
+        try:
+            driver.find_element_by_name("客户管理1").is_displayed()
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/Ding/test_0101_01_check.jpg")
+            unittest.expectedFailure("test_0101_01_check")
 
     def tearDown(self):
         self.driver.quit()
