@@ -7,7 +7,6 @@ import sys
 import random
 import unittest
 
-
 class Reports(unittest.TestCase):
     '''初始准备工作，进入到微信-Onlinebox主页面'''
     def setUp(self):
