@@ -15,27 +15,33 @@ class PurchQuotation(unittest.TestCase):
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM001114")
-        # 排除自定义字段遮挡干扰
-        ClasForm.form_field_hide(self)
 
     """采购管理-采购订单-新增单据功能检查"""
     def test_2103_01_Add(self):
         """采购管理-采购订单-新增单据功能检查"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
+        time.sleep(4)
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM000191")
+        # 排除自定义字段遮挡干扰
+        ClasForm.form_field_hide(self)
 
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
-        driver.switch_to.frame("winAdd_IFrame")
+
         # 切换到业务伙伴选择窗体
-        driver.find_element_by_id("gpSelect").click()
+        driver.switch_to.frame("winAdd_IFrame")
+        driver.find_element_by_id("txtSearchText").send_keys("V")
+        driver.find_element_by_id("btnSearch").click()
+        time.sleep(1)
+        driver.find_elements_by_class_name("x-grid3-row")[1].click()
         time.sleep(1)
         driver.find_element_by_id("btnSelect").click()
         time.sleep(3)
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
         driver.switch_to.parent_frame()
+
         driver.find_element_by_xpath(
             "//*[@id='GridPanelItem']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[2]").click()
         time.sleep(1)
@@ -77,10 +83,12 @@ class PurchQuotation(unittest.TestCase):
         """采购管理-采购订单-业务伙伴编号为空穿透提示检查"""
         driver = self.driver
         driver.find_element_by_id("btnAdd").click()
+        time.sleep(4)
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM000191")
-        driver.find_element_by_id("btnGoOCRD").click()
+
         # 业务伙伴主数据穿透
+        driver.find_element_by_id("btnGoOCRD").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
@@ -94,8 +102,24 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_03_First(self):
         """采购管理-采购订单-业务伙伴主数据穿透功能检查"""
         driver = self.driver
-        driver.find_element_by_id("btnFirst").click()
-        time.sleep(3)
+        driver.find_element_by_id("select2-txtDataType-container").click()
+        time.sleep(1)
+        v_list_state = driver.find_elements_by_class_name("select2-results__option")
+        for i in v_list_state:
+            if i.text == "全部订单":
+                i.click()
+                time.sleep(1)
+                break
+        v_table = driver.find_element_by_id("gridList")
+        v_rows = v_table.find_elements_by_tag_name("tr")
+        if len(v_rows) > 1:
+            v_cols = v_rows[1].find_elements_by_tag_name("td")
+            v_cols[1].click()
+            time.sleep(4)
+        driver.switch_to.default_content()
+        # 进入到采购订单页面
+        driver.switch_to.frame("frame_tab_PM000191")
+
         driver.find_element_by_id("btnGoOCRD").click()
         # 业务伙伴主数据穿透
         time.sleep(3)
