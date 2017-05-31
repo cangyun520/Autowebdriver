@@ -11,10 +11,10 @@ class PurchQuotation(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_part_text(self, "采购管理", "采购订单")
+        ClasMenu.menu_part_text(self, "采购管理", "采购订单列表")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to.frame("frame_tab_PM000191")
+        driver.switch_to.frame("frame_tab_PM001114")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self)
 
@@ -22,6 +22,10 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_01_Add(self):
         """采购管理-采购订单-新增单据功能检查"""
         driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
+
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
@@ -72,6 +76,9 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_02_Client(self):
         """采购管理-采购订单-业务伙伴编号为空穿透提示检查"""
         driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
         driver.find_element_by_id("btnGoOCRD").click()
         # 业务伙伴主数据穿透
         time.sleep(2)
@@ -106,8 +113,25 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_04_goto(self):
         """采购管理-采购订单-单据复制到功能"""
         driver = self.driver
-        driver.find_element_by_id("btnLast").click()
-        time.sleep(3)
+        driver.find_element_by_id("select2-txtDataType-container").click()
+        time.sleep(1)
+        v_list_state = driver.find_elements_by_class_name("select2-results__option")
+        for i in v_list_state:
+            if i.text == "全部订单":
+                i.click()
+                time.sleep(1)
+                break
+        v_table = driver.find_element_by_id("gridList")
+        v_rows = v_table.find_elements_by_tag_name("tr")
+        if len(v_rows) > 1:
+            v_cols = v_rows[1].find_elements_by_tag_name("td")
+            v_cols[1].click()
+            time.sleep(4)
+        driver.switch_to.default_content()
+
+        # 进入到采购订单详情页面
+        driver.switch_to.frame("frame_tab_PM000191")
+
         v_tim = time.strftime("%Y-%m-%d")
         if driver.find_element_by_id("btnCopyTo").is_displayed():
             driver.find_element_by_id("btnCopyTo").click()
@@ -157,8 +181,36 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_05_target(self):
         """采购管理-采购订单-目标凭证查看"""
         driver = self.driver
-        driver.find_element_by_id("btnLast").click()
-        time.sleep(4)
+        driver.find_element_by_id("select2-txtDataType-container").click()
+        time.sleep(1)
+        v_list_state = driver.find_elements_by_class_name("select2-results__option")
+        for i in v_list_state:
+            if i.text == "全部订单":
+                i.click()
+                time.sleep(1)
+                break
+        driver.find_element_by_id("btnSuperSearch").click()
+        time.sleep(1)
+        driver.find_element_by_id("select2-CustomerType-container").click()
+        time.sleep(1)
+        v_list_state = driver.find_elements_by_class_name("select2-results__option")
+        for i in v_list_state:
+            # print(i.text)
+            if "已清" in i.text:
+                i.click()
+                time.sleep(1)
+                break
+        driver.find_element_by_id("btnDataSearch").click()
+        time.sleep(1)
+        v_table = driver.find_element_by_id("gridList")
+        v_rows = v_table.find_elements_by_tag_name("tr")
+        if len(v_rows) > 1:
+            v_cols = v_rows[1].find_elements_by_tag_name("td")
+            v_cols[1].click()
+            time.sleep(5)
+        # 进入到销售订单页面
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
         if driver.find_element_by_id("btnTarget").is_displayed():
             driver.find_element_by_id("btnTarget").click()
             time.sleep(3)
@@ -181,6 +233,12 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_06_copyfrom(self):
         """采购管理-采购订单-复制从-采购报价单"""
         driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        time.sleep(4)
+        # 进入到采购订单页面
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
+
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -227,6 +285,12 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_07_copyfrom(self):
         """采购管理-采购订单-复制从-采购请求"""
         driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        time.sleep(4)
+        # 进入到销售订单页面
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
+
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)
         # 切换到业务伙伴选择窗体
@@ -273,6 +337,12 @@ class PurchQuotation(unittest.TestCase):
     def test_2103_08_query(self):
         """采购管理-采购订单-查询功能"""
         driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        time.sleep(4)
+        # 进入到销售订单页面
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM000191")
+
         driver.find_element_by_id("btnSearch").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
