@@ -357,31 +357,6 @@ class PurchQuotation(unittest.TestCase):
             ClasForm.form_loading(self, "test_2103_07_copyfrom")
             print("复制从单据数据为空")
 
-    '''采购管理-采购订单-查询功能'''
-    def test_2103_08_query(self):
-        """采购管理-采购订单-查询功能"""
-        driver = self.driver
-        driver.find_element_by_id("btnAdd").click()
-        time.sleep(4)
-        # 进入到销售订单页面
-        driver.switch_to.default_content()
-        driver.switch_to.frame("frame_tab_PM000191")
-
-        driver.find_element_by_id("btnSearch").click()
-        time.sleep(3)
-        driver.switch_to.frame("winAdd_IFrame")
-        driver.find_element_by_id("gpSelect").click()
-        driver.find_element_by_id("btnSelect").click()
-        time.sleep(2)
-        driver.switch_to.parent_frame()
-        v_list = driver.find_elements_by_class_name("x-grid3-row")
-        if len(v_list) > 0:
-            print("单据查询数据正常显示")
-        else:
-            unittest.expectedFailure("test_2103_08_query")
-            print("BUG-单据查询数据不正常")
-            driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2103_08_query.jpg")
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

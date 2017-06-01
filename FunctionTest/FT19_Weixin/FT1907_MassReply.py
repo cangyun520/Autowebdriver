@@ -23,15 +23,13 @@ class MassReply(unittest.TestCase):
         driver = self.driver
         driver.find_element_by_id("cbQyApp").click()
         time.sleep(1)
-        v_list = driver.find_elements_by_class_name("x-combo-list-item")
-        v_total = []
-        for i in v_list:
-            v_total.append(i.text)
-        v_number = random.randint(0, len(v_list)-0)
-        v_list[v_number].click()
+        v_prj = driver.find_elements_by_class_name("x-combo-list-item")
+        v_prj[random.randint(0, len(v_prj) - 1)].click()
+        driver.find_element_by_id("btnSelect").click()
         driver.find_element_by_id("btnAdd").click()
-        v_tim = time.strftime("%m%d%H")
-        time.sleep(3)
+        time.sleep(2)
+
+        # 添加页面
         driver.switch_to.frame("winEdit_IFrame")
         v_list_user = driver.find_elements_by_class_name("x-tree-node")
         v_list_user[1].click()
@@ -46,10 +44,9 @@ class MassReply(unittest.TestCase):
         # 内容
         driver.find_element_by_xpath("//*[@id='x-form-el-tfContent']/div/span").click()
         time.sleep(2)
-        v_l_content = driver.find_elements_by_class_name("x-grid3-row")
-        v_l_content[random.randint(0, len(v_l_content)-1)].click()
+        v_text = driver.find_elements_by_class_name("x-grid3-row")
+        v_text[random.randint(0, len(v_text) - 1)].click()
         driver.find_element_by_id("Button2").click()
-        time.sleep(2)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
@@ -67,10 +64,4 @@ class MassReply(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(MassReply("test_1907_02_Concern"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()
