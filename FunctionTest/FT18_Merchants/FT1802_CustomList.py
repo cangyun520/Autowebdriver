@@ -109,8 +109,11 @@ class CustomList(unittest.TestCase):
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
         v_khlist = driver.find_elements_by_class_name("x-grid3-row")
-        v_khlist[random.randint(0, len(v_khlist)-1)].click()
-        driver.find_element_by_id("btnSelect").click()
+        if len(v_khlist) > 0:
+            v_khlist[random.randint(0, len(v_khlist) - 1)].click()
+            driver.find_element_by_id("btnSelect").click()
+        else:
+            driver.find_element_by_id("Button2").click()
         time.sleep(1)
         driver.switch_to.parent_frame()
         # 电话，传真，站点，
