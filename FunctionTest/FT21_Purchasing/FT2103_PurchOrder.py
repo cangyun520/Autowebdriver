@@ -14,7 +14,7 @@ class PurchQuotation(unittest.TestCase):
         ClasMenu.menu_part_text(self, "采购管理", "采购订单列表")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to.frame("frame_tab_PM001114")
+        driver.switch_to.frame("frame_tab_PM001107")
 
     """采购管理-采购订单-新增单据功能检查"""
     def test_2103_01_Add(self):

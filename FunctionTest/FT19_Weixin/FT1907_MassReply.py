@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
-import random
-import time
-import unittest
-from selenium import webdriver
 from PubliCode.onlineClass import *
 
 
 class MassReply(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Chrome()
+        # self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "群发管理")
@@ -45,8 +41,11 @@ class MassReply(unittest.TestCase):
         driver.find_element_by_xpath("//*[@id='x-form-el-tfContent']/div/span").click()
         time.sleep(2)
         v_text = driver.find_elements_by_class_name("x-grid3-row")
-        v_text[random.randint(0, len(v_text) - 1)].click()
+        for i in v_text:
+            print(i.text)
+        v_text[0].click()
         driver.find_element_by_id("Button2").click()
+        time.sleep(1)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
