@@ -104,7 +104,8 @@ class CustomList(unittest.TestCase):
         driver.find_element_by_id("Button1").click()
         time.sleep(1)
         driver.switch_to.parent_frame()
-        # 销售员
+
+        # 销售员窗体
         driver.find_element_by_xpath("//*[@id='tfSalesPerson_Container']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winAdd_IFrame")
