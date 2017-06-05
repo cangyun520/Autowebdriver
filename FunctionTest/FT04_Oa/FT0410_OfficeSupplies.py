@@ -20,7 +20,8 @@ class OfficeSupplies(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000796")
 
     '''行政办公-办公用品管理-单据添加功能'''
-    def test_0409_01_add(self):
+
+    def test_0410_01_add(self):
         """行政办公-办公用品管理-单据添加功能"""
         driver = self.driver
         v_add = driver.find_element_by_id("btnAdd")
@@ -55,7 +56,7 @@ class OfficeSupplies(unittest.TestCase):
                 print("BUG 行政办公-办公用品管理添加数据失败，请检查页面")
         else:
             print("BUG 行政办公-办公用品管理-【添加】-不显示，请检查页面是否正常")
-            unittest.expectedFailure("test_0409_01_add")
+            unittest.expectedFailure("test_0410_01_add")
 
     def tearDown(self):
         self.driver.quit()
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(OfficeSupplies("test_0409_01_add"))
+    testsuit.addTest(OfficeSupplies("test_0410_01_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)

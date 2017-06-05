@@ -52,6 +52,7 @@ class CustomerManage(unittest.TestCase):
         driver.find_element_by_accessibility_id(" Link").click()
 
         # 进入添加页面
+
         driver.find_element_by_accessibility_id("代码*").click()
         driver.find_element_by_accessibility_id("代码*").send_keys(u"Python客户574975")
         driver.find_element_by_accessibility_id("名称").click()
