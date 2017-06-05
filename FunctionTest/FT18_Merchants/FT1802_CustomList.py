@@ -145,6 +145,12 @@ class CustomList(unittest.TestCase):
     def test_1802_06_UpdatePerson(self):
         """客商管理-客户管理列表-客户主数据穿透功能"""
         driver = self.driver
+        driver.find_element_by_id("select2-txtDataType-container").click()
+        for i in driver.find_elements_by_class_name("select2-results__option"):
+            if i.text == "全部客户":
+                i.click()
+                break
+            time.sleep(1)
         v_rows = driver.find_element_by_id("gridList").find_elements_by_tag_name("tr")
         if len(v_rows) > 1:
             # print(len(v_rows))
