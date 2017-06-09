@@ -1,6 +1,6 @@
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
-
+from PubliCode.config import *
 '''
     *   Arvin
     *   2017-04-13

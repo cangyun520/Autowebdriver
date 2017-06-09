@@ -1,8 +1,8 @@
 # encoding:utf-8
 from PubliCode.config import *
 from PubliCode.PubMobile import *
+from PubliCode.randData import *
 from appium import webdriver
-import unittest
 
 
 class CustomerManage(unittest.TestCase):
@@ -14,9 +14,9 @@ class CustomerManage(unittest.TestCase):
 
     def test_0101_01_check(self):
         driver = self.driver
-        driver.find_element_by_name("联系人").click()
+        # driver.find_element_by_name("联系人").click()
         try:
-            driver.find_element_by_name("钉钉测试").click()
+            driver.find_element_by_name("工作").click()
         except Exception as err:
             print(err)
 
@@ -39,9 +39,9 @@ class CustomerManage(unittest.TestCase):
 
     def test_0101_02_check(self):
         driver = self.driver
-        driver.find_element_by_name("联系人").click()
+        # driver.find_element_by_name("联系人").click()
         try:
-            driver.find_element_by_name("钉钉测试").click()
+            driver.find_element_by_name("工作").click()
         except Exception as err:
             print(err)
         driver.find_element_by_name("业务管理首页").click()
@@ -53,18 +53,19 @@ class CustomerManage(unittest.TestCase):
 
         # 进入添加页面
 
-        driver.find_element_by_accessibility_id("代码*").click()
-        driver.find_element_by_accessibility_id("代码*").send_keys(u"Python客户574975")
-        driver.find_element_by_accessibility_id("名称").click()
-        driver.find_element_by_accessibility_id("名称").send_keys(u"超级上市公司牛叉客户")
-        driver.find_element_by_accessibility_id("外文名称").send_keys("gfiuuiguidgggdfgdg")
-        driver.find_element_by_accessibility_id("移动电话").send_keys("15645678945")
-        driver.find_element_by_accessibility_id("电话").send_keys("027-857463")
-        driver.find_element_by_accessibility_id("传真").send_keys("027-857463")
-        driver.find_element_by_accessibility_id("电子邮件").send_keys("15645678945@163.com")
-        driver.find_element_by_accessibility_id("Web站点").send_keys("https://app.huoban.com")
-        driver.find_element_by_accessibility_id("备注").send_keys("027-857463")
-        driver.find_element_by_accessibility_id("取消 Link").click()
+        driver.find_element_by_accessibility_id("代码*").click()
+        driver.find_element_by_accessibility_id("代码*").send_keys(u"Python客户574975")
+        driver.find_element_by_accessibility_id("名称").click()
+        driver.find_element_by_accessibility_id("名称").send_keys(u"超级上市公司牛叉客户")
+        driver.find_element_by_accessibility_id("外文名称").send_keys("gfiuuiguidgggdfgdg")
+        driver.find_element_by_accessibility_id("移动电话").send_keys("15645678945")
+        driver.find_element_by_accessibility_id("电话").send_keys("027-857463")
+        driver.find_element_by_accessibility_id("传真").send_keys("027-857463")
+        driver.find_element_by_accessibility_id("电子邮件").send_keys("15645678945@163.com")
+        driver.find_element_by_accessibility_id("Web站点").send_keys("https://app.huoban.com")
+        # 网上滑动屏幕
+        driver.find_element_by_accessibility_id("备注").send_keys("027-857463")
+        driver.find_element_by_accessibility_id("添加 Link").click()
         time.sleep(10)
 
     def tearDown(self):

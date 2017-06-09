@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
-import datetime
 
 
 class ReleaseTrue(unittest.TestCase):
