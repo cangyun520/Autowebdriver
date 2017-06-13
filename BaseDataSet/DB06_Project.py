@@ -10,7 +10,7 @@ class DB06_Project(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理------业务设置------项目设置
+    # 系统管理-业务设置-项目设置
     def test_DB06_01_TypeAdd(self):
         """业务设置-项目设置-项目类型添加功能检查"""
         driver = self.driver

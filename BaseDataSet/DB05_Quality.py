@@ -12,7 +12,7 @@ class DB05_Quality(unittest.TestCase):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
 
-    # 系统管理------业务设置------质检设置
+    # 系统管理-业务设置-质检设置
     def test_DB05_01_SubmissionType(self):
         """业务设置-质检设置-送检类型添加功能检查"""
         driver = self.driver
