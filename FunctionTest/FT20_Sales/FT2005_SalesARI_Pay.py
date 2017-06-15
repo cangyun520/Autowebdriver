@@ -1,6 +1,7 @@
-
+from PubliCode.config import *
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class SalesARI_Pay(unittest.TestCase):
@@ -98,8 +99,34 @@ class SalesARI_Pay(unittest.TestCase):
         else:
             unittest.expectedFailure("test_2005_03_query")
             print("BUG-单据查询数据不正常")
-            driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2005_03_query.jpg")        
-    
+            driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2005_03_query.jpg")
+
+    """销售管理-应收发票+付款-查看付款方式"""
+    def test_2005_04_payment(self):
+        """销售管理-应收发票+付款-查看付款方式"""
+        driver = self.driver
+        driver.find_element_by_id("btnLast").click()
+        time.sleep(3)
+        driver.find_element_by_id("btnPayments").click()
+        time.sleep(2)
+        v_list = driver.find_element_by_id("winPayInventory").find_elements_by_class_name("x-grid3-row")
+        # for i in v_list:
+        #     print(i.text)
+        v_list[0].click()
+        ActionChains(driver).double_click(v_list[0]).perform()
+        time.sleep(4)
+
+        # 进入新开的 财务付款页面
+
+        driver.switch_to.default_content()
+        driver.switch_to.frame("frame_tab_PM001099")
+        try:
+            driver.find_element_by_id("btnPay").is_displayed()
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2005_04_payment.jpg")
+            unittest.expectedFailure("test_2005_04_payment")
+
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)

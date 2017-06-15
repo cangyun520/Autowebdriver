@@ -88,10 +88,10 @@ class PaymentSure(unittest.TestCase):
             if i.text == "IN-应收发票":
                 i.click()
                 break
-            time.sleep(1)
+        time.sleep(2)
         v_list = driver.find_elements_by_class_name("x-grid3-row")
-        if len(v_list) > 0:
-            driver.find_elements_by_class_name("x-grid3-row-checker")[0].click()
+        if len(v_list) > 1:
+            driver.find_elements_by_class_name("x-grid3-row-checker")[1].click()
             driver.find_element_by_xpath("//*[@id='tfReceiptAccount_Container']/div/span").click()
             time.sleep(3)
             # 切换到付款科目选择窗体
