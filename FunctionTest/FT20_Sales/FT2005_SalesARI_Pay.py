@@ -101,6 +101,7 @@ class SalesARI_Pay(unittest.TestCase):
             print("BUG-单据查询数据不正常")
             driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2005_03_query.jpg")
 
+    """销售管理-应收发票+付款-查看付款方式"""
     def test_2005_04_payment(self):
         """销售管理-应收发票+付款-查看付款方式"""
         driver = self.driver
