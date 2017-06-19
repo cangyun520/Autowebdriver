@@ -44,15 +44,9 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_01_check")
 
     """钉钉-业务管理首页-客户管理添加"""
-
     def test_0101_02_CustomerAdd(self):
         """钉钉-业务管理首页-客户管理添加"""
         driver = self.driver
-        # driver.find_element_by_name("联系人").click()
-        # try:
-        #     driver.find_element_by_name("工作").click()
-        # except Exception as err:
-        #     print(err)
 
         driver.find_element_by_name("业务管理首页").click()
         time.sleep(5)
@@ -93,7 +87,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_02_Customer")
 
     """钉钉-业务管理首页-供应商添加"""
-
     def test_0101_03_SupplierAdd(self):
         """钉钉-业务管理首页-供应商添加"""
         driver = self.driver
@@ -137,7 +130,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_03_SupplierAdd")
 
     """钉钉-业务管理首页-库存查询检查"""
-
     def test_0101_04_InventoryLook(self):
         """钉钉-业务管理首页-库存查询检查"""
         driver = self.driver
@@ -169,7 +161,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_04_InventoryLook")
 
     """钉钉-业务管理首页-销售报价单添加"""
-
     def test_0101_05_SalesOfferAdd(self):
         """钉钉-业务管理首页-销售报价单添加"""
         driver = self.driver
