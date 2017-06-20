@@ -5,7 +5,6 @@ from PubliCode.randData import *
 from appium import webdriver
 
 
-
 class CustomerManage(unittest.TestCase):
     def setUp(self):
         # 调用钉钉初始化公共方法
@@ -290,59 +289,58 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
     """钉钉-业务管理首页-销售订单添加"""
-
     def test_0101_06_SalesOrderAdd(self):
         """钉钉-业务管理首页-销售订单添加"""
-        # driver = self.driver
-        # driver.find_element_by_name("业务管理首页").click()
-        # time.sleep(5)
-        # v_tim = time.strftime("%y%m%d%H%M%S")
-        # v_an = driver.find_elements_by_class_name("android.view.View")
-        # v_an[7].click()
-        # time.sleep(5)
-        # driver.find_element_by_accessibility_id(" Link").click()
-        # time.sleep(2)
-        #
-        # # 进入添加页面
-        # driver.find_element_by_accessibility_id("客户名称* Link").click()
-        # time.sleep(2)
-        # # 进入业务伙伴选择页面
-        # v_list = driver.find_elements_by_class_name("android.view.View")
-        # v_list[1].click()
-        #
-        # time.sleep(1)
-        # driver.find_element_by_accessibility_id("确定 Link").click()
-        # time.sleep(3)
-        #
-        # driver.find_element_by_accessibility_id("物料明细* Link").click()
-        # time.sleep(2)
-        # # 进入物料选择页面
-        # v_list_wl = driver.find_elements_by_class_name("android.view.View")
-        # v_list_wl[1].click()
-        # driver.find_element_by_accessibility_id("提交 Link").click()
-        # time.sleep(1)
-        # driver.find_element_by_accessibility_id("添加物料明细项 Link").click()
-        # v_list_wl[2].click()
-        # driver.find_element_by_accessibility_id("提交 Link").click()
-        # time.sleep(1)
-        # driver.find_element_by_accessibility_id(" 返回 Link").click()
-        # time.sleep(1)
-        #
-        # # 上下滑动屏幕
-        # driver.find_element_by_accessibility_id("备注").send_keys("Python应用于钉钉端自动添加销售报价单" + v_tim)
-        # driver.swipe(0, 0, 0, 100)
-        # driver.find_element_by_accessibility_id("添加 Link").click()
-        # time.sleep(6)
-        #
-        # # e 检测对象是否存在
-        # v_tip = "保存成功"
-        # try:
-        #     driver.find_element_by_accessibility_id(v_tip).is_displayed()
-        #     print(v_tip)
-        # except Exception as err:
-        #     print(err)
-        #     driver.get_screenshot_as_file(root_path() + "TestPicture/Ding/test_0101_05_SalesOfferAdd.jpg")
-        #     unittest.expectedFailure("test_0101_05_SalesOfferAdd")
+        driver = self.driver
+        driver.find_element_by_name("业务管理首页").click()
+        time.sleep(5)
+        v_tim = time.strftime("%y%m%d%H%M%S")
+        v_an = driver.find_elements_by_class_name("android.view.View")
+        v_an[7].click()
+        time.sleep(5)
+        driver.find_element_by_accessibility_id(" Link").click()
+        time.sleep(2)
+
+        # 进入添加页面
+        driver.find_element_by_accessibility_id("客户名称* Link").click()
+        time.sleep(2)
+        # 进入业务伙伴选择页面
+        v_list = driver.find_elements_by_class_name("android.view.View")
+        v_list[1].click()
+
+        time.sleep(1)
+        driver.find_element_by_accessibility_id("确定 Link").click()
+        time.sleep(3)
+
+        driver.find_element_by_accessibility_id("物料明细* Link").click()
+        time.sleep(2)
+        # 进入物料选择页面
+        v_list_wl = driver.find_elements_by_class_name("android.view.View")
+        v_list_wl[1].click()
+        driver.find_element_by_accessibility_id("提交 Link").click()
+        time.sleep(1)
+        driver.find_element_by_accessibility_id("添加物料明细项 Link").click()
+        v_list_wl[2].click()
+        driver.find_element_by_accessibility_id("提交 Link").click()
+        time.sleep(1)
+        driver.find_element_by_accessibility_id(" 返回 Link").click()
+        time.sleep(1)
+
+        # 上下滑动屏幕
+        driver.find_element_by_accessibility_id("备注").send_keys("Python应用于钉钉端自动添加销售报价单" + v_tim)
+        driver.swipe(0, 0, 0, 100)
+        driver.find_element_by_accessibility_id("添加 Link").click()
+        time.sleep(6)
+
+        # e 检测对象是否存在
+        v_tip = "保存成功"
+        try:
+            driver.find_element_by_accessibility_id(v_tip).is_displayed()
+            print(v_tip)
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/Ding/test_0101_05_SalesOfferAdd.jpg")
+            unittest.expectedFailure("test_0101_05_SalesOfferAdd")
 
     def tearDown(self):
         self.driver.quit()
