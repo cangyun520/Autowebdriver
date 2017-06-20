@@ -1,4 +1,4 @@
-
+from PubliCode.config import *
 from selenium.webdriver.common.action_chains import ActionChains
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
@@ -25,7 +25,7 @@ class CustomerMaster(unittest.TestCase):
         # 客户名称
         driver.find_element_by_id("txtCardName").send_keys("客户Au" + v_tim + "股份公司")
         # 外文名称
-        driver.find_element_by_id("txtCardFName").send_keys("CustomerAuto" + v_tim)
+        driver.find_element_by_id("txtCardFName").send_keys(fun_data_englishname())
         # 组
         driver.find_element_by_xpath("//*[@id='tfGroupCode_Container']/div/span").click()
         time.sleep(3)

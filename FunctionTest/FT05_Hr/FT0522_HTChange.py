@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+from PubliCode.config import *
 from PubliCode.onlineClass import *
-from PubliCode.randData import *
 
 
 class HTRemove(unittest.TestCase):
