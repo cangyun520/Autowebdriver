@@ -86,13 +86,15 @@ class DataRelated(unittest.TestCase):
                    '应付预留发票(服务)']
 
         while n < len(v_input):
+            driver.find_element_by_id("comboBoxXmlName").click()
             driver.find_element_by_id("comboBoxXmlName").clear()
+            time.sleep(1)
             driver.find_element_by_id("comboBoxXmlName").send_keys(v_input[n])
             time.sleep(1)
-            v_compare = driver.find_element_by_class_name("x-combo-list-item")
+            v_compare = driver.find_element_by_class_name("x-combo-list-inner")
             if v_compare.text == v_input[n]:
                 v_compare.click()
-            time.sleep(3)
+            time.sleep(4)
             driver.find_element_by_id("comboHidColumn").click()
             time.sleep(1)
             v_list = driver.find_elements_by_class_name("x-mcombo-text")
