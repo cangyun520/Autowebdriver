@@ -32,8 +32,12 @@ class FreeAdmin(unittest.TestCase):
                 # 截取第3个字符到结尾
                 var_menu_id = var_active_id[3:]
                 driver.switch_to.frame("frame" + var_menu_id)
-                # 审批通过
-                driver.find_element_by_id("btnPass").click()
+                # 审批通过 ,默认通过，兼容打回
+                if driver.find_element_by_id("btnPass").is_displayed():
+                    driver.find_element_by_id("btnPass").click()
+                elif driver.find_element_by_id("btnReSave").is_displayed():
+                    driver.find_element_by_id("btnReSave").click()
+
                 v_tip = driver.find_elements_by_class_name("ext-mb-text")
                 for i in v_tip:
                     if "成功" in i.text:
