@@ -110,15 +110,6 @@ class DataRelated(unittest.TestCase):
                 #     time.sleep(1)
             n += 1
 
-
-
-            # v_check = driver.find_element_by_id("btnSelect")
-            # if v_check.is_displayed():
-            #     v_check.click()
-            # else:
-            #     driver.get_screenshot_as_file(root_path() + "TestPicture/Sys/test_1615_01_AddFPGZ.jpg")
-            #     unittest.expectedFailure("test_1615_01_AddFPGZ")
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
