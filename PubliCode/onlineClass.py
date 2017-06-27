@@ -22,10 +22,17 @@ class ClasLogin:
         time.sleep(2)
 
     def __login_user(self, uname):
-        """用户登录
-        # log_file = open(root_path() + 'PubliData/LogName.txt', 'r')
-        # usernam = log_file.readline()
-        """
+        """用户登录"""
+        log_file = open(root_path() + 'PubliData/LogName.txt', 'r')
+
+        # 读取所有行数据，并匹配当前登陆用户
+        for i in log_file.readlines():
+            try:
+                uname in i
+                break
+            except Exception as err:
+                print(err)
+
         driver = self.driver
         password = 123456
         driver.find_element_by_id("user_login").clear()
@@ -143,7 +150,7 @@ class ClasMenu:
         time.sleep(3)
 
 
-class ClasForm():
+class ClasForm:
     """处理表单内部特殊字段数据"""
     def form_top(self, number):
         # js移动到页面顶部，防止对象遮挡
@@ -246,8 +253,8 @@ class ClasFlow:
 
 
 class ClasPopupWindow:
-    """表头弹出窗体数据选择
-    """
+    """表头弹出窗体数据选择"""
+
     def popup_project(self):
         # 项目弹出窗体数据选择
         driver = self.driver
