@@ -86,9 +86,6 @@ class DataRelated(unittest.TestCase):
         """系统管理-警报设置-数据相关查询"""
         driver = self.driver
         v_lists = driver.find_elements_by_class_name("x-grid3-hd-row")
-        fro
-        i in v_lists
-        v_meus = []
 
 
     def tearDown(self):
