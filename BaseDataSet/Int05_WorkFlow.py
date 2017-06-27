@@ -47,8 +47,8 @@ class WorkFlow(unittest.TestCase):
             for d in l:
                 if d in j:
                     v_meus.remove(j)
-        print(v_meus)
-        quit()
+        # print(v_meus)
+        # quit()
         n = len(v_meus)
         m = 0
         driver.find_element_by_link_text(v_meus[m]).click()

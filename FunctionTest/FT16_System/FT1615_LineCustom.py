@@ -22,6 +22,10 @@ class DataRelated(unittest.TestCase):
     def test_1615_01_AddFPGZ(self):
         """系统管理-警报设置-数据相关查询"""
         driver = self.driver
+        # 获取文件名称
+
+
+
         # driver.find_element_by_id("comboBoxXmlName").clear()
 
         # v_input = ['销售报价单(物料)', '销售报价单(服务)', '销售订单(物料)', '销售订单(服务)', "销售交货(物料)", "销售交货(服务)",
