@@ -34,8 +34,8 @@ class ClasLogin:
         driver.find_element_by_id("user_pass").send_keys(password)
         driver.find_element_by_id("btn_Login").click()
         time.sleep(3)
-        if driver.find_element_by_link_text("系统管理").is_displayed():
-            pass
+        if driver.find_element_by_id("tab_home").is_displayed():
+            driver.find_element_by_id("tab_home").click()
         else:
             driver.refresh()
             time.sleep(2)
