@@ -291,6 +291,21 @@ class SalesReceive(unittest.TestCase):
             print("BUG-单据查询数据不正常")
             driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2004_09_query.jpg")
 
+    '''销售管理-预收款申请-点击【付款方式】'''
+    def test_2004_10_clickPayment(self):
+        """销售管理-预收款申请-点击【付款方式】"""
+        driver = self.driver
+        driver.find_element_by_id("btnPayments").click()
+        time.sleep(2)
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            try:
+                "请选择客户" in i.text
+            except Exception as err:
+                print(err)
+                unittest.expectedFailure("test_2004_10_clickPayment")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_2004_10_clickPayment.jpg")
+
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
