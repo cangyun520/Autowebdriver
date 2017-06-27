@@ -51,7 +51,6 @@ class Reimbursement(unittest.TestCase):
         v_trip = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_trip) > 0:
             v_trip[0].click()
-
             driver.find_element_by_id("btnSelect").click()
         else:
             driver.find_element_by_id("Button2").click()
