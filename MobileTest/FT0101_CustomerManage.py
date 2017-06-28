@@ -20,12 +20,6 @@ class CustomerManage(unittest.TestCase):
     def test_0101_01_check(self):
         """钉钉-业务管理首页-页面检查"""
         driver = self.driver
-        # driver.find_element_by_name("联系人").click()
-        # try:
-        #     driver.find_element_by_name("工作").click()
-        # except Exception as err:
-        #     print(err)
-
         driver.find_element_by_name("业务管理首页").click()
         time.sleep(5)
 
@@ -161,7 +155,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_04_InventoryLook")
 
     """钉钉-业务管理首页-销售订单状态"""
-
     def test_0101_05_SalesOrderStatus(self):
         """钉钉-业务管理首页-销售订单状态"""
         driver = self.driver
@@ -193,7 +186,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_05_SalesOrderStatus")
 
     """钉钉-业务管理首页-订单预警"""
-
     def test_0101_06_OrderWarning(self):
         """钉钉-业务管理首页-订单预警"""
         driver = self.driver
@@ -225,7 +217,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_06_OrderWarning")
 
     """钉钉-业务管理首页-采购订单状态"""
-
     def test_0101_07_PurchaseOrderStatu(self):
         """钉钉-业务管理首页-采购订单状态"""
         driver = self.driver
@@ -257,7 +248,6 @@ class CustomerManage(unittest.TestCase):
             unittest.expectedFailure("test_0101_07_PurchaseOrderStatu")
 
     """钉钉-业务管理首页-采购到货跟踪"""
-
     def test_0101_08_PurchaseTrack(self):
         """钉钉-业务管理首页-采购到货跟踪"""
         driver = self.driver

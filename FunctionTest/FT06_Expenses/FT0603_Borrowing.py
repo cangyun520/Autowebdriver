@@ -83,7 +83,6 @@ class Borrowing(unittest.TestCase):
             unittest.expectedFailure("test_0603_02")
 
     """费用管理-借款-添加草稿功能"""
-
     def test_0603_03_draft(self):
         """费用管理-借款-添加草稿功能"""
         driver = self.driver

@@ -103,8 +103,9 @@ class DataRelated(unittest.TestCase):
             for d in l:
                 if d == j:
                     v_meus.remove(j)
+
+        driver.find_element_by_id("btnHidColumn").click()
         # print(v_meus)
-        # quit()
         n = len(v_meus)
         m = 0
 
@@ -113,15 +114,15 @@ class DataRelated(unittest.TestCase):
             # 清理输入框
             driver.find_element_by_id("comboBoxXmlName").clear()
             driver.find_element_by_id("comboBoxXmlName").send_keys(v_meus[m])
-            time.sleep(1)
-            driver.find_element_by_id("comboHidColumn").click()
+            driver.find_element_by_id("btnHidColumn").click()
             time.sleep(3)
 
             v_lists = driver.find_elements_by_class_name("x-grid3-hd-row")
             v_cols = v_lists[0].find_elements_by_tag_name("td")
+
             for i in v_cols:
-                # print(i.text)
-                l = ['折扣%', '行字母数字', '税码', '税点']
+                print(i.text)
+                l = ['折扣%', '税码', '税点', '行字母数字']
                 for d in l:
                     if d in i.text:
                         i.click()
@@ -130,6 +131,7 @@ class DataRelated(unittest.TestCase):
                         driver.find_element_by_id("checkHidden").click()
                         driver.find_element_by_id("btnSubmit").click()
                         time.sleep(1)
+
             driver.find_element_by_id("btnSave").click()
             time.sleep(2)
             v_tip = driver.find_elements_by_class_name("ext-mb-text")
