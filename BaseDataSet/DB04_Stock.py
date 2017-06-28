@@ -15,8 +15,7 @@ class DB04_Stock(unittest.TestCase):
         """业务设置-库存设置-库存收货添加功能检查"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "库存设置", "库存收发货设置")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
+
         driver.switch_to.frame("frame_tab_PM000730")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
@@ -25,7 +24,7 @@ class DB04_Stock(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100101")
         time.sleep(1)
         for i in driver.find_elements_by_class_name("x-grid3-cell-inner"):
@@ -56,9 +55,8 @@ class DB04_Stock(unittest.TestCase):
         """业务设置-库存设置-库存发货添加功能检查"""
         driver = self.driver
         ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000730")
+
+        driver.switch_to.frame("frame_tab_PM000730")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
