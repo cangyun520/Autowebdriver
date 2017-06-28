@@ -1,9 +1,6 @@
+from PubliCode.onlineClass import *
 
-import unittest
-import time
-from HTMLTestRunner import HTMLTestRunner
-from PubliCode.randData import root_path
-
+'''修改当前测试URL地址'''
 url = "http://test.b1box.net"
 f = open(root_path() + 'PubliData/config/url.txt', 'w+')
 if f.readline() == url:
