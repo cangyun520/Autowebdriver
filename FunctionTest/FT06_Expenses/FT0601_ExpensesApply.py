@@ -122,7 +122,6 @@ class ExpensesApply(unittest.TestCase):
             if "保存草稿成功" in i.text:
                 print(i.text)
             else:
-
                 driver.get_screenshot_as_file(root_path() + "TestPicture/Erp/test_0601_03_draft.jpg")
                 unittest.expectedFailure("test_0601_03_draft")
 

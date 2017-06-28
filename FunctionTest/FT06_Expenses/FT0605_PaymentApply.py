@@ -239,10 +239,4 @@ class PaymentApply(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(PaymentApply("test_0604_01_add"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

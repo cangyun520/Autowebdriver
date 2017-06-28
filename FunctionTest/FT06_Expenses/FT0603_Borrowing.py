@@ -82,14 +82,53 @@ class Borrowing(unittest.TestCase):
         except ImportError:
             unittest.expectedFailure("test_0603_02")
 
+    """费用管理-借款-添加草稿功能"""
+
+    def test_0603_03_draft(self):
+        """费用管理-借款-添加草稿功能"""
+        driver = self.driver
+        driver.find_element_by_id("btnAdd").click()
+        time.sleep(3)
+        # 切换到新增页面
+        driver.switch_to.frame("winActivity_IFrame")
+        v_tim = time.strftime("%y%m%d%H%M")
+        # 预计归还时间
+        driver.find_element_by_id("IsReturnTiem").send_keys(time.strftime("%Y-%m-%d"))
+        # 借款金额
+        driver.find_element_by_id("Sum").send_keys(random.randint(100, 5000))
+        time.sleep(1)
+        # 项目
+        driver.find_element_by_xpath("//*[@id='ProjectCode_Container']/div/span").click()
+        time.sleep(3)
+        driver.switch_to.frame("winAdd_IFrame")
+        v_Projectlist = driver.find_elements_by_class_name("x-grid3-row")
+        v_Projectlist[random.randint(0, (len(v_Projectlist) - 1))].click()
+        driver.find_element_by_id("btnSelect").click()
+        time.sleep(1)
+        driver.switch_to.parent_frame()
+        # 开户银行
+        driver.find_element_by_id("AccountBank").send_keys(fun_data_bank())
+        # 银行账号
+        driver.find_element_by_id("Account").send_keys(fun_idcard())
+        # 开户姓名
+        driver.find_element_by_id("AccountName").send_keys(fun_data_name())
+        # 借款事由
+        driver.find_element_by_id("Remark").send_keys(
+            "这是一张借款单Auto，这是测试说的Auto。申请日期：" + v_tim)
+        driver.find_element_by_id("btnSave").click()
+        time.sleep(2)
+
+        v_tip = driver.find_elements_by_class_name("ext-mb-text")
+        for i in v_tip:
+            if "保存草稿成功" in i.text:
+                print(i.text)
+            else:
+                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0603_03_draft.jpg")
+                print(i.text)
+                unittest.expectedFailure("test_0603_03_draft")
+
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(Borrowing("test_0604_01_add"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()
