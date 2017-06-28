@@ -14,7 +14,7 @@ class DB02_Sales(unittest.TestCase):
     def test_DB02_Sales_ContractAdd(self):
         """业务设置-销售合同条款-合同条款添加检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "销售合同条款")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "销售设置", "销售合同条款")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000728")
@@ -37,7 +37,7 @@ class DB02_Sales(unittest.TestCase):
     def test_DB02_Sales_PhaseAdd(self):
         """业务设置-销售设置-收款阶段设置报警天数添加检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "收款阶段设置")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "销售设置", "收款阶段设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000726")

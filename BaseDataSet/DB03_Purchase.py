@@ -15,7 +15,7 @@ class DB03_Purchase(unittest.TestCase):
     def test_DB03_01_ContractAdd(self):
         """采购设置-采购合同条款-数据添加"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "采购合同条款")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "采购合同条款")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000729")
@@ -38,7 +38,7 @@ class DB03_Purchase(unittest.TestCase):
     def test_DB03_02_PhaseAdd(self):
         """采购设置-付款阶段设置-付款阶段设置"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "付款阶段设置")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "付款阶段设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000727")

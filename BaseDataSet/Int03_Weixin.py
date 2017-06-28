@@ -15,9 +15,7 @@ class IntWeixin(unittest.TestCase):
     def test_Int03_01_MenuRelease(self):
         """移动端配置-微信企业号-应用菜单发布功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "应用菜单")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
+        ClasMenu.menu_full_text(self, "订货管理", "移动端配置", "钉钉号", "微信企业号", "应用菜单")
         driver.switch_to.frame("frame_tab_PM000597")
         driver.find_element_by_id("cbQyApp").click()
         # 选择应用
@@ -52,10 +50,10 @@ class IntWeixin(unittest.TestCase):
     def test_Int03_02_UsersSync(self):
         """移动端配置-微信企业号-微信用户管理同步功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "移动端配置", "微信企业号", "微信用户管理")
+        ClasMenu.menu_full_text(self, "订货管理", "移动端配置", "钉钉号", "微信企业号", "微信用户管理")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000615")
+        driver.switch_to.frame("frame_tab_PM000615")
         driver.find_element_by_id("s_txtName").send_keys("arvin")
         time.sleep(1)
         driver.find_element_by_id("btnSearch").click()
@@ -73,7 +71,7 @@ class IntWeixin(unittest.TestCase):
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "已成功同步" in i.text:
-                print("移动端配置-微信企业号-微信用户管理同步OK")
+                print(i.text)
             else:
                 print("BUG 移动端配置-微信企业号-微信用户管理同步失败")
                 unittest.expectedFailure("test_Int03_02_UsersSync")
@@ -83,11 +81,4 @@ class IntWeixin(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(IntWeixin("test_Int03_01_MenuRelease"))
-    testsuit.addTest(IntWeixin("test_Int03_02_UsersSync"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

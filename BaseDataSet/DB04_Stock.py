@@ -14,10 +14,10 @@ class DB04_Stock(unittest.TestCase):
     def test_DB04_01_TransceiverStart(self):
         """业务设置-库存设置-库存收货添加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "库存设置", "库存收发货设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000730")
+        driver.switch_to.frame("frame_tab_PM000730")
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")

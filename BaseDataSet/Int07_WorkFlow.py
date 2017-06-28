@@ -5,7 +5,7 @@ from PubliCode.onlineClass import *
 import re
 
 
-class WorkFlow(unittest.TestCase):
+class Int07_WorkFlow(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
@@ -16,7 +16,8 @@ class WorkFlow(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000025")
 
     '''审批警报-固定流程设计-流程设计器导入流程xml'''
-    def test_Int02_05(self):
+
+    def test_Int07_01(self):
         """审批警报-固定流程设计-流程设计器导入流程xml"""
         driver = self.driver
 
@@ -80,9 +81,9 @@ class WorkFlow(unittest.TestCase):
                     ClasForm.form_button_yes(self, "确定")
                     print(v_meus[m])
                 else:
-                    driver.get_screenshot_as_file(root_path() + "TestPicture/BD/test_Int02_05.jpg")
+                    driver.get_screenshot_as_file(root_path() + "TestPicture/BD/test_Int07_01.jpg")
                     print(m)
-                    unittest.expectedFailure("test_Int02_05")
+                    unittest.expectedFailure("test_Int07_01")
 
             m += 1
 

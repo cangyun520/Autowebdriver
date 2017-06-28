@@ -13,9 +13,7 @@ class Int04_HR(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_part_text(self, "人事管理", "人员管理", "档案管理")
-        # 移动到页面底部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000888")
+        driver.switch_to.frame("frame_tab_PM000888")
 
     '''人事管理-人员管理-档案管理'''
     def test_Int04_01_Import(self):
@@ -23,11 +21,11 @@ class Int04_HR(unittest.TestCase):
         driver.find_element_by_id("Button1").click()
         time.sleep(2)
         driver.switch_to.frame("winInit_IFrame")
-        driver.find_element_by_id("UploadFile").send_keys(root_path() + "PubliData/excel/HRuser.xls")
-        time.sleep(1)
+
+        driver.find_element_by_id("UploadFile-file").send_keys(root_path() + "PubliData/excel/HR档案管理.xlsx")
         driver.find_element_by_id("ckbCover").click()
         driver.find_element_by_id("BtnSaveForm").click()
-        time.sleep(5)
+        time.sleep(4)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
             if "导入成功" in i.text:
@@ -42,10 +40,4 @@ class Int04_HR(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(Int04_HR("test_Int04_01_Import"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

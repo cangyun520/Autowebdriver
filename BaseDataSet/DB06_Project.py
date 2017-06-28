@@ -14,7 +14,7 @@ class DB06_Project(unittest.TestCase):
     def test_DB06_01_TypeAdd(self):
         """业务设置-项目设置-项目类型添加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目类型")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "项目设置", "项目类型")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000758")
@@ -35,7 +35,7 @@ class DB06_Project(unittest.TestCase):
     def test_DB06_02_GroupAdd(self):
         """业务设置-项目设置-项目组加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "项目设置", "项目组")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "项目设置", "项目组")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000759")

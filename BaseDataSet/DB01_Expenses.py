@@ -11,7 +11,7 @@ class Expenses(unittest.TestCase):
     def test_DB01_01_ApplyAdd(self):
         """业务设置-费用设置-类型添加"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", "业务设置", "费用设置", "报销类型设置")
+        ClasMenu.menu_full_text(self, "订货管理", u"系统管理", "业务设置", "费用设置", "报销类型设置")
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000762")
         driver.find_element_by_id("btnAdd").click()
