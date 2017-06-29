@@ -17,7 +17,7 @@ class DB04_Stock(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
-        driver.find_element_by_id("Name").send_keys("库存收货Auto" + v_tim)
+        driver.find_element_by_id("Name").send_keys("库存收货Au" + v_tim)
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
@@ -77,7 +77,7 @@ class DB04_Stock(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
-        driver.find_element_by_id("Name").send_keys("库存发货Auto" + v_tim)
+        driver.find_element_by_id("Name").send_keys("库存发货Au" + v_tim)
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
