@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
 

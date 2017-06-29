@@ -1,4 +1,4 @@
-from PubliCode.config import *
+
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
 from selenium.webdriver.common.action_chains import ActionChains
@@ -15,7 +15,8 @@ class ProjectDate(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000753")
 
     '''项目管理-项目主数据-同步项目主数据功能'''
-    def test_1101_ProjectDate(self):
+
+    def test_1101_01_Update(self):
         """项目管理-项目主数据-同步项目主数据功能"""
         driver = self.driver
         v_list = driver.find_elements_by_class_name("x-grid3-row")
@@ -33,9 +34,9 @@ class ProjectDate(unittest.TestCase):
             elif "同步项目信息成功" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1101_ProjectDate.jpg")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1101_01_Update.jpg")
                 print(i.text)
-                unittest.expectedFailure("test_1101_ProjectDate")
+                unittest.expectedFailure("test_1101_01_Update")
 
     """项目管理-项目主数据-数据查看"""
     def test_1101_02_look(self):
@@ -58,11 +59,7 @@ class ProjectDate(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
+
+
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(ProjectDate("test_1101_ProjectDate"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

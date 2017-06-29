@@ -1,5 +1,4 @@
 # encoding:utf-8
-from PubliCode.config import *
 from PubliCode.PubMobile import *
 from PubliCode.randData import *
 from appium import webdriver

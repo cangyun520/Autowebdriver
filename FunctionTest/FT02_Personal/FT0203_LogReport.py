@@ -1,6 +1,5 @@
-from PubliCode.config import *
+
 from PubliCode.onlineClass import *
-import traceback
 
 
 class LogReport(unittest.TestCase):

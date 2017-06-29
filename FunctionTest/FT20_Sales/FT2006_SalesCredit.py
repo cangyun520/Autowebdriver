@@ -1,4 +1,4 @@
-from PubliCode.config import *
+
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
 from selenium.webdriver.common.action_chains import ActionChains

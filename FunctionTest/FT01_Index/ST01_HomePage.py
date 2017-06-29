@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
-from PubliCode.config import *
 
 
 class HomePage(unittest.TestCase):
