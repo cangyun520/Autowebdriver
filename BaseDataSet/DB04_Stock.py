@@ -17,7 +17,7 @@ class DB04_Stock(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
-        driver.find_element_by_id("Name").send_keys("库存收货Auto" + v_tim)
+        driver.find_element_by_id("Name").send_keys("库存收货Au" + v_tim)
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
@@ -47,6 +47,26 @@ class DB04_Stock(unittest.TestCase):
                 print(i.text)
                 unittest.expectedFailure("test_DB04_01_TransceiverStart")
 
+        # 启用状态
+        v_tds = driver.find_element_by_class_name("x-grid3-hd-row").find_elements_by_tag_name("td")
+        for i in v_tds:
+            if i.text == "是否启用":
+                i.click
+                time.sleep(1)
+                driver.find_elements_by_class_name("x-grid3-row")[0].click()
+                driver.find_element_by_id("btnStart").click()
+                time.sleep(2)
+                v_tip = driver.find_elements_by_class_name("ext-mb-text")
+                for i in v_tip:
+                    if "启用成功" in i.text:
+                        ClasForm.form_button_yes(self, "确定")
+                    else:
+                        print(i.text)
+                        unittest.expectedFailure("test_DB04_02_TransceiverStart")
+                break
+            else:
+                pass
+
     # 业务设置-库存设置-库存发货
     def test_DB04_02_TransceiverStart(self):
         """业务设置-库存设置-库存发货添加功能检查"""
@@ -57,7 +77,7 @@ class DB04_Stock(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         time.sleep(2)
         v_tim = time.strftime("%d%H%M")
-        driver.find_element_by_id("Name").send_keys("库存发货Auto" + v_tim)
+        driver.find_element_by_id("Name").send_keys("库存发货Au" + v_tim)
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
@@ -81,30 +101,31 @@ class DB04_Stock(unittest.TestCase):
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
-            if "成功！" in i.text:
-                print(i.text)
+            if "成功" in i.text:
+                ClasForm.form_button_yes(self, "确定")
             else:
                 print(i.text)
                 unittest.expectedFailure("test_DB04_02_TransceiverStart")
 
-    # 业务设置-库存设置-状态启用/停用
-    # def test_DB04_03_TransceiverStart(self):
-    #     """业务设置-库存设置-库存发货添加功能检查"""
-    #     driver = self.driver
-    #     ClasMenu.menu_full_text(self, "系统管理", "业务设置", "库存设置", "库存收发货设置")
-    #     # 移动到页面顶部，防止对象遮挡
-    #     ClasForm.form_top(self, 0)
-    #     driver.switch_to_frame("frame_tab_PM000730")
-    #     driver.find_elements_by_class_name("x-grid3-row")[0].click()
-    #     driver.find_element_by_id("btnStart").click()
-    #     time.sleep(1)
-    #     v_tip = driver.find_elements_by_class_name("ext-mb-text")
-    #     for i in v_tip:
-    #         if "启用成功" in i.text:
-    #             print(i.text)
-    #         else:
-    #             print(i.text)
-    #             # unittest.expectedFailure("test_DB04_03_TransceiverStart")?
+        # 启用状态
+        v_tds = driver.find_element_by_class_name("x-grid3-hd-row").find_elements_by_tag_name("td")
+        for i in v_tds:
+            if i.text == "是否启用":
+                i.click
+                time.sleep(1)
+                driver.find_elements_by_class_name("x-grid3-row")[0].click()
+                driver.find_element_by_id("btnStart").click()
+                time.sleep(2)
+                v_tip = driver.find_elements_by_class_name("ext-mb-text")
+                for i in v_tip:
+                    if "启用成功" in i.text:
+                        ClasForm.form_button_yes(self, "确定")
+                    else:
+                        print(i.text)
+                        unittest.expectedFailure("test_DB04_02_TransceiverStart")
+                break
+            else:
+                pass
 
     # 系统管理-业务设置-库存设置-借料还料设置
     def test_DB04_04_CirculateAdd(self):
