@@ -149,9 +149,6 @@ class DataRelated(unittest.TestCase):
 
 
 
-
-
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
