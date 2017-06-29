@@ -41,8 +41,8 @@ class DB04_Stock(unittest.TestCase):
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
-            if "成功！" in i.text:
-                print(i.text)
+            if "成功" in i.text:
+                ClasForm.form_button_yes(self, "确定")
             else:
                 print(i.text)
                 unittest.expectedFailure("test_DB04_01_TransceiverStart")
@@ -81,7 +81,7 @@ class DB04_Stock(unittest.TestCase):
         # 科目代码
         driver.find_element_by_xpath("//*[@id='x-form-el-AcctCode']/div/span").click()
         time.sleep(3)
-        driver.switch_to_frame("winTypeAdd_IFrame")
+        driver.switch_to.frame("winTypeAdd_IFrame")
         driver.find_element_by_id("txtBPartners").send_keys("100101")
         time.sleep(1)
         for i in driver.find_elements_by_class_name("x-grid3-cell-inner"):
