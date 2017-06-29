@@ -16,7 +16,7 @@ class DB05_Quality(unittest.TestCase):
     def test_DB05_01_SubmissionType(self):
         """业务设置-质检设置-送检类型添加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "质检设置", "送检类型")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "质检设置", "送检类型")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000838")
@@ -37,7 +37,7 @@ class DB05_Quality(unittest.TestCase):
     def test_DB05_02_QCManner(self):
         """业务设置-质检设置-质检方式添加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "质检设置", "质检方式")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "质检设置", "质检方式")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000837")
@@ -58,7 +58,7 @@ class DB05_Quality(unittest.TestCase):
     def test_DB05_03_QCEvidence(self):
         """业务设置-质检设置-质检依据添加功能检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "质检设置", "质检依据")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "质检设置", "质检依据")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to_frame("frame_tab_PM000839")

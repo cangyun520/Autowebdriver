@@ -11,7 +11,7 @@ class Expenses(unittest.TestCase):
     def test_DB01_01_ApplyAdd(self):
         """业务设置-费用设置-类型添加"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, u"系统管理", "业务设置", "费用设置", "报销类型设置")
+        ClasMenu.menu_full_text(self, "订货管理", u"系统管理", "业务设置", "销售设置", "费用设置", "报销类型设置")
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000762")
         driver.find_element_by_id("btnAdd").click()
@@ -20,7 +20,7 @@ class Expenses(unittest.TestCase):
         driver.find_element_by_id("Type").send_keys("费用类型" + v_tim)
         driver.find_element_by_id("Digest").send_keys("全选菜单Auto" + v_tim)
         # 关联菜单
-        driver.find_element_by_class_name("x-form-twin-triggers").find_element_by_id("ext-gen65").click()
+        driver.find_element_by_xpath("//*[@id='x-form-el-MenuLink']/div/span").click()
         time.sleep(3)
         driver.switch_to.frame("winTypeAdd_IFrame")
         v_check = driver.find_elements_by_class_name("x-grid3-row-checker")
@@ -57,10 +57,11 @@ class Expenses(unittest.TestCase):
     def test_DB01_02_FinanceAdd(self):
         """费用设置-财务设置-报销金额添加"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "费用设置", "财务设置")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "销售设置", "费用设置", "财务设置")
         # 移动到页面顶部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000763")
+        driver.find_element_by_link_text("费用管理财务参数").click()
 
         # 检查费用报销是否勾选
         v_fybx = driver.find_element_by_id("ChkExpenseReimbursement")

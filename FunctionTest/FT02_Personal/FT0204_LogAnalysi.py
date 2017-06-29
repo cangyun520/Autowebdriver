@@ -1,6 +1,5 @@
-from PubliCode.config import *
+
 from PubliCode.onlineClass import *
-import traceback
 
 
 class LogAnalysi(unittest.TestCase):

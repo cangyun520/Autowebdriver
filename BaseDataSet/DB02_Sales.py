@@ -14,10 +14,9 @@ class DB02_Sales(unittest.TestCase):
     def test_DB02_Sales_ContractAdd(self):
         """业务设置-销售合同条款-合同条款添加检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "销售合同条款")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000728")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "销售设置", "销售合同条款")
+
+        driver.switch_to.frame("frame_tab_PM000728")
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%Y%m%d%H%M")
         if v_save.is_displayed():
@@ -37,10 +36,9 @@ class DB02_Sales(unittest.TestCase):
     def test_DB02_Sales_PhaseAdd(self):
         """业务设置-销售设置-收款阶段设置报警天数添加检查"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "销售设置", "收款阶段设置")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000726")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "销售设置", "收款阶段设置")
+
+        driver.switch_to.frame("frame_tab_PM000726")
         v_add = driver.find_element_by_id("btnAdd")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_add.is_displayed():
@@ -59,11 +57,4 @@ class DB02_Sales(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(DB02_Sales("test_DB03_Purchase_ContractAdd"))
-    testsuit.addTest(DB02_Sales("test_DB03_Purchase_PhaseAdd"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

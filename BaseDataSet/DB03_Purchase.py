@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-import random
-import time
-import unittest
-from selenium import webdriver
 from PubliCode.onlineClass import *
 
 
@@ -15,10 +11,9 @@ class DB03_Purchase(unittest.TestCase):
     def test_DB03_01_ContractAdd(self):
         """采购设置-采购合同条款-数据添加"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "采购合同条款")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000729")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "采购设置", "采购合同条款")
+
+        driver.switch_to.frame("frame_tab_PM000729")
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%y%m%d%H%M")
         if v_save.is_displayed():
@@ -38,17 +33,16 @@ class DB03_Purchase(unittest.TestCase):
     def test_DB03_02_PhaseAdd(self):
         """采购设置-付款阶段设置-付款阶段设置"""
         driver = self.driver
-        ClasMenu.menu_full_text(self, "系统管理", "业务设置", "采购设置", "付款阶段设置")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
-        driver.switch_to_frame("frame_tab_PM000727")
+        ClasMenu.menu_full_text(self, "订货管理", "系统管理", "业务设置", "采购设置", "采购设置", "付款阶段设置")
+
+        driver.switch_to.frame("frame_tab_PM000727")
         v_add = driver.find_element_by_id("btnAdd")
         v_tim = time.strftime("%y%m%d%H%M")
-        if  v_add.is_displayed():
+        if v_add.is_displayed():
             v_add.click()
             time.sleep(2)
             driver.find_element_by_id("txtName").send_keys("付款名称Auto" + v_tim)
-            driver.find_element_by_id("txtWarningDays").send_keys(random.randint(1,100))
+            driver.find_element_by_id("txtWarningDays").send_keys(random.randint(1, 100))
             driver.find_element_by_id("BtnSaveForm").click()
             time.sleep(3)
             print("业务设置-采购设置-付款阶段设置添加报警天数正常")

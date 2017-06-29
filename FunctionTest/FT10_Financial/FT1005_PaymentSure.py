@@ -1,7 +1,6 @@
 
 from PubliCode.onlineClass import *
 from selenium.webdriver.common.action_chains import ActionChains
-import win32api
 
 
 class PaymentSure(unittest.TestCase):

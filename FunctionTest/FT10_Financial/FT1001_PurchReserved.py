@@ -1,8 +1,6 @@
-from PubliCode.config import *
-from PubliCode.randData import *
+
 from PubliCode.onlineClass import *
 from selenium.webdriver.common.action_chains import ActionChains
-import win32api
 
 
 class PurchReserved(unittest.TestCase):

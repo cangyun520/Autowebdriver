@@ -1,15 +1,8 @@
 
 from PubliCode.onlineClass import *
 
-
-'''修改当前测试URL地址'''
-url = "http://test.b1box.net"
-f = open(root_path() + 'PubliData/config/url.txt', 'w+')
-if f.readline() == url:
-    pass
-else:
-    f.write(url)
-    f.close()
+# 指定当前测试PC端地址
+root_pc_testurl("http://test.b1box.net")
 
 '''
     *   OnlineBox功能集成测试报告
@@ -18,7 +11,7 @@ else:
     *   获取最新测试报告，并打印运行错误用例
     *   把结果发送到指定邮箱
     *   Arvin
-    *   2017-01-13
+    *   2017-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
 test_dir = root_path() + "FunctionTest"

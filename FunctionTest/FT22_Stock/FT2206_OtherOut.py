@@ -1,4 +1,4 @@
-from PubliCode.config import *
+
 from PubliCode.onlineClass import *
 from PubliCode.randData import *
 
@@ -9,7 +9,7 @@ class OtherOut(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "库存管理", "出入库", "出库")
+        ClasMenu.menu_full_text(self, "库存管理", "出入库管理", "出库")
         # 移动到页面底部，防止对象遮挡
         ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000209")

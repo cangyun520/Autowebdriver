@@ -1,5 +1,4 @@
-from PubliCode.config import *
-from PubliCode.randData import *
+
 from PubliCode.onlineClass import *
 
 

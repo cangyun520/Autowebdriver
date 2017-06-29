@@ -1,8 +1,8 @@
 
-import unittest
-import time
-from HTMLTestRunner import HTMLTestRunner
-from PubliCode.randData import root_path
+from PubliCode.onlineClass import *
+
+# 指定当前测试PC端地址
+root_pc_testurl("http://test.b1box.net")
 
 url = "http://test.b1box.net"
 f = open(root_path() + 'PubliData/config/url.txt', 'w+')
