@@ -5,6 +5,7 @@ import unittest
 from selenium import webdriver
 from PubliCode.onlineClass import *
 
+
 class DB02_Sales(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
