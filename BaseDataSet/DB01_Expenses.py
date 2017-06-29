@@ -47,7 +47,9 @@ class Expenses(unittest.TestCase):
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
         for i in v_tip:
-            if "成功！" in i.text:
+            if "成功" in i.text:
+                print(i.text)
+            if "已存在" in i.text:
                 print(i.text)
             else:
                 print(i.text)

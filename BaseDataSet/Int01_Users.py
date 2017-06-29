@@ -11,7 +11,6 @@ class IntUsers(unittest.TestCase):
     def test_Int01_01(self):
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "用户设置", "组管理")
-        time.sleep(4)
         driver.switch_to.frame("frame_tab_PM000123")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_list) < 2:
@@ -36,7 +35,6 @@ class IntUsers(unittest.TestCase):
     def test_Int01_02(self):
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "用户设置", "岗位管理")
-        time.sleep(3)
         driver.switch_to.frame("frame_tab_PM000005")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_list) < 2:
@@ -61,7 +59,6 @@ class IntUsers(unittest.TestCase):
     def test_Int01_03(self):
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "用户设置", "部门管理")
-        time.sleep(3)
         driver.switch_to.frame("frame_tab_PM000006")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_list) < 2:
@@ -86,7 +83,6 @@ class IntUsers(unittest.TestCase):
     def test_Int01_04(self):
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "用户设置", "角色管理")
-        time.sleep(3)
         driver.switch_to.frame("frame_tab_PM000004")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_list) < 3:
@@ -111,7 +107,6 @@ class IntUsers(unittest.TestCase):
     def test_Int01_05(self):
         driver = self.driver
         ClasMenu.menu_full_text(self, "订货管理", "系统管理", "用户设置", "用户管理")
-        time.sleep(3)
         driver.switch_to.frame("frame_tab_PM000003")
         v_list = driver.find_elements_by_class_name("x-grid3-row")
         if len(v_list) < 2:
