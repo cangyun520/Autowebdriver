@@ -9,8 +9,6 @@ class Workjobs(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_part_text(self, "订货管理", "移动端配置", "系统管理", "流程设置", "相对岗管理")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000231")
 
     '''审批警报-固定流程设计-相对岗管理'''
