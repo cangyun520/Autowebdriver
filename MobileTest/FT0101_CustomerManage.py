@@ -7,20 +7,18 @@ from appium import webdriver
 class CustomerManage(unittest.TestCase):
     def setUp(self):
         # 调用钉钉初始化公共方法
-        desired_caps = DingPublic.start_ding(self)
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        self.driver.implicitly_wait(25)
+        DingPublic.start_ding(self)
         try:
             self.driver.find_element_by_name("工作").click()
         except Exception as err:
             print(err)
+        self.driver.find_element_by_name("业务管理首页").click()
+        time.sleep(10)
 
     """钉钉-业务管理首页-页面检查"""
     def test_0101_01_check(self):
         """钉钉-业务管理首页-页面检查"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
 
         v_an = driver.find_elements_by_class_name("android.view.View")
         # for i in v_an:
@@ -41,8 +39,6 @@ class CustomerManage(unittest.TestCase):
         """钉钉-业务管理首页-客户管理添加"""
         driver = self.driver
 
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
         v_tim = time.strftime("%y%m%d%H%M%S")
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[3].click()
@@ -66,6 +62,7 @@ class CustomerManage(unittest.TestCase):
         driver.swipe(0, 0, 0, 100)
         time.sleep(1)
         driver.find_element_by_accessibility_id("备注").send_keys("Python应用于钉钉端自动添加数据" + v_tim)
+
         driver.find_element_by_accessibility_id("添加 Link").click()
         time.sleep(8)
 
@@ -83,8 +80,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_03_SupplierAdd(self):
         """钉钉-业务管理首页-供应商添加"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_tim = time.strftime("%y%m%d%H%M%S")
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[4].click()
@@ -126,8 +122,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_04_InventoryLook(self):
         """钉钉-业务管理首页-库存查询检查"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[5].click()
         time.sleep(3)
@@ -157,8 +152,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_05_SalesOrderStatus(self):
         """钉钉-业务管理首页-销售订单状态"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[9].click()
         time.sleep(3)
@@ -188,8 +182,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_06_OrderWarning(self):
         """钉钉-业务管理首页-订单预警"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[10].click()
         time.sleep(3)
@@ -219,8 +212,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_07_PurchaseOrderStatu(self):
         """钉钉-业务管理首页-采购订单状态"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[11].click()
         time.sleep(3)
@@ -250,8 +242,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_08_PurchaseTrack(self):
         """钉钉-业务管理首页-采购到货跟踪"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[12].click()
         time.sleep(3)
@@ -281,8 +272,7 @@ class CustomerManage(unittest.TestCase):
     def test_0101_06_SalesOrderAdd(self):
         """钉钉-业务管理首页-销售订单添加"""
         driver = self.driver
-        driver.find_element_by_name("业务管理首页").click()
-        time.sleep(5)
+
         v_tim = time.strftime("%y%m%d%H%M%S")
         v_an = driver.find_elements_by_class_name("android.view.View")
         v_an[7].click()
@@ -297,8 +287,14 @@ class CustomerManage(unittest.TestCase):
         v_list = driver.find_elements_by_class_name("android.view.View")
         v_list[1].click()
 
-        time.sleep(1)
-        driver.find_element_by_accessibility_id("确定 Link").click()
+        driver.find_elements_by_android_uiautomator()
+        for i in driver.find_elements_by_class_name("android.view.View"):
+            if i.is_enabled():
+                print(i)
+                i.click()
+
+        # time.sleep(1)
+        # driver.find_element_by_accessibility_id("确定 Link").click()
         time.sleep(3)
 
         driver.find_element_by_accessibility_id("物料明细* Link").click()

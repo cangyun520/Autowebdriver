@@ -25,4 +25,7 @@ class DingPublic:
         # 使用哪种自动化引擎。appium（默认）还是Selendroid。api小于17使用Selendroid
         # self.desired_caps["automationName"] = "Selendroid"
 
+        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        self.driver.implicitly_wait(25)
+
         return self.desired_caps

@@ -81,7 +81,6 @@ class DataRelated(unittest.TestCase):
             m += 1
 
     '''系统管理-常规设置-隐藏特定行字段'''
-
     def test_1615_02_HideZD(self):
         """系统管理-警报设置-数据相关查询"""
         driver = self.driver
@@ -116,22 +115,17 @@ class DataRelated(unittest.TestCase):
             driver.find_element_by_id("comboBoxXmlName").send_keys(v_meus[m])
             driver.find_element_by_id("btnHidColumn").click()
             time.sleep(3)
-
-            v_lists = driver.find_elements_by_class_name("x-grid3-hd-row")
-            v_cols = v_lists[0].find_elements_by_tag_name("td")
+            v_cols = driver.find_elements_by_class_name("x-grid3-hd-inner")
+            l = ['折扣%', '税码', '税点', '行字母数字']
 
             for i in v_cols:
-                print(i.text)
-                l = ['折扣%', '税码', '税点', '行字母数字']
-                for d in l:
-                    if d in i.text:
-                        i.click()
-                        time.sleep(2)
-                        # 勾选隐藏
-                        driver.find_element_by_id("checkHidden").click()
-                        driver.find_element_by_id("btnSubmit").click()
-                        time.sleep(1)
-
+                if "折扣%" in i.text:
+                    i.click()
+                    time.sleep(2)
+                    # 勾选隐藏
+                    driver.find_element_by_id("checkHidden").click()
+                    driver.find_element_by_id("btnSubmit").click()
+                    time.sleep(1)
             driver.find_element_by_id("btnSave").click()
             time.sleep(2)
             v_tip = driver.find_elements_by_class_name("ext-mb-text")
@@ -146,13 +140,9 @@ class DataRelated(unittest.TestCase):
                     unittest.expectedFailure("test_1615_02_HideZD")
             m += 1
 
-
-
-
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
-
 
 if __name__ == "__main__":
     unittest.main()
