@@ -287,14 +287,8 @@ class CustomerManage(unittest.TestCase):
         v_list = driver.find_elements_by_class_name("android.view.View")
         v_list[1].click()
 
-        driver.find_elements_by_android_uiautomator()
-        for i in driver.find_elements_by_class_name("android.view.View"):
-            if i.is_enabled():
-                print(i)
-                i.click()
-
-        # time.sleep(1)
-        # driver.find_element_by_accessibility_id("确定 Link").click()
+        time.sleep(1)
+        driver.find_element_by_accessibility_id("确定 Link").click()
         time.sleep(3)
 
         driver.find_element_by_accessibility_id("物料明细* Link").click()

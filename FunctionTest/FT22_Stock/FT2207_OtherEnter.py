@@ -9,9 +9,7 @@ class OtherEnter(unittest.TestCase):
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
-        ClasMenu.menu_full_text(self, "库存管理", "出入库", "入库")
-        # 移动到页面底部，防止对象遮挡
-        ClasForm.form_top(self, 0)
+        ClasMenu.menu_full_text(self, "库存管理", "出入库管理", "入库")
         driver.switch_to.frame("frame_tab_PM000207")
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self)
