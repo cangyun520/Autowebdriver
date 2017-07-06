@@ -15,7 +15,7 @@ class DumpApply(unittest.TestCase):
         # 排除自定义字段遮挡干扰
         ClasForm.form_field_hide(self)
 
-    '''库存管理---库存转储申请'''
+    '''库存管理-库存转储申请'''
     def test_2202_01(self):
         """库存管理-库存转储申请-新增单据功能"""
         driver = self.driver

@@ -1,13 +1,15 @@
 # encoding:utf-8
 from PubliCode.PubMobile import *
 from PubliCode.randData import *
-from appium import webdriver
 
 
 class CustomerManage(unittest.TestCase):
     def setUp(self):
         # 调用钉钉初始化公共方法
-        DingPublic.start_ding(self)
+        desired_caps = DingPublic.start_ding(self)
+        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        self.driver.implicitly_wait(25)
+
         try:
             self.driver.find_element_by_name("工作").click()
         except Exception as err:
@@ -46,7 +48,6 @@ class CustomerManage(unittest.TestCase):
         driver.find_element_by_accessibility_id(" Link").click()
 
         # 进入添加页面
-
         driver.find_element_by_accessibility_id("代码*").click()
         v_num = "KHDD" + str(random.randint(11111, 99999))
         driver.find_element_by_accessibility_id("代码*").send_keys(v_num)

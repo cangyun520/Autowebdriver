@@ -31,11 +31,6 @@ class Worktodo(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
+
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(Worktodo("test_0301"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

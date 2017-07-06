@@ -1,8 +1,4 @@
 from PubliCode.config import *
-import time
-import random
-import os
-import csv
 
 
 # 随机生成18位身份证号码

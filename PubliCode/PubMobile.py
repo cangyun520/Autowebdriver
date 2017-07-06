@@ -1,9 +1,5 @@
 from PubliCode.randData import *
-from selenium import webdriver
 import unittest
-from HTMLTestRunner import HTMLTestRunner
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from appium import webdriver
 
 
@@ -29,15 +25,11 @@ class DingPublic:
         # 使用哪种自动化引擎。appium（默认）还是Selendroid。api小于17使用Selendroid
         # self.desired_caps["automationName"] = "Selendroid"
 
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        self.driver.implicitly_wait(25)
-
         return self.desired_caps
 
 
 class WeChatPublic:
     """微信公共操作代码集合"""
-
     def start_weixin(self):
         """初始化配置微信应用"""
         self.desired_caps = {}
@@ -57,8 +49,5 @@ class WeChatPublic:
         self.desired_caps["resetKeyboard"] = "True"
         # 使用哪种自动化引擎。appium（默认）还是Selendroid。api小于17使用Selendroid
         # self.desired_caps["automationName"] = "Selendroid"
-
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        self.driver.implicitly_wait(25)
 
         return self.desired_caps

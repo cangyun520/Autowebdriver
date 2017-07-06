@@ -1,7 +1,7 @@
-import time
-import random
 import os
+import time
 import csv
+import random
 
 
 # 获取当前项目根目录
@@ -21,3 +21,12 @@ def root_pc_testurl(url):
         f.write(url)
         f.close()
     return root_path()
+
+
+# 休眠时间
+def timesl(num):
+    if 0 < num < 50:
+        time.sleep(num)
+    else:
+        print("休眠时间非 大于0，小于50，请重新设置")
+    return timesl()

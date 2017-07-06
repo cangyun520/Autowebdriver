@@ -77,17 +77,4 @@ class WebSMS(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(WebSMS("test_0201_01"))
-    testsuit.addTest(WebSMS("test_0201_02"))
-    v_tim = time.strftime("%y%m%d%H%M")
-    FileName = root_path() + 'TestReport/STRport/' + v_tim + ' ST01_Index.html'
-    ReportFile = open(FileName, 'wb')
-    runner = HTMLTestRunner(stream=ReportFile,
-                            title="首页冒烟测试",
-                            description="用例执行情况")
-    # 运行测试用例集合
-    runner.run(testsuit)
-    ReportFile.close()
+    unittest.main()

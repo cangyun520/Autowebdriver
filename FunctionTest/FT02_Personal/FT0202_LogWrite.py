@@ -172,21 +172,7 @@ class LogWrite(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(LogWrite("test_0202_01"))
-    testsuit.addTest(LogWrite("test_0202_02"))
-    v_time = time.strftime("%y%m%d%H%M")
-    # 定义报告存放路径
-    FileName = root_path() + 'TestReport/FT04_Task/' + v_time + ' FT04_WriteLog.htm'
-    ReportFile = open(FileName, 'wb')
-    runner = HTMLTestRunner(stream=ReportFile,
-                            title="事务处理-工作日志-日志填报",
-                            description="黑盒自动化测试执行结果统计")
-    # 运行测试用例集合
-    runner.run(testsuit)
-    ReportFile.close()
+    unittest.main()
 
 """
 python标准异常
