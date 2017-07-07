@@ -1,9 +1,8 @@
 # encoding:utf-8
 from PubliCode.PubMobile import *
-from PubliCode.randData import *
 
 
-class CustomerManage(unittest.TestCase):
+class BusinessMan(unittest.TestCase):
     def setUp(self):
         # 调用钉钉初始化公共方法
         desired_caps = DingPublic.start_ding(self)
