@@ -2,6 +2,8 @@ import os
 import time
 import csv
 import random
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
 
 
 # 获取当前项目根目录
@@ -20,7 +22,7 @@ def root_pc_testurl(url):
     else:
         f.write(url)
         f.close()
-    return root_pc_testurl()
+    return url
 
 
 # 休眠时间
@@ -29,4 +31,4 @@ def timesl(num):
         time.sleep(num)
     else:
         print("休眠时间非 大于0，小于50，请重新设置")
-    return timesl()
+    return

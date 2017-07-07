@@ -1,6 +1,5 @@
 # encoding:utf-8
 from PubliCode.PubMobile import *
-from PubliCode.config import *
 
 
 class WorkLog(unittest.TestCase):
@@ -15,7 +14,7 @@ class WorkLog(unittest.TestCase):
         except Exception as err:
             print(err)
         self.driver.find_element_by_name("工作日志").click()
-        time.sleep(3)
+        timesl(3)
         # 全局变量
         global v_time
         v_time = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -35,6 +34,9 @@ class WorkLog(unittest.TestCase):
         timesl(1)
         print(driver.contexts)
 
+        # swtich 切换当前上下文
+        driver._switch_to.context("WEBVIEW_com.tencent.mm:tools")
+        print(driver.context)
         driver.find_element_by_name("明日计划").click()
         v_edit = driver.find_elements_by_class_name("android.widget.EditText")
         # 今日完成
