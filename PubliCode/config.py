@@ -20,7 +20,7 @@ def root_pc_testurl(url):
     else:
         f.write(url)
         f.close()
-    return root_path()
+    return root_pc_testurl()
 
 
 # 休眠时间
