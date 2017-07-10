@@ -1,5 +1,4 @@
 from PubliCode.onlineClass import *
-from PubliCode.randData import *
 import re
 '''
     *   Arvin
@@ -80,9 +79,9 @@ class DataRelated(unittest.TestCase):
                     break
             m += 1
 
-    '''系统管理-常规设置-隐藏特定行字段'''
+    '''系统管理-常规设置-隐藏特定行字段 折扣%'''
     def test_1615_02_HideZD(self):
-        """系统管理-警报设置-数据相关查询"""
+        """系统管理-常规设置-隐藏特定行字段 折扣%"""
         driver = self.driver
         # 获取文件名称
         driver.find_element_by_xpath(
@@ -119,25 +118,92 @@ class DataRelated(unittest.TestCase):
             l = ['折扣%', '税码', '税点', '行字母数字']
 
             for i in v_cols:
-                if "折扣%" in i.text:
+                if i.text == "折扣%":
                     i.click()
                     time.sleep(2)
                     # 勾选隐藏
                     driver.find_element_by_id("checkHidden").click()
                     driver.find_element_by_id("btnSubmit").click()
                     time.sleep(1)
-            driver.find_element_by_id("btnSave").click()
-            time.sleep(2)
-            v_tip = driver.find_elements_by_class_name("ext-mb-text")
-            # 提示
-            for j in v_tip:
-                try:
-                    "保存成功" in j.text
-                    ClasForm.form_button_yes(self, "确定")
-                except Exception as err:
-                    driver.get_screenshot_as_file(root_path() + "TestPicture/SYS/test_1615_02_HideZD.jpg")
-                    print(err)
-                    unittest.expectedFailure("test_1615_02_HideZD")
+                    driver.find_element_by_id("btnSave").click()
+                    time.sleep(2)
+                    v_tip = driver.find_elements_by_class_name("ext-mb-text")
+                    # 提示
+                    for j in v_tip:
+                        try:
+                            "保存成功" in j.text
+                            ClasForm.form_button_yes(self, "确定")
+                        except Exception as err:
+                            print(err)
+                            driver.get_screenshot_as_file(root_path() + "TestPicture/SYS/test_1615_02_HideZD.jpg")
+                            unittest.expectedFailure("test_1615_02_HideZD")
+                    break
+                else:
+                    pass
+            m += 1
+
+    '''系统管理-常规设置-隐藏特定行字段 行字母数字'''
+
+    def test_1615_03_HideZMSZ(self):
+        """系统管理-常规设置-隐藏特定行字段 行字母数字"""
+        driver = self.driver
+        # 获取文件名称
+        driver.find_element_by_xpath(
+            "//*[@id='ext-comp-1002']/table/tbody/tr/td/table/tbody/tr/td/div/div/div/img").click()
+        time.sleep(1)
+        v_lists = driver.find_elements_by_class_name("x-combo-list-item")
+        v_meus = []
+        for i in v_lists:
+            if re.search(r'(物料)', i.text) or re.search(r'(服务)', i.text):
+                v_meus.append(i.text)
+            else:
+                pass
+
+        # 剔除多余数据
+        for j in v_meus:
+            l = ['调拨计划物料选择']
+            for d in l:
+                if d == j:
+                    v_meus.remove(j)
+
+        driver.find_element_by_id("btnHidColumn").click()
+        # print(v_meus)
+        n = len(v_meus)
+        m = 0
+
+        # 开始循环
+        while m < n:
+            # 清理输入框
+            driver.find_element_by_id("comboBoxXmlName").clear()
+            driver.find_element_by_id("comboBoxXmlName").send_keys(v_meus[m])
+            driver.find_element_by_id("btnHidColumn").click()
+            time.sleep(3)
+            v_cols = driver.find_elements_by_class_name("x-grid3-hd-inner")
+            l = ['折扣%', '税码', '税点', '行字母数字']
+
+            for i in v_cols:
+                if i.text == "行字母数字":
+                    i.click()
+                    time.sleep(2)
+                    # 勾选隐藏
+                    driver.find_element_by_id("checkHidden").click()
+                    driver.find_element_by_id("btnSubmit").click()
+                    time.sleep(1)
+                    driver.find_element_by_id("btnSave").click()
+                    time.sleep(2)
+                    v_tip = driver.find_elements_by_class_name("ext-mb-text")
+                    # 提示
+                    for j in v_tip:
+                        try:
+                            "保存成功" in j.text
+                            ClasForm.form_button_yes(self, "确定")
+                        except Exception as err:
+                            print(err)
+                            driver.get_screenshot_as_file(root_path() + "TestPicture/SYS/test_1615_02_HideZD.jpg")
+                            unittest.expectedFailure("test_1615_02_HideZD")
+                    break
+                else:
+                    pass
             m += 1
 
     def tearDown(self):

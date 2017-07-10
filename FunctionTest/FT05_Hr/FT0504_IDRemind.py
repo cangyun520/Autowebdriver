@@ -14,8 +14,6 @@ class IDRemind(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_full_text(self, "人事管理", "人员管理", "证照提醒")
-        # 移动到页面顶部，防止对象遮挡
-        ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000889")
 
     '''人事管理-人员管理-证照提醒'''

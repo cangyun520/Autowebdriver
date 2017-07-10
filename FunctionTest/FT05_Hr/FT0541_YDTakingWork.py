@@ -16,10 +16,10 @@ class TakingWork(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000892")
 
     """人事管理-员工异动-入职"""
-
     def test_0541_01_add(self):
         """人事管理-员工异动-入职"""
         driver = self.driver
+        time.sleep(2)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         # 切换到新增页面

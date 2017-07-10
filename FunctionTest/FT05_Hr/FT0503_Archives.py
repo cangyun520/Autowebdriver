@@ -17,6 +17,7 @@ class Archives(unittest.TestCase):
     def test_0503_01_add(self):
         """人事管理-人员管理-档案管理添加功能"""
         driver = self.driver
+        time.sleep(2)
         driver.find_element_by_id("btnAdd").click()
         time.sleep(3)
         driver.switch_to.frame("winEdit_IFrame")

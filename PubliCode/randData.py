@@ -183,7 +183,7 @@ def fun_data_www():
 def fun_data_character(start, end):
     write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
     v_lines = write_file.read()
-    v_input = v_lines[random.randint(0, start):random.randint(start, end)]
+    v_input = v_lines[start:end]
     return v_input
 
 
