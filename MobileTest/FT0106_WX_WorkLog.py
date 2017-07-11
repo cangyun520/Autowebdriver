@@ -38,14 +38,15 @@ class WorkLog(unittest.TestCase):
 
         # 明日计划
         driver.find_element_by_id("ajn").click()
-        v_edit[1].send_keys(v_time + fun_data_character(10, 200))
+
+        v_edit[1].send_keys(fun_data_character(10, 150))
 
         # 需协调工作
         # 其中键盘输入，tab定位
         win32api.keybd_event(9, 0, 0, 0)
         # 释放按键
         win32api.keybd_event(9, 0, win32con.KEYEVENTF_KEYUP, 0)
-        v_edit[2].send_keys(v_time + fun_data_character(100, 500))
+        v_edit[2].send_keys(fun_data_character(100, 300))
 
         # 今日完成
         win32api.keybd_event(9, 0, 0, 0)
@@ -59,21 +60,23 @@ class WorkLog(unittest.TestCase):
         driver.find_element_by_accessibility_id("汇报人*").click()
         timesl(3)
         driver.find_element_by_accessibility_id("Bear-技术经理（微信）").click()
-
+        driver.find_element_by_accessibility_id("Sunny-技术总监").click()
         # 其中键盘输入，tab定位
         win32api.keybd_event(9, 0, 0, 0)
         win32api.keybd_event(9, 0, win32con.KEYEVENTF_KEYUP, 0)
+        timesl(1)
         win32api.keybd_event(13, 0, 0, 0)
         win32api.keybd_event(13, 0, win32con.KEYEVENTF_KEYUP, 0)
-
-        # driver.find_element_by_accessibility_id("确定 Link").click()
         timesl(2)
-
+        # 上下滑动屏幕
+        driver.swipe(0, 0, 0, 100)
+        timesl(1)
+        driver.find_element_by_id("d0b").click()
         driver.find_element_by_accessibility_id("添加 Link").click()
         timesl(3)
 
         try:
-            driver.find_element_by_accessibility_id("添加成功！").is_displayed()
+            driver.find_element_by_accessibility_id("添加成功").is_displayed()
         except Exception as err:
             print(err)
             driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_01_addDaily.jpg")
