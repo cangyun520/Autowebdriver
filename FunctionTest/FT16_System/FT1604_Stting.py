@@ -129,7 +129,7 @@ class Stting(unittest.TestCase):
         if v_save.is_displayed():
             driver.find_element_by_id("descrption").clear()
             time.sleep(1)
-            driver.find_element_by_id("descrption").send_keys(v_tim + fun_data_character(100, 800))
+            driver.find_element_by_id("descrption").send_keys(v_tim + fun_data_character(300, 800))
             time.sleep(2)
             v_save.click()
             time.sleep(3)

@@ -17,7 +17,7 @@ class HideCustomer(unittest.TestCase):
 
     '''客商管理-潜在客户主数据'''
     def test_1803_01_Add(self):
-        """客商管理-潜在客户主数据-单据取消功能"""
+        """客商管理-潜在客户主数据-单据新增功能"""
         driver = self.driver
         v_tim = time.strftime("%y%m%d%H%M%S")
         # 客户代码
@@ -51,7 +51,7 @@ class HideCustomer(unittest.TestCase):
         # 备注页签
         driver.find_element_by_link_text("备注").click()
         time.sleep(1)
-        driver.find_element_by_id("bzjy").send_keys(fun_data_character(200, 1200))
+        driver.find_element_by_id("bzjy").send_keys(fun_data_character(600, 1000))
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)

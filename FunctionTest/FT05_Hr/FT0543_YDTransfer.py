@@ -15,7 +15,6 @@ class Transfer(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000894")
 
     """人事管理-员工异动-调动"""
-
     def test_0543_01(self):
         """人事管理-员工异动-调动"""
         driver = self.driver
@@ -57,10 +56,11 @@ class Transfer(unittest.TestCase):
             driver.find_elements_by_class_name("x-combo-list-item")[random.randint(1, 2)].click()
             # 原因
             driver.find_element_by_id("txtTransferReason").send_keys(fun_data_character(200, 400))
+            timesl(1)
             # 自由流审批人选择
             ClasFlow.flow_free(self, "bear")
             driver.find_element_by_id("btnWorkflow").click()
-            time.sleep(4)
+            timesl(4)
             v_tip = driver.find_elements_by_class_name("ext-mb-text")
             for i in v_tip:
                 if "流程已触发" in i.text:

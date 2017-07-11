@@ -38,7 +38,7 @@ class BusinessActivity(unittest.TestCase):
         # 内容页签
         driver.find_element_by_link_text("内容").click()
         time.sleep(1)
-        driver.find_element_by_id("txtNotes").send_keys(fun_data_character(10,500))
+        driver.find_element_by_id("txtNotes").send_keys(fun_data_character(10, 400))
         time.sleep(2)
         # 链接凭证页签-单据类型
         driver.find_element_by_link_text("链接凭证").click()

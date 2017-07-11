@@ -51,9 +51,7 @@ class SuppliersMaster(unittest.TestCase):
         # 备注页签
         driver.find_element_by_link_text("备注").click()
         time.sleep(1)
-        write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
-        v_lines = write_file.read()
-        driver.find_element_by_id("bzjy").send_keys(v_lines[100:1000])
+        driver.find_element_by_id("bzjy").send_keys(fun_data_character(600, 700))
         time.sleep(2)
         driver.find_element_by_id("btnSave").click()
         time.sleep(5)

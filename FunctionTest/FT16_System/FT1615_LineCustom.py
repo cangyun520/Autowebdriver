@@ -115,7 +115,7 @@ class DataRelated(unittest.TestCase):
             driver.find_element_by_id("btnHidColumn").click()
             time.sleep(3)
             v_cols = driver.find_elements_by_class_name("x-grid3-hd-inner")
-            l = ['折扣%', '税码', '税点', '行字母数字']
+            # l = ['折扣%', '税码', '税点', '行字母数字']
 
             for i in v_cols:
                 if i.text == "折扣%":

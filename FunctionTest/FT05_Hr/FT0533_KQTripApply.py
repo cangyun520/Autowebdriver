@@ -40,10 +40,13 @@ class TripApply(unittest.TestCase):
         driver.find_element_by_id("txtEndPlace").send_keys(end_address)
         time.sleep(1)
         driver.find_element_by_id("txtApplyMoney").send_keys(random.randint(100, 5000))
+        timesl(1)
         # 出差事由及随行人员
         driver.find_element_by_id("txtReason").send_keys(fun_data_character(50, 500))
+        timesl(1)
         # 超标说明的字段
         driver.find_element_by_id("txtExcessDesc").send_keys(fun_data_character(100, 500))
+        timesl(1)
         # 自由流审批人选择
         ClasFlow.flow_free(self, "bear")
         driver.find_element_by_id("btnWorkflow").click()
@@ -63,10 +66,4 @@ class TripApply(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(TripApply("test_0904_01_add"))
-    # 执行测试集合
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()

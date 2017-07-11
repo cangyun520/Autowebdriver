@@ -1,5 +1,7 @@
 # encoding:utf-8
 from PubliCode.PubMobile import *
+import win32api
+import win32con
 
 
 class BusinessMan(unittest.TestCase):
@@ -288,7 +290,14 @@ class BusinessMan(unittest.TestCase):
         v_list[1].click()
 
         time.sleep(1)
-        driver.find_element_by_accessibility_id("确定 Link").click()
+        # 其中键盘输入，tab定位
+        win32api.keybd_event(9, 0, 0, 0)
+        # 释放按键
+        win32api.keybd_event(9, 0, win32con.KEYEVENTF_KEYUP, 0)
+        win32api.keybd_event(13, 0, 0, 0)
+        # 释放按键
+        win32api.keybd_event(13, 0, win32con.KEYEVENTF_KEYUP, 0)
+        # driver.find_element_by_accessibility_id("确定 Link").click()
         time.sleep(3)
 
         driver.find_element_by_accessibility_id("物料明细* Link").click()
