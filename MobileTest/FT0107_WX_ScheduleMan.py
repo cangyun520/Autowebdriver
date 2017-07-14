@@ -72,7 +72,6 @@ class WorkLog(unittest.TestCase):
             unittest.expectedFailure("test_0106_01_addDaily")
 
     """日程管理-全部日程-页面检查"""
-
     def test_0106_03_analysis(self):
         """日程管理-全部日程-页面检查"""
         driver = self.driver
@@ -88,7 +87,6 @@ class WorkLog(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main()
