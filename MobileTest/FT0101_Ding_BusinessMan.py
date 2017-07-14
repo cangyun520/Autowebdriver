@@ -288,17 +288,9 @@ class BusinessMan(unittest.TestCase):
         # 进入业务伙伴选择页面
         v_list = driver.find_elements_by_class_name("android.view.View")
         v_list[1].click()
-
-        time.sleep(1)
-        # 其中键盘输入，tab定位
-        win32api.keybd_event(9, 0, 0, 0)
-        # 释放按键
-        win32api.keybd_event(9, 0, win32con.KEYEVENTF_KEYUP, 0)
-        win32api.keybd_event(13, 0, 0, 0)
-        # 释放按键
-        win32api.keybd_event(13, 0, win32con.KEYEVENTF_KEYUP, 0)
-        # driver.find_element_by_accessibility_id("确定 Link").click()
-        time.sleep(3)
+        driver.find_element_by_id("common_webview").click()
+        driver.find_element_by_accessibility_id("确定 Link").click()
+        time.sleep(2)
 
         driver.find_element_by_accessibility_id("物料明细* Link").click()
         time.sleep(2)

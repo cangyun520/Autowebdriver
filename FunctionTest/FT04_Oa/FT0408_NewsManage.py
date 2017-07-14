@@ -9,8 +9,8 @@ from PubliCode.randData import *
 
 class NewsManage(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.PhantomJS()
-        # self.driver = webdriver.Chrome()
+        # self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
         ClasLogin.login_setup(self)
         driver = self.driver
         # 打开菜单
@@ -28,12 +28,20 @@ class NewsManage(unittest.TestCase):
         driver.switch_to.default_content()
         driver.switch_to.frame("frame_tab_PM000290")
         v_tim = time.strftime("%Y%m%d%H%M")
-        driver.find_element_by_id("txt_title").send_keys("新闻公告(全体)Auto" + v_tim)
-        time.sleep(1)
         # 内容
+        driver.find_element_by_id("txt_title").send_keys("新闻公告(全体)1附件" + v_tim)
+        time.sleep(1)
         driver.find_element_by_xpath("//*[@id='tab_Biz']/div/div[5]/div/div/div[2]/iframe").click()
         driver.switch_to.active_element.send_keys(fun_data_character(100, 1000))
         time.sleep(2)
+        # 附件
+        driver.find_element_by_partial_link_text("附件").click()
+        driver.switch_to.frame("frame_UploaderFiles")
+        driver.find_element_by_class_name("webuploader-element-invisible").send_keys(root_path() + "PubliData/character5w.txt")
+        timesl(1)
+        driver.find_element_by_id("btnUploadfiles").click()
+        timesl(3)
+        driver.switch_to.parent_frame()
         ClasFlow.flow_free_icon(self, "bear")
         driver.find_element_by_id("btnWorkflow").click()
         time.sleep(3)

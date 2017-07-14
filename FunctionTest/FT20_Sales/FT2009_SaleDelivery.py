@@ -382,7 +382,7 @@ class SaleDelivery(unittest.TestCase):
 
     """销售管理-销售交货-复制从-销售订单"""
     def test_2009_11_copyfrom(self):
-        """销售管理---销售交货-复制从-销售订单"""
+        """销售管理-销售交货-复制从-销售订单"""
         driver = self.driver
         driver.find_element_by_xpath("//*[@id='CompositeField2_Container']/div/div/div/span").click()
         time.sleep(3)

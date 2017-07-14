@@ -16,7 +16,6 @@ class NewLook(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000292")
 
     """行政办公-新闻公告-查看新闻公告"""
-
     def test_0409_01_Look(self):
         """行政办公-新闻公告-查看新闻公告"""
         driver = self.driver
