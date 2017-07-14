@@ -21,10 +21,11 @@ class WorkLog(unittest.TestCase):
         global v_time
         v_time = time.strftime("%Y-%m-%d %H:%M:%S")
 
-    """日程管理-添加日志-日报"""
+        """日程管理-我的日程"""
 
+    """日程管理-我的日程-创建日程"""
     def test_0106_01_addDaily(self):
-        """日程管理-添加日志-日报"""
+        """日程管理-我的日程"""
         driver = self.driver
 
         driver.find_element_by_name("我的日程").click()
@@ -70,56 +71,20 @@ class WorkLog(unittest.TestCase):
             driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_01_addDaily.jpg")
             unittest.expectedFailure("test_0106_01_addDaily")
 
-    """日程管理-我发出的-页面检查"""
+    """日程管理-全部日程-页面检查"""
 
-    def test_0106_05_check(self):
-        """日程管理-我发出的-页面检查"""
+    def test_0106_03_analysis(self):
+        """日程管理-全部日程-页面检查"""
         driver = self.driver
 
-        driver.find_element_by_name("工作日报").click()
-        timesl(1)
-        driver.find_element_by_name("我发出的").click()
+        driver.find_element_by_name("全部日程").click()
         timesl(5)
         try:
-            driver.find_element_by_id("android:id/text1")
+            driver.find_element_by_accessibility_id("未来五天").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_05_check.jpg")
-            unittest.expectedFailure("test_0106_05_check")
-
-    """日程管理-我收到的-页面检查"""
-
-    def test_0106_06_mycheck(self):
-        """日程管理-我收到的-页面检查"""
-        driver = self.driver
-
-        driver.find_element_by_name("工作日报").click()
-        timesl(1)
-        driver.find_element_by_name("我收到的").click()
-        timesl(5)
-        try:
-            driver.find_element_by_id("android:id/text1")
-        except Exception as err:
-            print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_06_mycheck.jpg")
-            unittest.expectedFailure("test_0106_06_mycheck")
-
-    """日程管理-我发出的-页面检查"""
-
-    def test_0106_07_analysis(self):
-        """日程管理-我发出的-页面检查"""
-        driver = self.driver
-
-        driver.find_element_by_name("日志统计").click()
-        timesl(1)
-        driver.find_element_by_name("日报统计").click()
-        timesl(5)
-        try:
-            driver.find_element_by_id("android:id/text1")
-        except Exception as err:
-            print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_07_analysis.jpg")
-            unittest.expectedFailure("test_0106_07_analysis")
+            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_03_check.jpg")
+            unittest.expectedFailure("test_0106_03_check")
 
     def tearDown(self):
         self.driver.quit()
