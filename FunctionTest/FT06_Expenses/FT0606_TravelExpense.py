@@ -65,7 +65,7 @@ class Reimbursement(unittest.TestCase):
         # 报销事由
         driver.find_element_by_id("Remark").send_keys(v_tim + fun_data_character(100, 500))
         # 报销明细页签数据添加
-        v_lines = driver.find_element_by_xpath("//*[@id='gpExpensesReimbursemen']/div/div/div/div/div[2]")
+        v_lines = driver.find_element_by_xpath("//*[@id='gpExpensesReimbursemen']")
         ActionChains(driver).context_click(v_lines).perform()
         driver.find_element_by_link_text("添加行").click()
         time.sleep(1)

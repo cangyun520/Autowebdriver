@@ -128,6 +128,7 @@ class CustomList(unittest.TestCase):
         driver.find_element_by_link_text("备注").click()
         time.sleep(1)
         driver.find_element_by_id("bzjy").send_keys(fun_data_character(100, 300))
+        timesl(1)
         driver.find_element_by_id("btnSave").click()
         time.sleep(4)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")

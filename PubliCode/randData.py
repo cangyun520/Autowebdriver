@@ -52,6 +52,17 @@ def fun_data_email():
     return arr[random.randint(1, len(arr)-1)]
 
 
+# 获取电话
+def fun_data_tel():
+    v_data = csv.reader(open(root_path() + 'PubliData/cvs/basedata.csv', 'r'))
+    arr = []
+    for i in v_data:
+        for ii in i[4]:
+            if ii != " ":
+                arr.append(i[4])
+    return arr[random.randint(1, len(arr) - 1)]
+
+
 # 获取英文名称
 def fun_data_englishname():
     v_data = csv.reader(open(root_path() + 'PubliData/cvs/basedata.csv', 'r'))
@@ -160,6 +171,18 @@ def fun_data_province():
             if ii != " ":
                 arr.append(i[13])
     return arr[random.randint(1, len(arr) - 1)]
+
+
+# 获取姓氏
+def fun_data_surname():
+    v_data = csv.reader(open(root_path() + 'PubliData/cvs/basedata.csv', 'r'))
+    arr = []
+    for i in v_data:
+        for ii in i[16]:
+            if ii != " ":
+                arr.append(i[16])
+    return arr[random.randint(1, len(arr) - 1)]
+
 
 
 # 获取中国少数民族名称

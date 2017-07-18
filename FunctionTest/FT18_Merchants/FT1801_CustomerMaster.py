@@ -89,12 +89,15 @@ class CustomerMaster(unittest.TestCase):
             v_list_data[2].append(i[7])    # 地址
         v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
         v_lines = v_write_file.read()
+        v_write_file.close()
+
         # 联系人页签
         driver.find_element_by_link_text("联系人").click()
         v_person = driver.find_element_by_id("GridPanel2")
         ActionChains(driver).context_click(v_person).perform()
         driver.find_element_by_id("AddRecord").click()
         time.sleep(1)
+
         # 联系人页签-新增联系人窗体
         # 联系人标识
         driver.find_element_by_id("TName").send_keys(v_tim)
@@ -103,27 +106,23 @@ class CustomerMaster(unittest.TestCase):
         # 头衔
         driver.find_element_by_id("TTitle1").send_keys((v_list_data[1])[random.randint(1, 40)])
         # 职位
-        driver.find_element_by_id("TPosition").send_keys((v_list_data[1])[random.randint(1, 40)])
+        driver.find_element_by_id("TPosition").send_keys(fun_data_job())
         # 姓
-        driver.find_element_by_id("TLastName").send_keys(random.choice(
-            ['赵', '钱', '孙', '李', '周', '吴', '郑', '王', '冯', '陈', '楮']))
+        driver.find_element_by_id("TLastName").send_keys(fun_data_surname())
         # 地址
-        driver.find_element_by_id("TAddress").send_keys((v_list_data[2])[random.randint(1, 500)])
+        driver.find_element_by_id("TAddress").send_keys(fun_data_address())
         # 电话1
-        driver.find_element_by_id("TPhone1").send_keys("027-" + str(random.randint(111111, 999999)))
+        driver.find_element_by_id("TPhone1").send_keys(fun_data_tel())
         # 电话2
-        driver.find_element_by_id("TPhone2").send_keys("010-" + str(random.randint(111111, 999999)))
+        driver.find_element_by_id("TPhone2").send_keys(fun_data_tel())
         # 移动电话
-        v_iphone = random.choice(
-            ['139', '188', '185', '136', '158', '151']
-        )+"".join(random.choice("0123456789") for i in range(8))
-        driver.find_element_by_id("TMobile").send_keys(v_iphone)
+        driver.find_element_by_id("TMobile").send_keys(fun_data_mobile())
         # 传真
-        driver.find_element_by_id("TFax").send_keys("027-" + str(random.randint(111111, 999999)))
+        driver.find_element_by_id("TFax").send_keys(fun_data_tel())
         # 电子邮件
-        driver.find_element_by_id("TEMail").send_keys("".join(random.choice("0123456789") for i in range(9)) + "@tech" + ".com")
+        driver.find_element_by_id("TEMail").send_keys(fun_data_email())
         # 传呼机
-        driver.find_element_by_id("TPager").send_keys("027-" + str(random.randint(111111, 999999)))
+        driver.find_element_by_id("TPager").send_keys(fun_data_tel())
         # 备注1
         driver.find_element_by_id("TNote1").send_keys("备注1")
         # 备注2
@@ -134,8 +133,7 @@ class CustomerMaster(unittest.TestCase):
         driver.find_element_by_id("TPlaceOfBirth").click()
         driver.find_elements_by_class_name("x-combo-list-item")[3].click()
         # 出生城市
-        driver.find_element_by_id("TBirthCity").send_keys(random.choice(
-            ['北京', '上海', '深圳', '武汉', '成都', '郑州', '南昌', '哈尔滨', '贵阳']))
+        driver.find_element_by_id("TBirthCity").send_keys(fun_data_city())
         # 出生日期
         driver.find_element_by_id("TBirthDate").click()
         for i in driver.find_elements_by_class_name("x-btn-mc"):
@@ -145,7 +143,7 @@ class CustomerMaster(unittest.TestCase):
         # 性别
         driver.find_element_by_id("TSex").send_keys(random.choice(['男', '女']))
         # 职业
-        driver.find_element_by_id("TProfession").send_keys((v_list_data[1])[random.randint(1, 40)])
+        driver.find_element_by_id("TProfession").send_keys(fun_data_position())
         driver.find_element_by_id("btnYes").click()
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()
@@ -241,9 +239,4 @@ class CustomerMaster(unittest.TestCase):
         self.driver.quit()
         self.assertEqual([], self.verificationErrors)
 if __name__ == "__main__":
-    # unittest.main()
-    # 构造测试集
-    testsuit = unittest.TestSuite()
-    testsuit.addTest(CustomerMaster("test_1801_01_Add"))
-    runner = unittest.TextTestRunner()
-    runner.run(testsuit)
+    unittest.main()
