@@ -301,9 +301,9 @@ class SalesOrder(unittest.TestCase):
         driver.find_element_by_id("Button13").click()
         time.sleep(1)
         driver.switch_to.parent_frame()
-        # 总计
+        # 单价
         driver.find_element_by_xpath(
-            "//*[@id='GridPaneServer']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[6]").click()
+            "//*[@id='GridPaneServer']/div/div/div/div/div[2]/div[1]/div/table/tbody/tr[1]/td[5]").click()
         time.sleep(1)
         driver.switch_to.active_element.send_keys(random.randint(100, 9999))
         # 表头备注

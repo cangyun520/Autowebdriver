@@ -11,8 +11,6 @@ class CustomerMaster(unittest.TestCase):
         driver = self.driver
         # 打开菜单
         ClasMenu.menu_full_text(self, "销售管理", "客商管理", "客户主数据")
-        # 移动到页面底部，防止对象遮挡
-        ClasForm.form_top(self, 0)
         driver.switch_to.frame("frame_tab_PM000067")
 
     '''客商管理-客户主数据-新增单据功能'''
