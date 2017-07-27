@@ -19,7 +19,7 @@ class CarsApply(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000803")
 
     '''行政办公-车辆管理-车辆申请添加'''
-    def test_0402_02_add(self):
+    def test_0402_0_add(self):
         """行政办公-车辆管理-车辆申请添加功能"""
         driver = self.driver
         driver.find_element_by_id("btnApply").click()
@@ -79,9 +79,9 @@ class CarsApply(unittest.TestCase):
             elif "时间段内已被申请" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0402_02_add.jpg")
+                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0402_0_add.jpg")
                 print("Error：" + i.text)
-                unittest.expectedFailure("test_0402_02_add")
+                unittest.expectedFailure("test_0402_0_add")
 
     def tearDown(self):
         self.driver.quit()
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     # unittest.main()
     # 构造测试集
     testsuit = unittest.TestSuite()
-    testsuit.addTest(CarsApply("test_0402_02_add"))
+    testsuit.addTest(CarsApply("test_0402_0_add"))
     # 执行测试集合
     runner = unittest.TextTestRunner()
     runner.run(testsuit)
