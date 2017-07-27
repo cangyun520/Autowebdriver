@@ -15,7 +15,6 @@ class Regularization(unittest.TestCase):
         driver.switch_to.frame("frame_tab_PM000896")
 
     """人事管理-员工异动-试用转正"""
-
     def test_0542_01(self):
         """人事管理-员工异动-试用转正"""
         driver = self.driver
