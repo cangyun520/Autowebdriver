@@ -24,7 +24,6 @@ class WorkLog(unittest.TestCase):
         """信息中心-我的日程"""
 
     """信息中心-待办提醒-页面检查"""
-
     def test_0106_01_todocheck(self):
         """信息中心-代办提醒-页面检查"""
         driver = self.driver
@@ -39,7 +38,6 @@ class WorkLog(unittest.TestCase):
             unittest.expectedFailure("test_0106_01_todocheck")
 
     """信息中心-新闻公告-页面检查"""
-
     def test_0106_02_newscheck(self):
         """信息中心-新闻公告-页面检查"""
         driver = self.driver
@@ -56,9 +54,23 @@ class WorkLog(unittest.TestCase):
             driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_02_newscheck.jpg")
             unittest.expectedFailure("test_0106_02_newscheck")
 
+    """信息中心-通知消息-页面检查"""
+
+    def test_0106_03_notecheck(self):
+        """信息中心-通知消息-页面检查"""
+        driver = self.driver
+
+        driver.find_element_by_name("通知消息").click()
+        timesl(3)
+        try:
+            driver.find_element_by_id("text1").is_displayed()
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_03_notecheck.jpg")
+            unittest.expectedFailure("test_0106_03_notecheck")
+
     def tearDown(self):
         self.driver.quit()
-
 
 if __name__ == '__main__':
     unittest.main()
