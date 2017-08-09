@@ -22,7 +22,6 @@ class AttendanceClock(unittest.TestCase):
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
 
     """考勤打卡-提醒设置-页面检查"""
-
     def test_0109_01_remindcheck(self):
         """考勤打卡-提醒设置-页面检查"""
         driver = self.driver
@@ -38,7 +37,6 @@ class AttendanceClock(unittest.TestCase):
             unittest.expectedFailure("test_0109_01_remindcheck")
 
     """考勤打卡-签到-页面检查"""
-
     def test_0109_02_signInCheck(self):
         """考勤打卡-签到-页面检查"""
         driver = self.driver
@@ -54,7 +52,6 @@ class AttendanceClock(unittest.TestCase):
             unittest.expectedFailure("test_0109_02_signInCheck")
 
     """考勤打卡-签退-页面检查"""
-
     def test_0109_03_signOutCheck(self):
         """考勤打卡-签退-页面检查"""
         driver = self.driver
@@ -69,6 +66,7 @@ class AttendanceClock(unittest.TestCase):
             driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0109_03_signOutCheck.jpg")
             unittest.expectedFailure("test_0109_03_signOutCheck")
 
+    """考勤打卡-外勤-添加"""
     def test_0109_04_fieldAdd(self):
         """考勤打卡-外勤-添加"""
         driver = self.driver
@@ -98,7 +96,6 @@ class AttendanceClock(unittest.TestCase):
             unittest.expectedFailure("test_0109_04_fieldAdd")
 
     """考勤打卡-打卡记录-页面检查"""
-
     def test_0109_05_recordCheck(self):
         """考勤打卡-打卡记录-页面检查"""
         driver = self.driver

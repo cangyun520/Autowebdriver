@@ -22,7 +22,6 @@ class CostMan(unittest.TestCase):
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
 
     """费用管理-页面检查"""
-
     def test_0110_01_mainCheck(self):
         """费用管理-页面检查"""
         driver = self.driver

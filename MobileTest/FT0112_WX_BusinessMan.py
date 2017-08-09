@@ -22,7 +22,6 @@ class BusinessMan(unittest.TestCase):
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
 
     """客户管理-页面检查"""
-
     def test_0112_01_customerAdd(self):
         """客户管理-页面检查"""
         driver = self.driver
@@ -66,7 +65,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_02_Customer")
 
     """客户管理-供应商添加"""
-
     def test_0101_02_supplierAdd(self):
         """客户管理-供应商添加"""
         driver = self.driver
@@ -109,7 +107,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_02_supplierAdd")
 
     """客户管理-库存查询检查"""
-
     def test_0101_03_InventoryLook(self):
         """客户管理-库存查询检查"""
         driver = self.driver
@@ -140,7 +137,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_03_InventoryLook")
 
     """客户管理-销售订单状态"""
-
     def test_0101_04_SalesOrderStatus(self):
         """客户管理-销售订单状态"""
         driver = self.driver
@@ -170,7 +166,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_04_SalesOrderStatus")
 
     """客户管理-订单预警"""
-
     def test_0101_05_OrderWarning(self):
         """客户管理-订单预警"""
         driver = self.driver
@@ -200,7 +195,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_05_OrderWarning")
 
     """客户管理-采购订单状态"""
-
     def test_0101_06_PurchaseOrderStatu(self):
         """客户管理-采购订单状态"""
         driver = self.driver
@@ -230,7 +224,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_06_PurchaseOrderStatu")
 
     """客户管理-采购到货跟踪"""
-
     def test_0101_07_PurchaseTrack(self):
         """客户管理-采购到货跟踪"""
         driver = self.driver
@@ -260,7 +253,6 @@ class BusinessMan(unittest.TestCase):
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
     """客户管理-销售订单添加"""
-
     # def test_0101_08_SalesOrderAdd(self):
     #     """客户管理-销售订单添加"""
     #     driver = self.driver

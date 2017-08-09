@@ -26,7 +26,6 @@ class TaskMan(unittest.TestCase):
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
 
     """任务管理-我的任务-添加"""
-
     def test_0110_01_remindAdd(self):
         """任务管理-我的任务-添加"""
         driver = self.driver
@@ -59,7 +58,6 @@ class TaskMan(unittest.TestCase):
             unittest.expectedFailure("test_0110_01_remindAdd")
 
     """任务管理-签到-添加"""
-
     def test_0110_02_signInCheck(self):
         """任务管理-签到-添加"""
         driver = self.driver
@@ -75,7 +73,6 @@ class TaskMan(unittest.TestCase):
             unittest.expectedFailure("test_0110_02_signInCheck")
 
     """任务管理-签退-添加"""
-
     def test_0110_03_signOutCheck(self):
         """任务管理-签退-添加"""
         driver = self.driver
