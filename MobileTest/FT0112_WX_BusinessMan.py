@@ -252,6 +252,42 @@ class BusinessMan(unittest.TestCase):
             driver.get_screenshot_as_file(root_path() + "TestPicture/WX/test_0101_PurchaseTrack.jpg")
             unittest.expectedFailure("test_0101_PurchaseTrack")
 
+    """客户管理-进度跟踪"""
+
+    def test_0101_08_ProgressTrack(self):
+        """客户管理-进度跟踪"""
+        driver = self.driver
+
+        driver.tap([(250, 850)])
+        time.sleep(3)
+
+        # 进入查看页面
+
+        try:
+            driver.find_element_by_name("进度跟踪").is_displayed()
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/WX/test_0101_08_ProgressTrack.jpg")
+            unittest.expectedFailure("test_0101_08_ProgressTrack")
+
+    """客户管理-移动审批"""
+
+    def test_0101_09_MobileApproval(self):
+        """客户管理-移动审批"""
+        driver = self.driver
+
+        driver.tap([(500, 850)])
+        time.sleep(3)
+
+        # 进入查看页面
+
+        try:
+            driver.find_element_by_name("移动审批").is_displayed()
+        except Exception as err:
+            print(err)
+            driver.get_screenshot_as_file(root_path() + "TestPicture/WX/test_0101_09_MobileApproval.jpg")
+            unittest.expectedFailure("test_0101_09_MobileApproval")
+
     """客户管理-销售订单添加"""
     # def test_0101_08_SalesOrderAdd(self):
     #     """客户管理-销售订单添加"""
