@@ -55,7 +55,6 @@ class WorkLog(unittest.TestCase):
             unittest.expectedFailure("test_0106_02_newscheck")
 
     """信息中心-通知消息-页面检查"""
-
     def test_0106_03_notecheck(self):
         """信息中心-通知消息-页面检查"""
         driver = self.driver
