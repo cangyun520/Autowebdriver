@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import random
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 class ST04_Task(unittest.TestCase):
     def setUp(self):

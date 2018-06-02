@@ -1,5 +1,6 @@
 
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
+
 
 class ST01_Index(unittest.TestCase):
     def setUp(self):

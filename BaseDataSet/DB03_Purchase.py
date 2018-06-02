@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 
 class DB03_Purchase(unittest.TestCase):

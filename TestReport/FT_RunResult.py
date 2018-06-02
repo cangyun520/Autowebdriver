@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-from PubliCode.onlineClass import *
-from PubliCode.randData import *
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
+from PubliCode.webClass import *
 
 '''
 思路：

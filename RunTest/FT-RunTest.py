@@ -1,5 +1,5 @@
 
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 # 指定当前测试PC端地址
 root_pc_testurl("http://test.b1box.net")
@@ -14,7 +14,7 @@ root_pc_testurl("http://test.b1box.net")
     *   2017-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
-test_dir = root_path() + "FunctionTest"
+test_dir = root_path() + "FunctionWeb"
 discover = unittest.defaultTestLoader.discover(
     test_dir,
     pattern='FT*.py'

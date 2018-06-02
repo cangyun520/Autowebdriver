@@ -1,5 +1,5 @@
 
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 class ST05_Erp(unittest.TestCase):
     def setUp(self):

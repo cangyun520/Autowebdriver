@@ -1,5 +1,5 @@
 
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 class ST11_Report(unittest.TestCase):
     def setUp(self):

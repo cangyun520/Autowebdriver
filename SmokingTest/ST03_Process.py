@@ -1,6 +1,4 @@
-
-import random
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 class ST03_Process(unittest.TestCase):
     def setUp(self):

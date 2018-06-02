@@ -1,5 +1,5 @@
 
-from PubliCode.onlineClass import *
+from PubliCode.webClass import *
 
 # 指定当前测试PC端地址
 root_pc_testurl("http://test.b1box.net")
