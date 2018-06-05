@@ -2,7 +2,7 @@
 from PubliCode.webClass import *
 
 # 指定当前测试PC端地址
-root_pc_testurl("http://test.b1box.net")
+testurl_pc("http://test.b1box.net")
 
 '''
     *   OnlineBox功能集成测试报告
@@ -14,13 +14,13 @@ root_pc_testurl("http://test.b1box.net")
     *   2017-06-13
 '''
 v_tim = time.strftime("%Y%m%d")
-test_dir = root_path() + "FunctionWeb"
+test_dir = propath() + "FunctionWeb"
 discover = unittest.defaultTestLoader.discover(
     test_dir,
     pattern='FT*.py'
 )
 # 报告文件存放路径
-FileName = root_path() + 'TestReport/FTRport/' + v_tim + 'FT_online.htm'
+FileName = propath() + 'TestReport/FTRport/' + v_tim + 'FT_online.htm'
 fp = open(FileName, 'wb')
 runner = HTMLTestRunner(
     stream=fp,
@@ -40,7 +40,7 @@ class RunResult(unittest.TestCase):
         self.accept_next_alert = True
         driver = self.driver
         # 定义文件目录
-        resault_dir = root_path() + 'TestReport/FTRport/'
+        resault_dir = propath() + 'TestReport/FTRport/'
         # 遍历目录
         v_list = os.listdir(resault_dir)
         # 重新按时间对目录文件进行排序

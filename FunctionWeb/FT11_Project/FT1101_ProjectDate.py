@@ -34,7 +34,7 @@ class ProjectDate(unittest.TestCase):
             elif "同步项目信息成功" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1101_01_Update.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1101_01_Update.jpg")
                 print(i.text)
                 unittest.expectedFailure("test_1101_01_Update")
 

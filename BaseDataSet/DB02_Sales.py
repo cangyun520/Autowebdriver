@@ -17,7 +17,7 @@ class DB02_Sales(unittest.TestCase):
         v_save = driver.find_element_by_id("btnSave")
         v_tim = time.strftime("%Y%m%d%H%M")
         if v_save.is_displayed():
-            v_write_file = open(root_path() + 'PubliData/character5K.txt', 'r')
+            v_write_file = open(propath() + 'PubliData/character5K.txt', 'r')
             v_lines = v_write_file.read()
             driver.find_element_by_id("descrption").clear()
             driver.find_element_by_id("descrption").send_keys(v_tim + v_lines[500:2000])

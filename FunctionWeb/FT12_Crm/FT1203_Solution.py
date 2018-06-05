@@ -30,13 +30,13 @@ class Solution(unittest.TestCase):
         v_status[random.randint(0, len(v_status) - 1)].click()
         v_tim = time.strftime("%Y-%m-%d %H:%M:%S")
         # 解决方案
-        driver.find_element_by_id("Subject").send_keys(v_tim + fun_data_character(50, 100))
+        driver.find_element_by_id("Subject").send_keys(v_tim + data_character(50, 100))
         # 主题
-        driver.find_element_by_id("Symptom").send_keys(fun_data_character(100, 150))
+        driver.find_element_by_id("Symptom").send_keys(data_character(100, 150))
         # 原因
-        driver.find_element_by_id("Cause").send_keys(fun_data_character(150, 200))
+        driver.find_element_by_id("Cause").send_keys(data_character(150, 200))
         # 备注
-        driver.find_element_by_id("Descriptio").send_keys(fun_data_character(200, 400))
+        driver.find_element_by_id("Descriptio").send_keys(data_character(200, 400))
         time.sleep(1)
         driver.find_element_by_id("btnSave").click()
         time.sleep(3)
@@ -46,7 +46,7 @@ class Solution(unittest.TestCase):
                 print(i.text)
             else:
                 print(i.text)
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1203_01_Add.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1203_01_Add.jpg")
                 unittest.expectedFailure("test_1203_01_Add")
 
     def tearDown(self):

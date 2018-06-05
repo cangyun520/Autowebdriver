@@ -1,5 +1,32 @@
-[INFO  - 2017-12-29T08:57:41.138Z] GhostDriver - Main - running on port 15663
-[INFO  - 2017-12-29T08:57:42.576Z] Session [547a0b70-ec76-11e7-a187-9f188167ca00] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2017-12-29T08:57:42.576Z] Session [547a0b70-ec76-11e7-a187-9f188167ca00] - page.customHeaders:  - {}
-[INFO  - 2017-12-29T08:57:42.576Z] Session [547a0b70-ec76-11e7-a187-9f188167ca00] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-7-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2017-12-29T08:57:42.576Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 547a0b70-ec76-11e7-a187-9f188167ca00
+[INFO  - 2018-06-04T10:09:33.431Z] GhostDriver - Main - running on port 5739
+[INFO  - 2018-06-04T10:09:34.924Z] Session [61b044f0-67df-11e8-b308-95337b0bc968] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-06-04T10:09:34.925Z] Session [61b044f0-67df-11e8-b308-95337b0bc968] - page.customHeaders:  - {}
+[INFO  - 2018-06-04T10:09:34.925Z] Session [61b044f0-67df-11e8-b308-95337b0bc968] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-7-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-06-04T10:09:34.925Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 61b044f0-67df-11e8-b308-95337b0bc968
+[ERROR - 2018-06-04T10:10:05.322Z] Session [61b044f0-67df-11e8-b308-95337b0bc968] - page.onError - msg: Error: Can't find variable: require
+http://test.b1box.net/angular/ManagementCockpit/control.js:292:12
+e@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:39:198
+http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:80:213
+K@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:61:191
+g@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:54:411
+g@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:54:434
+http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:53:481
+http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:20:103
+$eval@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:133:221
+$apply@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:133:456
+http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:20:65
+e@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:39:198
+d@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:19:488
+zc@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:20:275
+Zd@http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:19:84
+http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:293:240
+j@http://test.b1box.net/assets/global/plugins/jquery.min.js:2:27578
+fireWith@http://test.b1box.net/assets/global/plugins/jquery.min.js:2:55529
+ready@http://test.b1box.net/assets/global/plugins/jquery.min.js:2:30231
+J@http://test.b1box.net/assets/global/plugins/jquery.min.js:2:30591
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-04T10:10:05.322Z] Session [61b044f0-67df-11e8-b308-95337b0bc968] - page.onError - stack:
+  (anonymous function) (http://test.b1box.net/assets/global/plugins/angularjs/angular.min.js:107)
+
+  phantomjs://platform/console++.js:263 in error

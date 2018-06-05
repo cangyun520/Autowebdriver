@@ -152,7 +152,7 @@ class SalesLeads(unittest.TestCase):
                 print(i.text)
             else:
                 print(i.text)
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1202_01_Add.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1202_01_Add.jpg")
                 unittest.expectedFailure("test_1202_01_Add")
 
     """CRM-售前管理-销售机会-客户编号为空穿透提示"""
@@ -174,7 +174,7 @@ class SalesLeads(unittest.TestCase):
                 print(i.text)
             else:
                 print(i.text)
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1202_02_Client.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1202_02_Client.jpg")
                 unittest.expectedFailure("test_1202_02_Client")
 
     def tearDown(self):

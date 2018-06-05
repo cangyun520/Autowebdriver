@@ -52,43 +52,43 @@ class ProjectApproval(unittest.TestCase):
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[2]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_name())
+        driver.switch_to.active_element.send_keys(data_name())
         # 行数据-电话
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[3]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_mobile())
+        driver.switch_to.active_element.send_keys(data_mobile())
         # 行数据-手机
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[4]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_mobile())
+        driver.switch_to.active_element.send_keys(data_mobile())
         # 行数据-传真
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[5]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_mobile())
+        driver.switch_to.active_element.send_keys(data_mobile())
         # 行数据-邮箱
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[6]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_email())
+        driver.switch_to.active_element.send_keys(data_email())
         # 行数据-职位
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[7]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_position())
+        driver.switch_to.active_element.send_keys(data_position())
         # 行数据-地址
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[8]"
         ).click()
         time.sleep(1)
-        driver.switch_to.active_element.send_keys(fun_data_address())
+        driver.switch_to.active_element.send_keys(data_address())
         # 行数据-邮编
         driver.find_element_by_xpath(
             "//*[@id='gpOPR4']/div/div/div/div/div[2]/div/div/table/tbody/tr/td[9]"
@@ -103,7 +103,7 @@ class ProjectApproval(unittest.TestCase):
             if "添加成功" in i.text:
                 print(i.text)
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1102_01_add.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1102_01_add.jpg")
                 print(i.text)
                 unittest.expectedFailure("test_1102_01_add")
 

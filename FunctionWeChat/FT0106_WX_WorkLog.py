@@ -3,8 +3,6 @@ import win32api
 
 import win32con
 
-from PubliCode.dingTalkClass import *
-
 
 class WorkLog(unittest.TestCase):
     def setUp(self):
@@ -56,13 +54,13 @@ class WorkLog(unittest.TestCase):
         v_edit = driver.find_elements_by_class_name("android.widget.EditText")
         # 明日计划
         driver.find_element_by_id("ajp").click()
-        v_edit[1].send_keys(fun_data_character(10, 150))
+        v_edit[1].send_keys(data_character(10, 150))
         # 需协调工作
         # 其中键盘输入，tab定位
         win32api.keybd_event(9, 0, 0, 0)
         # 释放按键
         win32api.keybd_event(9, 0, win32con.KEYEVENTF_KEYUP, 0)
-        v_edit[2].send_keys(fun_data_character(100, 300))
+        v_edit[2].send_keys(data_character(100, 300))
         # 今日完成
         win32api.keybd_event(9, 0, 0, 0)
         # 释放按键
@@ -85,7 +83,7 @@ class WorkLog(unittest.TestCase):
             driver.find_element_by_accessibility_id("添加成功").is_displayed()
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_01_addDaily.jpg")
+            driver.get_screenshot_as_file(propath() + "TestPicture/WeChat/test_0106_01_addDaily.jpg")
             unittest.expectedFailure("test_0106_01_addDaily")
 
     """工作日志-我发出的-页面检查"""
@@ -102,42 +100,8 @@ class WorkLog(unittest.TestCase):
             driver.find_element_by_id("android:id/text1")
         except Exception as err:
             print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_05_check.jpg")
+            driver.get_screenshot_as_file(propath() + "TestPicture/WeChat/test_0106_05_check.jpg")
             unittest.expectedFailure("test_0106_05_check")
-
-    """工作日志-我收到的-页面检查"""
-
-    def test_0106_06_mycheck(self):
-        """工作日志-我收到的-页面检查"""
-        driver = self.driver
-
-        driver.find_element_by_name("工作日报").click()
-        timesl(1)
-        driver.find_element_by_name("我收到的").click()
-        timesl(5)
-        try:
-            driver.find_element_by_id("android:id/text1")
-        except Exception as err:
-            print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_06_mycheck.jpg")
-            unittest.expectedFailure("test_0106_06_mycheck")
-
-    """工作日志-我发出的-页面检查"""
-
-    def test_0106_07_analysis(self):
-        """工作日志-我发出的-页面检查"""
-        driver = self.driver
-
-        driver.find_element_by_name("日志统计").click()
-        timesl(1)
-        driver.find_element_by_name("日报统计").click()
-        timesl(5)
-        try:
-            driver.find_element_by_id("android:id/text1")
-        except Exception as err:
-            print(err)
-            driver.get_screenshot_as_file(root_path() + "TestPicture/WeChat/test_0106_07_analysis.jpg")
-            unittest.expectedFailure("test_0106_07_analysis")
 
     def tearDown(self):
         self.driver.quit()

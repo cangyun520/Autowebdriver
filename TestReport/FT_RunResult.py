@@ -21,7 +21,7 @@ class RunResult(unittest.TestCase):
         self.accept_next_alert = True
         driver = self.driver
         # 定义文件目录
-        resault_dir = root_path() + 'TestReport/FTRport/'
+        resault_dir = propath() + 'TestReport/FTRport/'
         # 遍历目录
         v_list = os.listdir(resault_dir)
         # 重新按时间对目录文件进行排序

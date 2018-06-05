@@ -67,7 +67,7 @@ class ServiceCall(unittest.TestCase):
                     i.click()
                     break
         # 主题
-        driver.find_element_by_id("subject").send_keys(fun_data_character(100, 200))
+        driver.find_element_by_id("subject").send_keys(data_character(100, 200))
         driver.find_element_by_id("btnSave").click()
         time.sleep(2)
         v_tip = driver.find_elements_by_class_name("ext-mb-text")
@@ -76,7 +76,7 @@ class ServiceCall(unittest.TestCase):
                 print(i.text)
             else:
                 print(i.text)
-                driver.get_screenshot_as_file(root_path() + "TestPicture/erp/test_1205_01_Add.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/erp/test_1205_01_Add.jpg")
                 unittest.expectedFailure("test_1205_01_Add")
 
     def tearDown(self):

@@ -24,7 +24,7 @@ class HRreport(unittest.TestCase):
             if "按年龄" in i.text:
                 break
             else:
-                driver.get_screenshot_as_file(root_path() + "TestPicture/oa/test_0103_01_check.jpg")
+                driver.get_screenshot_as_file(propath() + "TestPicture/oa/test_0103_01_check.jpg")
                 unittest.expectedFailure("test_0103_01_check")
 
     def tearDown(self):

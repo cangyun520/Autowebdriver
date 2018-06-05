@@ -19,14 +19,14 @@ class Competitor(unittest.TestCase):
         driver.find_element_by_id("btnAdd").click()
         time.sleep(1)
         # 竞争对手名称-公司
-        v_company = fun_data_company()
+        v_company = data_company()
         driver.find_element_by_id("txtCompetiName").send_keys(v_company)
         # 省份
-        driver.find_element_by_id("txtProvince").send_keys(fun_data_province())
+        driver.find_element_by_id("txtProvince").send_keys(data_province())
         # 地址
-        driver.find_element_by_id("txtAddress").send_keys(fun_data_address())
+        driver.find_element_by_id("txtAddress").send_keys(data_address())
         # 网址
-        driver.find_element_by_id("txtWebsite").send_keys(fun_data_www())
+        driver.find_element_by_id("txtWebsite").send_keys(data_www())
         # 人数
         driver.find_element_by_id("txtCompanyNum").send_keys(random.randint(1, 9000))
         driver.find_element_by_id("btnDataSubmit").click()
