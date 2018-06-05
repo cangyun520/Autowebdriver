@@ -1,6 +1,4 @@
-import unittest
-
-from PubliCode.randData import *
+from PubliCode.library.getData import *
 
 
 class ClasLogin:
@@ -8,7 +6,7 @@ class ClasLogin:
     def __login_url(self):
         # 环境URL地址
         driver = self.driver
-        f = open(root_path() + 'PubliData/config/url.txt', 'r')
+        f = open(propath() + 'PubliData/config/url.txt', 'r')
         v_url = f.readline()
         f.close()
         driver.maximize_window()
@@ -20,7 +18,7 @@ class ClasLogin:
 
     def __login_user(self, uname):
         """用户登录"""
-        log_file = open(root_path() + 'PubliData/LogName.txt', 'r')
+        log_file = open(propath() + 'PubliData/LogName.txt', 'r')
 
         # 读取所有行数据，并匹配当前登陆用户
         for i in log_file.readlines():
@@ -173,51 +171,6 @@ class ClasForm:
                 i.click()
                 break
 
-    '''弹出时间控件任意选择N月以后的某一天'''
-    def form_today_next(self, number, uid, nextmonth, today):
-        self.driver.find_element_by_id(uid).click()
-        v_month = self.driver.find_elements_by_class_name("x-date-right")
-        v_n = 0
-        while v_n < nextmonth:
-            v_month[number-1].click()
-            v_n += 1
-        v_day = self.driver.find_elements_by_class_name("x-date-active")
-        if today <= 0 or today > 31:
-            today = "24"
-        for i in v_day:
-            if i.text == str(today):
-                i.click()
-                break
-
-    '''页面自定义字段隐藏'''
-    def form_field_hide(self):
-        # 隐藏自定义字段
-        driver = self.driver
-        if driver.find_element_by_id("panelColumn").is_displayed():
-            driver.find_element_by_xpath("//*[@id='panelColumn']/div/div").click()
-            time.sleep(1)
-        else:
-            pass
-
-    '''根据名称点击页面按钮'''
-    def form_button_yes(self, v_str):
-        v_tip_t = self.driver.find_elements_by_class_name("x-window-header-text")
-        for i in v_tip_t:
-            if "提示" in i.text:
-                for ii in self.driver.find_elements_by_tag_name("button"):
-                    if ii.text == v_str:
-                        ii.click()
-                        break
-        time.sleep(2)
-
-    '''检查窗体是否一直处于加载中卡死'''
-    def form_loading(self, testcase):
-        v_load = self.driver.find_elements_by_class_name("x-mask-loading")
-        for i in v_load:
-            if "数据加载中" in i.text:
-                print("复制从窗体界面一直处于加载中，导致页面假死，请检查！")
-                unittest.expectedFailure(testcase)
-
 
 class ClasFlow:
     """处理单据固定流，自由流操作"""
@@ -251,7 +204,6 @@ class ClasFlow:
 
 class ClasPopupWindow:
     """表头弹出窗体数据选择"""
-
     def popup_project(self):
         # 项目弹出窗体数据选择
         driver = self.driver
