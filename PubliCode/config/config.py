@@ -1,5 +1,9 @@
 import os
 import time
+import csv
+import random
+# 导入测试报告
+from HTMLTestRunner import HTMLTestRunner
 
 
 # 导入测试报告

@@ -1,10 +1,14 @@
 from PubliCode.library.getData import *
+from selenium import webdriver
+import unittest
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 
 class ClasLogin:
     """初始测试准备工作"""
     def __login_url(self):
-        # 环境URL地址
+        # 环境URL地址1
         driver = self.driver
         f = open(propath() + 'PubliData/config/url.txt', 'r')
         v_url = f.readline()
@@ -18,7 +22,7 @@ class ClasLogin:
 
     def __login_user(self, uname):
         """用户登录"""
-        log_file = open(propath() + 'PubliData/LogName.txt', 'r')
+        log_file = open(propath() + 'PubliData/text/LogName.txt', 'r')
 
         # 读取所有行数据，并匹配当前登陆用户
         for i in log_file.readlines():
@@ -41,6 +45,8 @@ class ClasLogin:
         else:
             driver.refresh()
             time.sleep(2)
+        # 关闭读取，及时释放
+        log_file.close()
 
     def login_setup(self):
         # 设置页面上隐形的智能等待时间30秒
@@ -56,32 +62,6 @@ class ClasLogin:
         # 用户登录
         ClasLogin.__login_user(self, "admin")
 
-    def login_setup_fq(self):
-        # 设置页面上隐形的等待时间30秒
-        self.driver.implicitly_wait(30)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        driver = self.driver
-        # 打开菜单
-        ClasLogin.__login_url(self)
-        # 用户登录
-        ClasLogin.__login_user(self, "fq01")
-
-    def login_setup_bear(self):
-        # 设置页面上隐形的等待时间30秒
-        self.driver.implicitly_wait(30)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        driver = self.driver
-        # 打开菜单
-        ClasLogin.__login_url(self)
-        # 用户登录
-        ClasLogin.__login_user(self, "bear")
-
     def login_setup_admin(self):
         # 设置页面上隐形的等待时间30秒
         self.driver.implicitly_wait(30)
@@ -94,32 +74,6 @@ class ClasLogin:
         ClasLogin.__login_url(self)
         # 用户登录
         ClasLogin.__login_user(self, "admin")
-
-    def login_setup_arvin(self):
-        # 设置页面上隐形的等待时间30秒
-        self.driver.implicitly_wait(30)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        driver = self.driver
-        # 打开菜单
-        ClasLogin.__login_url(self)
-        # 用户登录
-        ClasLogin.__login_user(self, "arvin")
-
-    def login_setup_sp01(self):
-        # 设置页面上隐形的等待时间30秒
-        self.driver.implicitly_wait(30)
-        # 定义空verificationErrors数组，脚本运行错误信息被记录到整个数组中
-        self.verificationErrors = []
-        # 是否接受下一个警告，默认为是
-        self.accept_next_alert = True
-        driver = self.driver
-        # 打开菜单
-        ClasLogin.__login_url(self)
-        # 用户登录
-        ClasLogin.__login_user(self, "sp01")
 
 
 class ClasMenu:
@@ -170,37 +124,6 @@ class ClasForm:
             if i.text == "今天":
                 i.click()
                 break
-
-
-class ClasFlow:
-    """处理单据固定流，自由流操作"""
-    def flow_free(self, usernam):
-        # 自由流处理
-        try:
-            self.driver.find_element_by_id("btnSelectAppover").is_displayed()
-            self.driver.find_element_by_id("btnSelectAppover").click()
-            time.sleep(3)
-            self.driver.switch_to_frame("winSelectUser_IFrame")  # 切换到用户信息选择窗体
-            self.driver.find_element_by_id("txtUserName").send_keys(usernam)
-            self.driver.find_element_by_id("btnQuery").click()
-            time.sleep(2)
-            self.driver.find_element_by_class_name("x-grid3-row-table").click()
-            self.driver.find_element_by_id("btnConfirm").click()
-            time.sleep(2)
-            self.driver.switch_to.parent_frame()
-        except:
-            pass
-
-    def flow_free_icon(self, usernam):
-        self.driver.find_element_by_id("userphoto").click()
-        time.sleep(3)
-        for i in self.driver.find_elements_by_tag_name("td"):
-            if i.text == usernam:
-                i.click()
-        time.sleep(1)
-        self.driver.find_element_by_id("btnUserOK").click()
-        time.sleep(2)
-
 
 class ClasPopupWindow:
     """表头弹出窗体数据选择"""
